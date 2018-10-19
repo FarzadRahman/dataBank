@@ -33,6 +33,8 @@ Route::view('dashboard','dashboard')->name('dashboard');
 //====================Constituency===================================
 Route::get('constituency','ConstituencyController@index')->name('constituency.index');
 Route::get('constituency/add','ConstituencyController@add')->name('constituency.add');
+Route::post('constituency/add','ConstituencyController@insert')->name('constituency.insert');
+Route::get('constituency/edit/{id}','ConstituencyController@edit')->name('constituency.update');
 
 //====================Candidates===================================
 Route::view('candidates','candidates.index')->name('candidates.index');

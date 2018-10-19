@@ -10,22 +10,22 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>Constituency Number</label>
-                        <input type="text" name="number" placeholder="number" class="form-control" required>
+                        <input type="text" name="number" placeholder="number" class="form-control" value="{{$consituency->number}}" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Constituency Name</label>
-                        <input type="text" name="name" placeholder="name" class="form-control" required>
+                        <input type="text" name="name" placeholder="name" class="form-control" value="{{$consituency->name}}" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Constituency Area</label>
-                        <textarea name="area" class="form-control" placeholder="area" rows="5" required></textarea>
+                        <textarea name="area" class="form-control" placeholder="area" rows="5" required>{{$consituency->area}}</textarea>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Division</label>
                         <select class="form-control" name="divisionId" required>
                             <option value="">Select Division</option>
                             @foreach($divisions as $division)
-                                <option value="{{$division->divisionId}}">{{$division->divisionName}}</option>
+                                <option value="{{$division->divisionId}}" @if($division->divisionId==$consituency->divisionId) selected @endif>{{$division->divisionName}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -35,14 +35,14 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Male</label>
-                        <input class="form-control" name="maleVoter" type="text" required>
+                        <input class="form-control" name="maleVoter" type="text" value="{{$consituency->maleVoter}}" required>
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Female</label>
-                        <input class="form-control" name="femaleVoter" type="text" required>
+                        <input class="form-control" name="femaleVoter" value="{{$consituency->femaleVoter}}" type="text" required>
                     </div>
                     <div class="form-group col-sm-12">
-                    <button class="btn btn-success pull-right">Insert</button>
+                        <button class="btn btn-success pull-right">Insert</button>
                     </div>
 
                 </div>
