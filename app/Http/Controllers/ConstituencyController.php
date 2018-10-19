@@ -43,4 +43,20 @@ class ConstituencyController extends Controller
         return view('constituency.edit',compact('divisions','consituency'));
 
     }
+
+    public function update(Request $r,$id){
+        $consituency=Constituency::findOrFail($id);
+        $consituency->number=$r->number;
+        $consituency->name=$r->name;
+        $consituency->area=$r->area;
+        $consituency->divisionId=$r->divisionId;
+        $consituency->maleVoter=$r->maleVoter;
+        $consituency->femaleVoter=$r->femaleVoter;
+        $consituency->createdBy=Auth::user()->userId;
+        $consituency->save();
+
+        Session::flash('message', 'Constituency Updated Successfully!');
+
+        return back();
+    }
 }

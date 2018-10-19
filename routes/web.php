@@ -34,7 +34,8 @@ Route::view('dashboard','dashboard')->name('dashboard');
 Route::get('constituency','ConstituencyController@index')->name('constituency.index');
 Route::get('constituency/add','ConstituencyController@add')->name('constituency.add');
 Route::post('constituency/add','ConstituencyController@insert')->name('constituency.insert');
-Route::get('constituency/edit/{id}','ConstituencyController@edit')->name('constituency.update');
+Route::get('constituency/edit/{id}','ConstituencyController@edit')->name('constituency.edit');
+Route::post('constituency/update/{id}','ConstituencyController@update')->name('constituency.update');
 
 //====================Candidates===================================
 Route::view('candidates','candidates.index')->name('candidates.index');
@@ -43,6 +44,13 @@ Route::view('candidates/view','candidates.view')->name('candidates.view');
 
 //====================Settings======================================
 Route::get('settings/division','DivisionController@index')->name('division.index');
+Route::post('settings/division/add','DivisionController@insert')->name('division.insert');
+Route::post('settings/division/edit','DivisionController@edit')->name('division.edit');
+Route::post('settings/division/update/{id}','DivisionController@update')->name('division.update');
+
+
+
+
 Route::get('settings/party','PartyController@index')->name('party.index');
 
 Route::view('party/level/','partyLevel')->name('party.level');

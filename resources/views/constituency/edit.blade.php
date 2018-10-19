@@ -5,7 +5,7 @@
             <h4 align="center">Add Constituency</h4>
         </div>
         <div class="card-body">
-            <form method="post" action="{{route('constituency.insert')}}" accept-charset="utf-8">
+            <form method="post" action="{{route('constituency.update',['id'=>$consituency->constituencyId])}}" accept-charset="utf-8">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-md-6">
@@ -42,7 +42,7 @@
                         <input class="form-control" name="femaleVoter" value="{{$consituency->femaleVoter}}" type="text" required>
                     </div>
                     <div class="form-group col-sm-12">
-                        <button class="btn btn-success pull-right">Insert</button>
+                        <button class="btn btn-success pull-right">Update</button>
                     </div>
 
                 </div>
