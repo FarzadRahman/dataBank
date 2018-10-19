@@ -42,3 +42,5 @@ Route::view('candidates/view','candidates.view')->name('candidates.view');
 //====================Settings======================================
 Route::get('settings/division','DivisionController@index')->name('division.index');
 Route::get('settings/party','PartyController@index')->name('party.index');
+
+Route::view('party/level/','partyLevel')->name('party.level');

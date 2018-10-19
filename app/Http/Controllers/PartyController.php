@@ -9,4 +9,5 @@ class PartyController extends Controller
     public function index(){
         return view('party.index');
     }
+
 }
