@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App Icons -->
-    <link rel="shortcut icon" href="{{url('public/logo/TCL_logo.png')}}">
+    <link rel="shortcut icon" href="{{url('public/logo/rab-logo.png')}}">
 
     <!--Morris Chart CSS -->
 {{--<link rel="stylesheet" href="{{url('public/assets/plugins/morris/morris.css')}}">--}}

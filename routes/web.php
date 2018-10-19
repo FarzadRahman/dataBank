@@ -31,9 +31,14 @@ Route::view('manage/education','manage.education')->name('manage.education');
 Route::view('dashboard','dashboard')->name('dashboard');
 
 //====================Constituency===================================
-Route::view('constituency','constituency.index')->name('constituency.index');
-Route::view('constituency/add','constituency.add')->name('constituency.add');
+Route::get('constituency','ConstituencyController@index')->name('constituency.index');
+Route::get('constituency/add','ConstituencyController@add')->name('constituency.add');
 
 //====================Candidates===================================
 Route::view('candidates','candidates.index')->name('candidates.index');
 Route::view('candidates/view','candidates.view')->name('candidates.view');
+
+
+//====================Settings======================================
+Route::get('settings/division','DivisionController@index')->name('division.index');
+Route::get('settings/party','PartyController@index')->name('party.index');

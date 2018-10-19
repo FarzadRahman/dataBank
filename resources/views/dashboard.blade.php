@@ -1,6 +1,6 @@
 @extends('main')
 @section('content')
-    <div class="card">
+    <div class="card" style="margin-top: 5%">
         <div class="card-body">
             <div class="row" align="center">
                 <div class="col-md-6">

@@ -104,6 +104,7 @@
                     <th>voter</th>
                     <th>center</th>
                     <th>candidates</th>
+                    <th>action</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -117,7 +118,8 @@
                         <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#centerModal">
                                 5
                             </button></td>
-                        <td><a href="{{route('candidates.index')}}">3</a></td>
+                        <td><a class="btn btn-info btn-sm" href="{{route('candidates.index')}}">3</a></td>
+                        <td><a class="btn btn-success btn-sm" href="#">Edit</a></td>
                     </tr>
                 </tbody>
             </table>

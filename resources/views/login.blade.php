@@ -39,9 +39,9 @@
         <div class="card-body">
 
 
-            {{--<div align="center">--}}
-                {{--<img src="{{url('public/logo/TCL_logo.png')}}" height="150" width="200">--}}
-            {{--</div>--}}
+            <div align="center">
+                <img src="{{url('public/logo/rab-logo.png')}}" height="150" width="150">
+            </div>
 
             <div class="p-3">
                 <form method="POST" class="form-horizontal m-t-20" action="{{ route('login') }}">
