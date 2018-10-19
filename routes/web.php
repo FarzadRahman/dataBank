@@ -26,8 +26,13 @@ Route::view('job/manage','job.manage')->name('job.manage');
 
 Route::view('manage/zone','manage.zone')->name('manage.zone');
 Route::view('manage/education','manage.education')->name('manage.education');
+
+//====================Dashboard======================================
+Route::view('dashboard','dashboard')->name('dashboard');
+
 //====================Constituency===================================
 Route::view('constituency','constituency.index')->name('constituency.index');
+Route::view('constituency/add','constituency.add')->name('constituency.add');
 
 //====================Candidates===================================
 Route::view('candidates','candidates.index')->name('candidates.index');

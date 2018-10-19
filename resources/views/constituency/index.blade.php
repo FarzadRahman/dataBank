@@ -90,10 +90,11 @@
     <div class="card">
         <div class="card-header">
             <h3 align="center">Constituency</h3>
+            <i class="glyphicon glyphicon-chevron-right"></i>
         </div>
 
         <div class="card-body">
-            <button class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></button>
+            <a href="{{route('constituency.add')}}" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></a>
             <table class="table table-striped">
                 <thead>
                     <th>number</th>

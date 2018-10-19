@@ -32,16 +32,16 @@
     <div class="card">
         <div class="card-header">
             <h3 class="text-center">
-                <b class="waves-effect waves-light">PMS</b>
+                <b class="waves-effect waves-light">ELOC DETAILS</b>
             </h3>
 
         </div>
         <div class="card-body">
 
 
-            <div align="center">
-                <img src="{{url('public/logo/TCL_logo.png')}}" height="150" width="200">
-            </div>
+            {{--<div align="center">--}}
+                {{--<img src="{{url('public/logo/TCL_logo.png')}}" height="150" width="200">--}}
+            {{--</div>--}}
 
             <div class="p-3">
                 <form method="POST" class="form-horizontal m-t-20" action="{{ route('login') }}">
@@ -85,7 +85,7 @@
 
                     <div class="form-group text-center row m-t-20">
                         <div class="col-12">
-                            <button class="btn btn-info btn-block waves-effect waves-light" type="submit">Log In</button>
+                            <a href="{{route('dashboard')}}" class="btn btn-info btn-block waves-effect waves-light" type="submit">Log In</a>
 
 
                             {{--<button type="submit" class="btn btn-info btn-block waves-effect waves-light">--}}
@@ -104,7 +104,7 @@
         <div class="card-footer">
 
             <div style="text-align: center">
-                © {{date('Y')}} Caritas Job Bank by Techcloud Ltd.
+                © {{date('Y')}}
             </div>
 
 

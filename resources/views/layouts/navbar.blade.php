@@ -4,9 +4,12 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu">
+                <li class="has-submenu">
+                    <a href="{{route('dashboard')}}"><i class="ti-home"></i>Dashboard</a>
+                </li>
 
                 <li class="has-submenu">
-                    <a href="{{route('constituency.index')}}"><i class="ti-home"></i>Constituency</a>
+                    <a href="{{route('constituency.index')}}"><i class="fa fa-table"></i>Constituency</a>
                 </li>
 
                 <li class="has-submenu">
