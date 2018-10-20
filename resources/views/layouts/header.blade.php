@@ -68,10 +68,10 @@
         }
 
         /* Hide all steps by default: */
-        .tab {
+        /*.tab {
             display: none;
         }
-
+*/
         button {
             background-color: #4CAF50;
             color: #ffffff;
