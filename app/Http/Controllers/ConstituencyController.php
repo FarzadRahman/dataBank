@@ -2,15 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Center;
 use App\Constituency;
 use App\Division;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use DB;
+use Yajra\DataTables\DataTables;
 class ConstituencyController extends Controller
 {
     public function index(){
+
         return view('constituency.index');
+    }
+
+    public function getConstituencyData(){
+        $consitituency=Constituency::select('constituency.constituencyId','constituency.number','constituency.name','constituency.area','divisionName',
+            DB::raw('(constituency.maleVoter+constituency.femaleVoter) as totalVoter'),
+            DB::raw('COUNT(center.centerId) as totalCenter'),DB::raw('COUNT(candidate.candidateId) as totalCandidate'))
+            ->leftJoin('division','division.divisionId','constituency.divisionId')
+            ->leftJoin('center','center.constituencyId','constituency.constituencyId')
+            ->leftJoin('candidate','candidate.constituencyId','constituency.constituencyId')
+            ->groupBy('constituency.number');
+//            ->get();
+
+        $datatables = Datatables::of($consitituency);
+        return $datatables->make(true);
+
+    }
+
+    public function getConstituencyVoter(Request $r){
+        $consitituency=Constituency::select('maleVoter','femaleVoter')
+            ->findOrFail($r->id);
+
+        return view('constituency.getConstituencyVoter',compact('consitituency'));
+
     }
 
     public function add(){
@@ -40,7 +67,8 @@ class ConstituencyController extends Controller
     public function edit($id){
         $consituency=Constituency::findOrFail($id);
         $divisions=Division::select('divisionId','divisionName')->get();
-        return view('constituency.edit',compact('divisions','consituency'));
+        $centers=Center::where('constituencyId',$id)->get();
+        return view('constituency.edit',compact('divisions','consituency','centers'));
 
     }
 
