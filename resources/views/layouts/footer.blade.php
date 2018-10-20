@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                © {{date('Y')}} Caritas Job Bank by Techcloud Ltd.
+                © {{date('Y')}} Eloc Details.
             </div>
         </div>
     </div>

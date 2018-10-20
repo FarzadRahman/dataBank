@@ -32,11 +32,20 @@ Route::view('dashboard','dashboard')->name('dashboard');
 
 //====================Constituency===================================
 Route::get('constituency','ConstituencyController@index')->name('constituency.index');
+Route::post('constituency','ConstituencyController@getConstituencyData')->name('constituency.getConstituencyData');
+Route::post('constituency/getVoter','ConstituencyController@getConstituencyVoter')->name('constituency.getConstituencyVoter');
+
 Route::get('constituency/add','ConstituencyController@add')->name('constituency.add');
 Route::post('constituency/add','ConstituencyController@insert')->name('constituency.insert');
 Route::get('constituency/edit/{id}','ConstituencyController@edit')->name('constituency.edit');
 Route::post('constituency/update/{id}','ConstituencyController@update')->name('constituency.update');
 
+//========================Center===============================
+
+Route::post('center/editCenter','CenterController@editCenter')->name('center.editCenter');
+Route::post('center/update/{id}','CenterController@update')->name('center.update');
+Route::post('center/insert','CenterController@insert')->name('center.insert');
+Route::post('center/getCenterModal','CenterController@getCenterModal')->name('center.getCenterModal');
 //====================Candidates===================================
 
 Route::get('Candidates','CandidateController@index')->name('candidates.index');
