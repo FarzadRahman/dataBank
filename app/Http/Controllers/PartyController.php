@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class PartyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         return view('party.index');
     }

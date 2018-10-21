@@ -9,6 +9,10 @@ use Session;
 use Auth;
 class CenterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    public function editCenter(Request $r){
        $center=Center::findOrFail($r->id);
 
@@ -16,7 +20,6 @@ class CenterController extends Controller
    }
 
     public function insert(Request $r){
-//       return $r;
         $center=new Center();
         $center->constituencyId=$r->id;
         $center->centerName=$r->centerName;

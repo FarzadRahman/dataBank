@@ -16,6 +16,10 @@ use Yajra\DataTables\DataTables;
 
 class CandidateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index($id){
 
         $constituency=Constituency::select('constituencyId','name')
