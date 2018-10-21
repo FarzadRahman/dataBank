@@ -8,6 +8,10 @@ use Session;
 use Auth;
 class PartyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $party=Party::get();
         return view('party.index',compact('party'));

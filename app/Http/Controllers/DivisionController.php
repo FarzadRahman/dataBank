@@ -8,6 +8,10 @@ use Session;
 use Auth;
 class DivisionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $divisions=Division::select('divisionId','divisionName')->get();
         return view('division.index',compact('divisions'));

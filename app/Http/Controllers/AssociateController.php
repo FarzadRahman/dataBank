@@ -12,6 +12,10 @@ use Auth;
 use Image;
 class AssociateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function view($id){
         $getAssociatesDetails=Associate::select('party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
             'associates.remark','associates.image','associates.profile',
