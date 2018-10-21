@@ -143,7 +143,7 @@
                         "orderable": false, "searchable":false, "name":"selected_rows" },
                     { "data": function(data){
                             return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="'+data.constituencyId+'" onclick="getCandidates(this)">' +
-                                data.totalCandidate +
+                                data.totalCandidate.getDigitBanglaFromEnglish()+
                                 '</button>';
 
                         },
