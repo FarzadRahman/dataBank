@@ -140,7 +140,7 @@
                         },
                         "orderable": false, "searchable":false, "name":"selected_rows" },
                     { "data": function(data){
-                            return '<button type="button" class="btn btn-primary btn-sm">' +
+                            return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="'+data.constituencyId+'" onclick="getCandidates(this)">' +
                                 data.totalCandidate +
                                 '</button>';
                         },
@@ -191,6 +191,12 @@
         function editConsitituency(x) {
             var id=$(x).data('panel-id');
             let url = "{{ route('constituency.edit', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
+        }
+        function getCandidates(x) {
+            var id=$(x).data('panel-id');
+            let url = "{{ route('candidates.index', ':id') }}";
             url = url.replace(':id', id);
             document.location.href=url;
         }

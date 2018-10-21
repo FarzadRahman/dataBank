@@ -46,10 +46,10 @@ Route::post('center/editCenter','CenterController@editCenter')->name('center.edi
 Route::post('center/update/{id}','CenterController@update')->name('center.update');
 Route::post('center/insert','CenterController@insert')->name('center.insert');
 Route::post('center/getCenterModal','CenterController@getCenterModal')->name('center.getCenterModal');
-//====================Candidates===================================
 
-Route::get('Candidates','CandidateController@index')->name('candidates.index');
-Route::post('Candidates','CandidateController@getAllCandidate')->name('candidates.getData');
+//====================Candidates===================================
+Route::get('constituency/candidates/{id}','CandidateController@index')->name('candidates.index');
+Route::post('Candidates','CandidateController@getCandidate')->name('candidates.getData');
 Route::get('Candidates/add','CandidateController@add')->name('candidates.add');
 Route::post('Candidates/insert','CandidateController@insert')->name('candidates.insert');
 

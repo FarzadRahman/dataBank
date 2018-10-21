@@ -16,14 +16,17 @@ use Yajra\DataTables\DataTables;
 
 class CandidateController extends Controller
 {
-    public function index(){
+    public function index($id){
 
+        $constituency=Constituency::select('constituencyId','name')
+            ->findOrFail($id);
 
-        return view('candidates.index');
+        return view('candidates.index',compact('constituency'));
     }
-    public function getAllCandidate(Request $r){
+    public function getCandidate(Request $r){
 
-        $getAllCandidates=Candidate::Select('candidateId','name','phoneNumber');
+        $getAllCandidates=Candidate::Select('candidateId','name','phoneNumber')
+            ->where('constituencyId',$r->constituencyId);
         $datatables = DataTables::of($getAllCandidates);
 
         return $datatables->make(true);

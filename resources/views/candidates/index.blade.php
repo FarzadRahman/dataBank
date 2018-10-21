@@ -9,6 +9,7 @@
 
             </div>
             <div class="card-body">
+                <h4 align="center">{{$constituency->name}}</h4>
                 <table id="manageapplication" class="table table-striped">
                     <thead>
 
@@ -50,6 +51,7 @@
                     data: function (d) {
 
                         d._token = "{{csrf_token()}}";
+                        d.constituencyId="{{$constituency->constituencyId}}";
 
 
                     },
