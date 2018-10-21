@@ -46,7 +46,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Division</h4>
+                    <h4 class="modal-title">Update Party</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -68,7 +68,9 @@
         <div class="card">
             <div class="card-header">
                 <h4 align="center">Party List</h4>
-                <button class="btn btn-info btn-sm pull-right"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i>
+                </button>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
@@ -77,34 +79,36 @@
                     <th>Action</th>
                     </thead>
                     <tbody>
+                    @foreach($party as $party)
                     <tr>
-                        <td>AL</td>
+                        <td>{{$party->partyName}}</td>
                         <td>
-                            <button class="btn btn-info btn-sm">edit</button>
+                            <button class="btn btn-info btn-sm" data-panel-id="{{$party->partyId}}" onclick="editParty(this)">edit</button>
                             <a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>BNP</td>
-                        <td>
-                            <button class="btn btn-info btn-sm">edit</button>
-                            <a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>BJP</td>
-                        <td>
-                            <button class="btn btn-info btn-sm">edit</button>
-                            <a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Jamati Islam</td>
-                        <td>
-                            <button class="btn btn-info btn-sm">edit</button>
-                            <a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>
-                        </td>
-                    </tr>
+                    @endforeach
+                    {{--<tr>--}}
+                        {{--<td>BNP</td>--}}
+                        {{--<td>--}}
+                            {{--<button class="btn btn-info btn-sm">edit</button>--}}
+                            {{--<a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
+                    {{--<tr>--}}
+                        {{--<td>BJP</td>--}}
+                        {{--<td>--}}
+                            {{--<button class="btn btn-info btn-sm">edit</button>--}}
+                            {{--<a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
+                    {{--<tr>--}}
+                        {{--<td>Jamati Islam</td>--}}
+                        {{--<td>--}}
+                            {{--<button class="btn btn-info btn-sm">edit</button>--}}
+                            {{--<a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
                     </tbody>
                 </table>
 
@@ -114,4 +118,23 @@
 
 
 
+@endsection
+@section('foot-js')
+    <script>
+        function editParty(x) {
+            var id=$(x).data('panel-id');
+
+            $.ajax({
+                type: 'POST',
+                url: "{!! route('party.edit') !!}",
+                cache: false,
+                data: {_token: "{{csrf_token()}}",'id': id},
+                success: function (data) {
+                    $("#editModalBody").html(data);
+                    $('#editModal').modal();
+                    // console.log(data);
+                }
+            });
+        }
+    </script>
 @endsection

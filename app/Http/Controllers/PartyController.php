@@ -2,44 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Party;
 use Illuminate\Http\Request;
-
+use Session;
+use Auth;
 class PartyController extends Controller
 {
     public function index(){
-        return view('party.index');
+        $party=Party::get();
+        return view('party.index',compact('party'));
     }
 
 
     public function insert(Request $r){
         $validatedData = $r->validate([
-            'divisionName' => 'required|unique:division,divisionName|max:45'
+            'partyName' => 'required|unique:party,partyName|max:45'
         ]);
-        $division=new Division();
-        $division->divisionName=$r->divisionName;
-        $division->createdBy=Auth::user()->userId;
-        $division->save();
-        Session::flash('message', 'Division Added Successfully!');
+        $party=new Party();
+        $party->partyName=$r->partyName;
+        $party->createdBy=Auth::user()->userId;
+        $party->save();
+        Session::flash('message', 'Party Added Successfully!');
         return back();
 
     }
 
     public function edit(Request $r){
-        $division=Division::findOrFail($r->id);
+        $party=Party::findOrFail($r->id);
 
-        return view('division.edit',compact('division'));
+        return view('party.edit',compact('party'));
     }
 
     public function update(Request $r,$id){
 
         $validatedData = $r->validate([
-            'divisionName' => 'required|unique:division,divisionName,'.$id.',divisionId|max:45'
+            'partyName' => 'required|unique:party,partyName,'.$id.',partyId|max:45'
         ]);
-        $division=Division::findOrFail($id);
-        $division->divisionName=$r->divisionName;
-        $division->updatedBy=Auth::user()->userId;
-        $division->save();
-        Session::flash('message', 'Division Updated Successfully!');
+        $party=Division::findOrFail($id);
+        $party->partyName=$r->partyName;
+        $party->updatedBy=Auth::user()->userId;
+        $party->save();
+        Session::flash('message', 'Party Updated Successfully!');
         return back();
     }
 

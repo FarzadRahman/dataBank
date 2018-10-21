@@ -92,5 +92,8 @@ Route::post('settings/division/update/{id}','DivisionController@update')->name('
 
 
 Route::get('settings/party','PartyController@index')->name('party.index');
+Route::post('settings/party/add','PartyController@insert')->name('party.insert');
+Route::post('settings/party/edit','PartyController@edit')->name('party.edit');
+Route::post('settings/party/update/{id}','PartyController@update')->name('party.update');
 
 Route::view('party/level/','partyLevel')->name('party.level');
