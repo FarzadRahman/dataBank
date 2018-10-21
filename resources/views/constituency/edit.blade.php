@@ -77,7 +77,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h4 align="center">Add Constituency</h4>
+            <h4 align="center">Edit Constituency</h4>
         </div>
         <div class="card-body">
             <form method="post" action="{{route('constituency.update',['id'=>$consituency->constituencyId])}}" accept-charset="utf-8">
