@@ -14,17 +14,21 @@ class ConstituencyController extends Controller
 {
     public function index(){
 
+
         return view('constituency.index');
     }
 
     public function getConstituencyData(){
         $consitituency=Constituency::select('constituency.constituencyId','constituency.number','constituency.name','constituency.area','divisionName',
             DB::raw('(constituency.maleVoter+constituency.femaleVoter) as totalVoter'),
-            DB::raw('COUNT(center.centerId) as totalCenter'),DB::raw('COUNT(candidate.candidateId) as totalCandidate'))
+            DB::raw('COUNT(distinct center.centerId) as totalCenter'),DB::raw('COUNT(distinct candidate.candidateId) as totalCandidate'))
             ->leftJoin('division','division.divisionId','constituency.divisionId')
             ->leftJoin('center','center.constituencyId','constituency.constituencyId')
             ->leftJoin('candidate','candidate.constituencyId','constituency.constituencyId')
-            ->groupBy('constituency.number');
+            ->groupBy('constituency.number')
+            ->groupBy('constituency.constituencyId');
+//            ->groupBy('center.constituencyId')
+//            ->groupBy('candidate.constituencyId');
 //            ->get();
 
         $datatables = Datatables::of($consitituency);
