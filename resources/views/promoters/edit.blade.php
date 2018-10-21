@@ -47,9 +47,46 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 align="center">Add Promoter</h4>
+                <h4 align="center">Edit Promoter</h4>
             </div>
             <div class="card-body">
+
+                <form method="post" enctype="multipart/form-data" action="{{route('promoter.update')}}" accept-charset="utf-8">
+                    <input type="hidden" id="promoterForm" name="promoterForm" value="">
+                    <input type="hidden" name="promoterId" value="{{$getPromotersDetails->promotersId}}">
+
+                    {{csrf_field()}}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Promoter Name</label>
+                            <input type="text" name="name" placeholder="name" class="form-control" value="{{$getPromotersDetails->promoterName}}" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Promoter Phone Number</label>
+                            <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getPromotersDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Party</label>
+                            <select class="form-control" name="party" required>
+                                <option value="">Select Party</option>
+                                @foreach($allParties as $party)
+                                    <option @if($getPromotersDetails->party ==$party->partyId) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+
+                            <label class="col-md-2">Image</label>
+                            <input type="file" id="image" name="image" accept="image/*" placeholder="Promoter image" class="form-control col-md-4" />
+
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Promoter remark</label>
+                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" required>{{$getPromotersDetails->remark}}</textarea>
+                        </div>
+                    </div>
 
                 <div class="tab">
                     <button class="tablinks" onclick="openPromoterAddForm(event, 'PromoterAddForm')">Update Data</button>
@@ -58,55 +95,59 @@
                 </div>
 
                 <div id="PromoterAddForm" class="tabcontent">
-                    <form method="post" enctype="multipart/form-data" action="{{route('promoter.update')}}" accept-charset="utf-8">
-                        <input type="hidden" name="promoterForm" value="1">
-                        <input type="hidden" name="promoterId" value="{{$getPromotersDetails->promotersId}}">
-
-                        {{csrf_field()}}
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label>Promoter Name</label>
-                                <input type="text" name="name" placeholder="name" class="form-control" value="{{$getPromotersDetails->promoterName}}" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Promoter Phone Number</label>
-                                <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getPromotersDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Party</label>
-                                <select class="form-control" name="party" required>
-                                    <option value="">Select Party</option>
-                                    @foreach($allParties as $party)
-                                        <option @if($getPromotersDetails->party ==$party->partyId) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-
-                                <label class="col-md-2">Image</label>
-                                <input type="file" id="image" name="image" accept="image/*" placeholder="Promoter image" class="form-control col-md-4" />
+                   
 
 
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label>Promoter remark</label>
-                                <textarea name="remark" class="form-control" placeholder="remark" rows="5" required>{{$getPromotersDetails->remark}}</textarea>
-                            </div>
 
 
-                            <div class="form-group col-sm-12">
-                                <button class="btn btn-success">Update</button>
-                            </div>
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label for="">Blood Group</label>
+                            <select class="form-control" name="bloodGroup">
+                                <option value="">Select Group</option>
+                                @foreach(BLOOD_GROUP as $key=>$value)
+                                    <option  @if($getPromotersDetails->bloodGroup==$value) selected @endif value="{{$value}}" >{{$key}}</option>
+                                @endforeach
+                            </select>
 
                         </div>
-                    </form>
+
+                        <div class="form-group col-md-6">
+                            <label>NID </label>
+                            <input type="text" name="nid" placeholder="NID" value="{{$getPromotersDetails->nid}}" onkeypress="return isNumberKey(event)" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">Date of Birth</label>
+                            <input type="text"  name="dob" class="form-control" id="dob" value="{{$getPromotersDetails->dob}}" placeholder="">
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="">Gender</label>
+                            <select  name="gender" class="form-control" id="sel1">
+                                <option selected value="">Select Gender</option>
+                                @foreach(GENDER as $key=>$value)
+                                    <option @if($getPromotersDetails->gender == $value) selected @endif value="{{$value}}">{{$key}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="">Address</label>
+                            <textarea rows="3"  name="address" class="form-control ">{{$getPromotersDetails->address}}</textarea>
+
+                        </div>
+
+                    </div>
+                    
                 </div>
                 <div id="PromoterUploadDocument" class="tabcontent">
-                    <form method="post" enctype="multipart/form-data" action="{{route('promoter.update')}}" accept-charset="utf-8">
-                        <input type="hidden" name="promoterForm" value="2">
-                        <input type="hidden"  name="promoterId" value="{{$getPromotersDetails->promotersId}}">
-                        {{csrf_field()}}
 
                         <div class="form-group col-md-12">
 
@@ -115,12 +156,18 @@
 
 
                         </div>
-                        <div class="form-group col-sm-12">
-                            <button class="btn btn-success">Insert</button>
-                        </div>
-                    </form>
+
 
                 </div>
+                    <br>
+
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <button class="btn btn-success">Update</button>
+                    </div>
+                </div>
+
+                </form>
 
 
             </div>
@@ -146,12 +193,7 @@
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-        @if($getPromotersDetails->profile == null)
 
-            openPromoterAddForm(event, 'PromoterAddForm');
-        @else
-        openPromoterAddForm(event, 'PromoterUploadDocument');
-        @endif
 
         function isNumberKey(evt)
         {
@@ -161,6 +203,22 @@
 
             return true;
         }
+
+        $(function () {
+            $('#dob').datepicker({
+                format: 'yyyy-m-d'
+            });
+
+            @if($getPromotersDetails->profile == null)
+
+            openPromoterAddForm(event, 'PromoterAddForm');
+            $("#promoterForm").val('1');
+            @else
+            openPromoterAddForm(event, 'PromoterUploadDocument');
+            $("#promoterForm").val('2');
+            @endif
+
+        });
 
     </script>
 @endsection
