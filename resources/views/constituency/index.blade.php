@@ -9,7 +9,6 @@
 {{--    <link href="{{url('public/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">--}}
 
 
-
 @endsection
     <!-- Button to Open the Modal -->
 
@@ -153,7 +152,10 @@
                         },
                         "orderable": false, "searchable":false, "name":"selected_rows" }
                 ]
-            } );
+            }
+
+            );
+
         } );
 
         function getVoter(x) {
