@@ -8,7 +8,7 @@
                 <a href="{{route('associate.edit',$getAssociatesDetails->associateId)}}"><button class="btn btn-smbtn-info pull-right">Edit</button></a>
             </div>
             <div class="card-body">
-                @if($getAssociatesDetails->profile == null)
+                
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Name :</label>
@@ -41,6 +41,40 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Remarks :</label>
                             {{$getAssociatesDetails->remark}}
+                        </div>
+
+                    </div>
+                <hr>
+                @if($getAssociatesDetails->profile == null)
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Date of Birth :</label>
+                            {{$getAssociatesDetails->dob}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Gender :</label>
+                            @foreach(GENDER as $key=>$value)
+                                @if($getAssociatesDetails->gender==$value){{$key}}@endif
+                            @endforeach
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Blood Group :</label>
+                            {{$getAssociatesDetails->bloodGroup}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">NID :</label>
+                            {{$getAssociatesDetails->nid}}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Address :</label>
+                            {{$getAssociatesDetails->address}}
                         </div>
 
                     </div>

@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="pull-left" align="center">Candidates</h3>
-                <a href="{{route('candidates.add')}}"><button class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></button></a>
+                <a href="{{route('candidates.add',$constituency->constituencyId)}}"><button class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></button></a>
 
             </div>
             <div class="card-body">
