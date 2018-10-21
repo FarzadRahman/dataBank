@@ -9,7 +9,7 @@
 
                 </div>
                 <div class="card-body">
-                @if($getCandidatesDetails->profile == null)
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Name :</label>
@@ -50,6 +50,42 @@
 
 
                         </div>
+                    <hr>
+
+                    @if($getCandidatesDetails->profile == null)
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Date of Birth :</label>
+                                {{$getCandidatesDetails->dob}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Gender :</label>
+                                @foreach(GENDER as $key=>$value)
+                                    @if($getCandidatesDetails->gender==$value){{$key}}@endif
+                                @endforeach
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Blood Group :</label>
+                                {{$getCandidatesDetails->bloodGroup}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">NID :</label>
+                                {{$getCandidatesDetails->nid}}
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Address :</label>
+                                {{$getCandidatesDetails->address}}
+                            </div>
+
+                        </div>
+
                     @else
                         <iframe width="100%"  name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getCandidatesDetails->profile)}}"></iframe>
                     @endif

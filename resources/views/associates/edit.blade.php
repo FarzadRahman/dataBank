@@ -10,7 +10,7 @@
         }
 
         /* Style the buttons inside the tab */
-        .tab button {
+        .tab a {
             background-color: inherit;
             float: left;
             border: none;
@@ -23,12 +23,12 @@
         }
 
         /* Change background color of buttons on hover */
-        .tab button:hover {
+        .tab a:hover {
             background-color: #ddd;
         }
 
         /* Create an active/current tablink class */
-        .tab button.active {
+        .tab a.active {
             background-color: #ccc;
         }
 
@@ -51,62 +51,99 @@
             </div>
             <div class="card-body">
 
-                <div class="tab">
-                    <button class="tablinks" onclick="openAssociateAddForm(event, 'AssociateAddForm')">Update Data</button>
-                    <button class="tablinks" onclick="openAssociateAddForm(event, 'AssociateUploadDocument')">Upload Document</button>
+                <form method="post" enctype="multipart/form-data" action="{{route('associate.update')}}" accept-charset="utf-8">
+                    <input type="hidden" id="associateForm" name="associateForm" value="">
+                    <input type="hidden" name="associateId" value="{{$getAssociatesDetails->associateId}}">
 
+                    {{csrf_field()}}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Associate Name</label>
+                            <input type="text" name="name" placeholder="name" class="form-control" value="{{$getAssociatesDetails->associateName}}" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Associate Phone Number</label>
+                            <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getAssociatesDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Party</label>
+                            <select class="form-control" name="party" required>
+                                <option value="">Select Party</option>
+                                @foreach($allParties as $party)
+                                    <option @if($getAssociatesDetails->party ==$party->partyId) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+
+                            <label class="col-md-2">Image</label>
+                            <input type="file" id="image" name="image" accept="image/*" placeholder="Associate image" class="form-control col-md-4" />
+
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Associate remark</label>
+                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" required>{{$getAssociatesDetails->remark}}</textarea>
+                        </div>
+                    </div>
+
+                <div class="tab">
+                    <a class="tablinks" onclick="openAssociateAddForm(event, 'AssociateAddForm')">Insert Data</a>
+                    <a class="tablinks" onclick="openAssociateAddForm(event, 'AssociateUploadDocument')">Upload Document</a>
                 </div>
 
                 <div id="AssociateAddForm" class="tabcontent">
-                    <form method="post" enctype="multipart/form-data" action="{{route('associate.update')}}" accept-charset="utf-8">
-                        <input type="hidden" name="associateForm" value="1">
-                        <input type="hidden" name="associateId" value="{{$getAssociatesDetails->associateId}}">
+                    
+                    <div class="row">
 
-                        {{csrf_field()}}
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label>Associate Name</label>
-                                <input type="text" name="name" placeholder="name" class="form-control" value="{{$getAssociatesDetails->associateName}}" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Associate Phone Number</label>
-                                <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getAssociatesDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Party</label>
-                                <select class="form-control" name="party" required>
-                                    <option value="">Select Party</option>
-                                    @foreach($allParties as $party)
-                                        <option @if($getAssociatesDetails->party ==$party->partyId) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-
-                                <label class="col-md-2">Image</label>
-                                <input type="file" id="image" name="image" accept="image/*" placeholder="Associate image" class="form-control col-md-4" />
-
-
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label>Associate remark</label>
-                                <textarea name="remark" class="form-control" placeholder="remark" rows="5" required>{{$getAssociatesDetails->remark}}</textarea>
-                            </div>
-
-
-                            <div class="form-group col-sm-12">
-                                <button class="btn btn-success">Update</button>
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Blood Group</label>
+                            <select class="form-control" name="bloodGroup">
+                                <option value="">Select Group</option>
+                                @foreach(BLOOD_GROUP as $key=>$value)
+                                    <option  @if($getAssociatesDetails->bloodGroup==$value) selected @endif value="{{$value}}" >{{$key}}</option>
+                                @endforeach
+                            </select>
 
                         </div>
-                    </form>
+
+                        <div class="form-group col-md-6">
+                            <label>NID </label>
+                            <input type="text" name="nid" placeholder="NID" value="{{$getAssociatesDetails->nid}}" onkeypress="return isNumberKey(event)" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">Date of Birth</label>
+                            <input type="text"  name="dob" class="form-control" id="dob" value="{{$getAssociatesDetails->dob}}" placeholder="">
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="">Gender</label>
+                            <select  name="gender" class="form-control" id="sel1">
+                                <option selected value="">Select Gender</option>
+                                @foreach(GENDER as $key=>$value)
+                                    <option @if($getAssociatesDetails->gender == $value) selected @endif value="{{$value}}">{{$key}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="">Address</label>
+                            <textarea rows="3"  name="address" class="form-control ">{{$getAssociatesDetails->address}}</textarea>
+
+                        </div>
+
+                    </div>
+                    
                 </div>
                 <div id="AssociateUploadDocument" class="tabcontent">
-                    <form method="post" enctype="multipart/form-data" action="{{route('associate.update')}}" accept-charset="utf-8">
-                        <input type="hidden" name="associateForm" value="2">
-                        <input type="hidden"  name="associateId" value="{{$getAssociatesDetails->associateId}}">
-                        {{csrf_field()}}
+                    
 
                         <div class="form-group col-md-12">
 
@@ -115,12 +152,18 @@
 
 
                         </div>
-                        <div class="form-group col-sm-12">
-                            <button class="btn btn-success">Insert</button>
-                        </div>
-                    </form>
+                        
 
                 </div>
+                    <br>
+
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <button class="btn btn-success">Update</button>
+                            </div>
+
+                        </div>
+                    </form>
 
 
             </div>
@@ -146,12 +189,22 @@
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-        @if($getAssociatesDetails->profile == null)
+        
+        $(function () {
+            $('#dob').datepicker({
+                format: 'yyyy-m-d'
+            });
+
+            @if($getAssociatesDetails->profile == null)
 
             openAssociateAddForm(event, 'AssociateAddForm');
-        @else
-        openAssociateAddForm(event, 'AssociateUploadDocument');
-        @endif
+            $("#associateForm").val('1');
+            @else
+            openAssociateAddForm(event, 'AssociateUploadDocument');
+            $("#associateForm").val('2');
+            @endif
+
+        });
 
         function isNumberKey(evt)
         {

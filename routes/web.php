@@ -50,7 +50,7 @@ Route::post('center/getCenterModal','CenterController@getCenterModal')->name('ce
 //====================Candidates===================================
 Route::get('constituency/candidates/{id}','CandidateController@index')->name('candidates.index');
 Route::post('Candidates','CandidateController@getCandidate')->name('candidates.getData');
-Route::get('Candidates/add','CandidateController@add')->name('candidates.add');
+Route::get('Candidates/add/{id}','CandidateController@add')->name('candidates.add');
 Route::post('Candidates/insert','CandidateController@insert')->name('candidates.insert');
 
 Route::get('Candidates/edit/{id}','CandidateController@edit')->name('candidates.edit');

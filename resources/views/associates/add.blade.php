@@ -10,7 +10,7 @@
         }
 
         /* Style the buttons inside the tab */
-        .tab button {
+        .tab a {
             background-color: inherit;
             float: left;
             border: none;
@@ -23,12 +23,12 @@
         }
 
         /* Change background color of buttons on hover */
-        .tab button:hover {
+        .tab a:hover {
             background-color: #ddd;
         }
 
         /* Create an active/current tablink class */
-        .tab button.active {
+        .tab a.active {
             background-color: #ccc;
         }
 
@@ -51,15 +51,8 @@
         </div>
         <div class="card-body">
 
-            <div class="tab">
-                <button class="tablinks" onclick="openAssociateAddForm(event, 'AssociateAddForm')">Insert Data</button>
-                <button class="tablinks" onclick="openAssociateAddForm(event, 'AssociateUploadDocument')">Upload Document</button>
-
-            </div>
-
-            <div id="AssociateAddForm" class="tabcontent">
             <form method="post" enctype="multipart/form-data" action="{{route('associate.insert')}}" accept-charset="utf-8">
-                <input type="hidden" name="associateForm" value="1">
+                <input type="hidden" id="associateForm" name="associateForm" value="">
                 <input type="hidden" name="candidateId" value="{{$id}}">
                 {{csrf_field()}}
                 <div class="row">
@@ -92,20 +85,65 @@
                         <label>Associate remark</label>
                         <textarea name="remark" class="form-control" placeholder="remark" rows="5" required></textarea>
                     </div>
+                </div>
 
+            <div class="tab">
+               <a class="tablinks" onclick="openAssociateAddForm(event, 'AssociateAddForm')">Insert Data</a>
+                <a class="tablinks" onclick="openAssociateAddForm(event, 'AssociateUploadDocument')">Upload Document</a>
 
-                    <div class="form-group col-sm-12">
-                    <button class="btn btn-success">Insert</button>
+            </div>
+
+            <div id="AssociateAddForm" class="tabcontent">
+
+                <div class="row">
+
+                    <div class="form-group col-md-6">
+                        <label for="">Blood Group</label>
+                        <select class="form-control" name="bloodGroup">
+                            <option value="">Select Group</option>
+                            @foreach(BLOOD_GROUP as $key=>$value)
+                                <option  value="{{$value}}" >{{$key}}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>NID </label>
+                        <input type="text" name="nid" placeholder="NID" onkeypress="return isNumberKey(event)" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="">Date of Birth</label>
+                        <input type="text"  name="dob" class="form-control" id="dob" placeholder="">
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="">Gender </label>
+                        <select  name="gender" class="form-control" id="sel1">
+                            <option selected value="">Select Gender</option>
+                            @foreach(GENDER as $key=>$value)
+                                <option  value="{{$value}}">{{$key}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="">Address</label>
+                        <textarea rows="3"  name="address" class="form-control "></textarea>
+
                     </div>
 
                 </div>
-            </form>
+
             </div>
             <div id="AssociateUploadDocument" class="tabcontent">
-                <form method="post" enctype="multipart/form-data" action="{{route('associate.insert')}}" accept-charset="utf-8">
-                <input type="hidden" name="associateForm" value="2">
-                    <input type="hidden" name="candidateId" value="{{$id}}">
-                {{csrf_field()}}
+
 
                 <div class="form-group col-md-12">
 
@@ -114,12 +152,18 @@
 
 
                 </div>
+
+
+            </div>
+                <br>
+                <div class="row">
                 <div class="form-group col-sm-12">
                     <button class="btn btn-success">Insert</button>
                 </div>
-                </form>
+                </div>
 
-            </div>
+
+            </form>
 
 
         </div>
@@ -144,6 +188,17 @@
             }
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
+
+            if (cityName=='AssociateAddForm'){
+
+                $("#associateForm").val('1');
+
+            }else if(cityName=='AssociateUploadDocument') {
+
+                $("#associateForm").val('2');
+
+            }
+
         }
 
         function isNumberKey(evt)
@@ -154,6 +209,13 @@
 
             return true;
         }
+
+
+        $(function () {
+            $('#dob').datepicker({
+                format: 'yyyy-m-d'
+            });
+        });
 
     </script>
 @endsection

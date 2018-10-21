@@ -9,7 +9,7 @@
 
             </div>
             <div class="card-body">
-                @if($getPromotersDetails->profile == null)
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Name :</label>
@@ -42,6 +42,39 @@
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Remarks :</label>
                             {{$getPromotersDetails->remark}}
+                        </div>
+
+                    </div>
+                    <hr>
+                @if($getPromotersDetails->profile == null)
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Date of Birth :</label>
+                            {{$getPromotersDetails->dob}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Gender :</label>
+                            @foreach(GENDER as $key=>$value)
+                                @if($getPromotersDetails->gender==$value){{$key}}@endif
+                            @endforeach
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Blood Group :</label>
+                            {{$getPromotersDetails->bloodGroup}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">NID :</label>
+                            {{$getPromotersDetails->nid}}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Address :</label>
+                            {{$getPromotersDetails->address}}
                         </div>
 
                     </div>
