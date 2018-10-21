@@ -131,20 +131,20 @@
                     { data: 'divisionName', name: 'division.divisionName' },
                     { "data": function(data){
                                 return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="'+data.constituencyId+'" onclick="getVoter(this)">' +
-                                    data.totalVoter.getDigitBanglaFromEnglish() +
+                                    data.totalVoter.toString().getDigitBanglaFromEnglish() +
                                     '</button>';
                                 },
                         "orderable": false, "searchable":false, "name":"selected_rows" },
                     { "data": function(data){
                             return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="'+data.constituencyId+'"  onclick="centerModal(this)">' +
-                                data.totalCenter.getDigitBanglaFromEnglish() +
+                                data.totalCenter.toString().getDigitBanglaFromEnglish() +
                                 '</button>';
                         },
                         "orderable": false, "searchable":false, "name":"selected_rows" },
                     { "data": function(data){
-                        // console.log(data.totalCandidate.getDigitBanglaFromEnglish());
+
                             return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="'+data.constituencyId+'" onclick="getCandidates(this)">' +
-                                data.totalCandidate.getDigitBanglaFromEnglish()+
+                                data.totalCandidate.toString().getDigitBanglaFromEnglish()+
                                 '</button>';
 
                         },
@@ -164,6 +164,7 @@
         var finalEnlishToBanglaNumber={'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
         String.prototype.getDigitBanglaFromEnglish = function() {
             var retStr = this;
+
             for (var x in finalEnlishToBanglaNumber) {
                 retStr = retStr.replace(new RegExp(x, 'g'), finalEnlishToBanglaNumber[x]);
             }
