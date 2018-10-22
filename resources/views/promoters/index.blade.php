@@ -1,6 +1,13 @@
 @extends('main')
 @section('content')
-
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    =>
+    <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
+    =>
+    <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
+    =><a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    =>Promoter :   {{$getPromotersDetails->promoterName}}
+    
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -80,7 +87,9 @@
                     </div>
 
                 @else
-                    <iframe width="100%"  name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
+                    <div align="center">
+                        <iframe  style="height: 842px;width: 880px"  name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
+                    </div>
                 @endif
 
 

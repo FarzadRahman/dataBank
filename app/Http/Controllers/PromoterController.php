@@ -17,10 +17,13 @@ class PromoterController extends Controller
     public function view($id)
     {
 
-        $getPromotersDetails = Promoter::select('party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
+        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
             'promoters.remark', 'promoters.image', 'promoters.profile',
         'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
-            ->leftJoin('party', 'party.partyId', 'promoters.party')->findOrFail($id);
+            ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftJoin('party', 'party.partyId', 'promoters.party')
+            ->findOrFail($id);
 
 
         return view('promoters.index', compact('getPromotersDetails'));

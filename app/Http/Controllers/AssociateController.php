@@ -17,10 +17,14 @@ class AssociateController extends Controller
         $this->middleware('auth');
     }
     public function view($id){
-        $getAssociatesDetails=Associate::select('party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
+        $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
             'associates.remark','associates.image','associates.profile',
             'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')
-            ->leftJoin('party','party.partyId','associates.party')->findOrFail($id);
+
+            ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftJoin('party','party.partyId','associates.party')
+            ->findOrFail($id);
 
 
         return view('associates.index',compact('getAssociatesDetails'));

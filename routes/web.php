@@ -88,6 +88,10 @@ Route::post('settings/division/add','DivisionController@insert')->name('division
 Route::post('settings/division/edit','DivisionController@edit')->name('division.edit');
 Route::post('settings/division/update/{id}','DivisionController@update')->name('division.update');
 
+//=====================Account=========================================
+//
+Route::get('settings/account','AccountController@index')->name('account.index');
+Route::post('settings/account','AccountController@changePassword')->name('account.changePassword');
 
 
 

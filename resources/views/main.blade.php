@@ -43,7 +43,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="dripicons-gear text-muted"></i>Change Password</a>
+                            <a class="dropdown-item" href="{{route('account.index')}}"><i class="dripicons-gear text-muted"></i>Change Password</a>
                             <div class="dropdown-divider"></div>
 
 
