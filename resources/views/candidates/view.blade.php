@@ -1,5 +1,15 @@
 @extends('main')
 @section('content')
+    {{--Site Map--}}
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    =>
+    <a href="{{route('constituency.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->constituencyName}}</a>
+    =>
+    <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
+    =>{{$getCandidatesDetails->CandidateName}}
+
+
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -42,10 +52,11 @@
                                 <label for="inputEmail4">Image :</label>
                                 @if($getCandidatesDetails->image != null)
                                     <div>
-                                        <img style="width: 150px;height: 100px" src="{{url('public/candidate/candidateImages/thumb'."/".$getCandidatesDetails->image)}}">
+                                        <img style="width: 150px;height: 150px" src="{{url('public/candidate/candidateImages/thumb'."/".$getCandidatesDetails->image)}}">
 
                                     </div>
                                 @endif
+
                             </div>
 
 
@@ -87,9 +98,10 @@
                         </div>
 
                     @else
-                        <iframe width="100%"  name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getCandidatesDetails->profile)}}"></iframe>
+                        <div align="center">
+                            <iframe  style="height: 842px;width: 880px"  name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getCandidatesDetails->profile)}}"></iframe>
+                        </div>
                     @endif
-
 
                 </div>
             </div>

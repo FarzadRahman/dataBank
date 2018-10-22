@@ -1,5 +1,11 @@
 @extends('main')
 @section('content')
+    {{--Site Map--}}
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    =>
+    <a href="{{route('constituency.edit',['id'=>$constituency->constituencyId])}}">{{$constituency->name}}</a>
+    =>
+    candidates
 
     <div class="container">
         <div class="card">

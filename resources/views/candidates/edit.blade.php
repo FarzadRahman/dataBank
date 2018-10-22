@@ -43,6 +43,14 @@
 
 @endsection
 @section('content')
+    {{--Site Map--}}
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    =>
+    <a href="{{route('constituency.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->constituencyName}}</a>
+    =>
+    <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
+    =><a href="{{route('candidates.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->CandidateName}}</a>
+    =>Edit
 
     <div class="col-md-12">
         <div class="card">

@@ -113,7 +113,7 @@ class CandidateController extends Controller
 
     public function edit($id){
 
-        $getCandidatesDetails=Candidate::select('party.partyName','constituency.name as constituencyName','candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
+        $getCandidatesDetails=Candidate::select('candidate.constituencyId','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
             'candidate.remark','candidate.image','candidate.profile','candidate.dob','candidate.gender',
             'candidate.bloodGroup','candidate.nid','candidate.address')
             ->leftJoin('party','party.partyId','candidate.party')
@@ -131,9 +131,11 @@ class CandidateController extends Controller
     }
     public function editForm($id){
 
-        $getCandidatesDetails=Candidate::select('candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
+        $getCandidatesDetails=Candidate::select('candidate.constituencyId','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
             'candidate.remark','candidate.image','candidate.profile','candidate.party','candidate.constituencyId',
             'candidate.dob','candidate.gender','candidate.bloodGroup','candidate.nid','candidate.address')
+            ->leftJoin('party','party.partyId','candidate.party')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
             ->findOrFail($id);
 
         $allParties=Party::select('partyId','partyName')->get();
