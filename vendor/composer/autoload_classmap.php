@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\DivisionController' => $baseDir . '/app/Http/Controllers/DivisionController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PartyController' => $baseDir . '/app/Http/Controllers/PartyController.php',
+    'App\\Http\\Controllers\\PdfController' => $baseDir . '/app/Http/Controllers/PdfController.php',
     'App\\Http\\Controllers\\PromoterController' => $baseDir . '/app/Http/Controllers/PromoterController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
