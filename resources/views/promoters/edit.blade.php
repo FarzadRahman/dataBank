@@ -89,8 +89,8 @@
                     </div>
 
                 <div class="tab">
-                    <button class="tablinks" onclick="openPromoterAddForm(event, 'PromoterAddForm')">Update Data</button>
-                    <button class="tablinks" onclick="openPromoterAddForm(event, 'PromoterUploadDocument')">Upload Document</button>
+                    <button type="button" class="tablinks" onclick="openPromoterAddForm(event, 'PromoterAddForm')">Update Data</button>
+                    <button type="button" class="tablinks" onclick="openPromoterAddForm(event, 'PromoterUploadDocument')">Upload Document</button>
 
                 </div>
 
