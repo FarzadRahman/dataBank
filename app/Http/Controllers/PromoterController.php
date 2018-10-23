@@ -107,10 +107,19 @@ class PromoterController extends Controller
     {
 
         $allParties = Party::select('partyId', 'partyName')->get();
+        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
+            'promoters.remark', 'promoters.image', 'promoters.profile',
+            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
+            ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftJoin('party', 'party.partyId', 'promoters.party')
+            ->findOrFail($id);
 
-        $getPromotersDetails = Promoter::select('promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
-            'promoters.remark', 'promoters.image', 'promoters.profile', 'promoters.party',
-            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')->findOrFail($id);
+//        $getPromotersDetails = Promoter::select('promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
+//            'promoters.remark', 'promoters.image', 'promoters.profile', 'promoters.party',
+//            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
+//
+//            ->findOrFail($id);
 
         return view('promoters.edit', compact('allParties', 'getPromotersDetails'));
 

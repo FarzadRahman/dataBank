@@ -11,11 +11,11 @@
         </div>
         <div class="form-group col-md-6">
             <label>Male Voter</label>
-            <input type="text" class="form-control" name="maleVoter" value="{{$center->maleVoter}}">
+            <input type="number" class="form-control" name="maleVoter" value="{{$center->maleVoter}}">
         </div>
         <div class="form-group col-md-6">
             <label>Female Voter</label>
-            <input type="text" class="form-control" name="femaleVoter" value="{{$center->femaleVoter}}">
+            <input type="number" class="form-control" name="femaleVoter" value="{{$center->femaleVoter}}">
         </div>
         <div class="col-md-12">
             <button class="btn btn-success btn-sm">Update</button>

@@ -27,11 +27,11 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Male Voter</label>
-                                <input type="text" class="form-control" name="maleVoter" placeholder="male">
+                                <input type="number" class="form-control" name="maleVoter" placeholder="male">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Female Voter</label>
-                                <input type="text" class="form-control" name="femaleVoter" placeholder="female" >
+                                <input type="number" class="form-control" name="femaleVoter" placeholder="female" >
                             </div>
                             <div class="col-md-12">
                                 <button class="btn btn-success btn-sm">Insert</button>
@@ -110,11 +110,11 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Male</label>
-                        <input class="form-control" name="maleVoter" type="text" value="{{$consituency->maleVoter}}" required>
+                        <input class="form-control" name="maleVoter" type="number" value="{{$consituency->maleVoter}}" required>
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Female</label>
-                        <input class="form-control" name="femaleVoter" value="{{$consituency->femaleVoter}}" type="text" required>
+                        <input class="form-control" name="femaleVoter" value="{{$consituency->femaleVoter}}" type="number" required>
                     </div>
                     <div class="form-group col-sm-12">
                         <button class="btn btn-success pull-right">Update</button>
@@ -132,6 +132,12 @@
             <h5 align="center">Center</h5>
             <button class="btn btn-info btn-sm pull-right" onclick="addCenter()"><i class="fa fa-plus"></i></button>
         </div>
+        <?php
+        $bn = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
+        $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+
+
+        ?>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
@@ -147,12 +153,12 @@
                 @php($sl=0)
                     @foreach($centers as $center)
                         <tr>
-                            <td>{{++$sl}}</td>
+                            <td>{{str_replace($en,$bn,++$sl)}}</td>
                             <td>{{$center->centerName}}</td>
                             <td>{{$center->location}}</td>
-                            <td>{{$center->maleVoter}}</td>
-                            <td>{{$center->femaleVoter}}</td>
-                            <td>{{$center->maleVoter+$center->femaleVoter}}</td>
+                            <td>{{str_replace($en,$bn,$center->maleVoter)}}</td>
+                            <td>{{str_replace($en,$bn,$center->femaleVoter)}}</td>
+                            <td>{{str_replace($en,$bn,$center->maleVoter+$center->femaleVoter)}}</td>
                             <td><button class="btn btn-sm btn-info" onclick="editCenter({{$center->centerId}})">Edit</button></td>
                         </tr>
 

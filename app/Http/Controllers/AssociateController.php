@@ -107,9 +107,18 @@ class AssociateController extends Controller
 
         $allParties=Party::select('partyId','partyName')->get();
 
-        $getAssociatesDetails=Associate::select('associates.name as associateName','associates.phoneNumber','associates.associateId',
-            'associates.remark','associates.image','associates.profile','associates.party',
-            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')->findOrFail($id);
+//        $getAssociatesDetails=Associate::select('associates.name as associateName','associates.phoneNumber','associates.associateId',
+//            'associates.remark','associates.image','associates.profile','associates.party',
+//            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')->findOrFail($id);
+
+        $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
+            'associates.remark','associates.image','associates.profile',
+            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')
+
+            ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftJoin('party','party.partyId','associates.party')
+            ->findOrFail($id);
 
         return view('associates.edit',compact('allParties','getAssociatesDetails'));
 

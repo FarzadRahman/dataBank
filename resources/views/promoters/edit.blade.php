@@ -43,6 +43,15 @@
 
 @endsection
 @section('content')
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    =>
+    <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
+    =>
+    <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
+    =><a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    =>Promoter :<a href="{{route('promoter.view',['id'=>$getPromotersDetails->promotersId])}}"> {{$getPromotersDetails->promoterName}}</a>
+    =>Edit
+
 
     <div class="col-md-12">
         <div class="card">
@@ -52,7 +61,7 @@
             <div class="card-body">
 
                 <form method="post" enctype="multipart/form-data" action="{{route('promoter.update')}}" accept-charset="utf-8">
-                    <input type="text" id="promoterForm" name="promoterForm" value="">
+                    <input type="hidden" id="promoterForm" name="promoterForm" value="">
                     <input type="hidden" name="promoterId" value="{{$getPromotersDetails->promotersId}}">
 
                     {{csrf_field()}}
