@@ -8,6 +8,7 @@ use App\Promoter;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use Image;
 class PromoterController extends Controller
 {
     public function __construct()
@@ -54,7 +55,7 @@ class PromoterController extends Controller
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');
-            $filename = $promoters->associateId . 'Image' . '.' . $img->getClientOriginalExtension();
+            $filename = $promoters->promotersId . 'Image' . '.' . $img->getClientOriginalExtension();
             $promoters->image = $filename;
             $location = public_path('promoter/promoterImages/' . $filename);
             Image::make($img)->save($location);
@@ -75,13 +76,13 @@ class PromoterController extends Controller
             $promoters->address=$r->address;
 
 
-        } elseif ($r->associateForm == "2") {
+        } elseif ($r->promoterForm == "2") {
 
 
 
             if ($r->hasFile('uploadDoc')) {
                 $img = $r->file('uploadDoc');
-                $filename = $promoters->associateId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
+                $filename = $promoters->promotersId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
                 $promoters->profile = $filename;
                 $location = public_path('promoter/profileDoc/' . $filename);
                 Image::make($img)->save($location);
@@ -106,10 +107,19 @@ class PromoterController extends Controller
     {
 
         $allParties = Party::select('partyId', 'partyName')->get();
+        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
+            'promoters.remark', 'promoters.image', 'promoters.profile',
+            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
+            ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftJoin('party', 'party.partyId', 'promoters.party')
+            ->findOrFail($id);
 
-        $getPromotersDetails = Promoter::select('promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
-            'promoters.remark', 'promoters.image', 'promoters.profile', 'promoters.party',
-            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')->findOrFail($id);
+//        $getPromotersDetails = Promoter::select('promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
+//            'promoters.remark', 'promoters.image', 'promoters.profile', 'promoters.party',
+//            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
+//
+//            ->findOrFail($id);
 
         return view('promoters.edit', compact('allParties', 'getPromotersDetails'));
 
@@ -117,6 +127,8 @@ class PromoterController extends Controller
 
     public function update(Request $r)
     {
+
+       // return $r;
 
 
 
@@ -132,7 +144,7 @@ class PromoterController extends Controller
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');
-            $filename = $r->associateId . 'Image' . '.' . $img->getClientOriginalExtension();
+            $filename = $r->promoterId . 'Image' . '.' . $img->getClientOriginalExtension();
             $promoters->image = $filename;
             $location = public_path('promoter/promoterImages/' . $filename);
             Image::make($img)->save($location);
@@ -155,12 +167,12 @@ class PromoterController extends Controller
             $promoters->address=$r->address;
 
 
-        } elseif ($r->associateForm == "2") {
+        } elseif ($r->promoterForm == "2") {
 
 
             if ($r->hasFile('uploadDoc')) {
                 $img = $r->file('uploadDoc');
-                $filename = $r->associateId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
+                $filename = $r->promoterId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
                 $promoters->profile = $filename;
                 $location = public_path('promoter/profileDoc/' . $filename);
                 Image::make($img)->save($location);

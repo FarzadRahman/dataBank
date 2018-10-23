@@ -43,6 +43,15 @@
 
 @endsection
 @section('content')
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    =>
+    <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
+    =>
+    <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
+    =><a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    =>Promoter :<a href="{{route('promoter.view',['id'=>$getPromotersDetails->promotersId])}}"> {{$getPromotersDetails->promoterName}}</a>
+    =>Edit
+
 
     <div class="col-md-12">
         <div class="card">
@@ -192,6 +201,17 @@
             }
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
+
+            if (cityName=='PromoterAddForm'){
+
+                $("#promoterForm").val('1');
+
+            }else if(cityName=='PromoterUploadDocument') {
+
+                $("#promoterForm").val('2');
+
+            }
+
         }
 
 
