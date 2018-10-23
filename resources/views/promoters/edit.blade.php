@@ -52,7 +52,7 @@
             <div class="card-body">
 
                 <form method="post" enctype="multipart/form-data" action="{{route('promoter.update')}}" accept-charset="utf-8">
-                    <input type="hidden" id="promoterForm" name="promoterForm" value="">
+                    <input type="text" id="promoterForm" name="promoterForm" value="">
                     <input type="hidden" name="promoterId" value="{{$getPromotersDetails->promotersId}}">
 
                     {{csrf_field()}}
@@ -192,6 +192,17 @@
             }
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
+
+            if (cityName=='PromoterAddForm'){
+
+                $("#promoterForm").val('1');
+
+            }else if(cityName=='PromoterUploadDocument') {
+
+                $("#promoterForm").val('2');
+
+            }
+
         }
 
 

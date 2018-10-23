@@ -188,6 +188,16 @@
             }
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
+
+            if (cityName=='AssociateAddForm'){
+
+                $("#associateForm").val('1');
+
+            }else if(cityName=='AssociateUploadDocument') {
+
+                $("#associateForm").val('2');
+
+            }
         }
         
         $(function () {
@@ -196,7 +206,6 @@
             });
 
             @if($getAssociatesDetails->profile == null)
-
             openAssociateAddForm(event, 'AssociateAddForm');
             $("#associateForm").val('1');
             @else

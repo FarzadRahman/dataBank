@@ -8,6 +8,7 @@ use App\Promoter;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use Image;
 class PromoterController extends Controller
 {
     public function __construct()
@@ -54,7 +55,7 @@ class PromoterController extends Controller
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');
-            $filename = $promoters->associateId . 'Image' . '.' . $img->getClientOriginalExtension();
+            $filename = $promoters->promotersId . 'Image' . '.' . $img->getClientOriginalExtension();
             $promoters->image = $filename;
             $location = public_path('promoter/promoterImages/' . $filename);
             Image::make($img)->save($location);
@@ -81,7 +82,7 @@ class PromoterController extends Controller
 
             if ($r->hasFile('uploadDoc')) {
                 $img = $r->file('uploadDoc');
-                $filename = $promoters->associateId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
+                $filename = $promoters->promotersId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
                 $promoters->profile = $filename;
                 $location = public_path('promoter/profileDoc/' . $filename);
                 Image::make($img)->save($location);
@@ -118,6 +119,8 @@ class PromoterController extends Controller
     public function update(Request $r)
     {
 
+       // return $r;
+
 
 
         $promoters = Promoter::findOrFail($r->promoterId);
@@ -132,7 +135,7 @@ class PromoterController extends Controller
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');
-            $filename = $r->associateId . 'Image' . '.' . $img->getClientOriginalExtension();
+            $filename = $r->promoterId . 'Image' . '.' . $img->getClientOriginalExtension();
             $promoters->image = $filename;
             $location = public_path('promoter/promoterImages/' . $filename);
             Image::make($img)->save($location);
@@ -155,12 +158,12 @@ class PromoterController extends Controller
             $promoters->address=$r->address;
 
 
-        } elseif ($r->associateForm == "2") {
+        } elseif ($r->promoterForm == "2") {
 
 
             if ($r->hasFile('uploadDoc')) {
                 $img = $r->file('uploadDoc');
-                $filename = $r->associateId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
+                $filename = $r->promoterId . 'uploadDoc' . '.' . $img->getClientOriginalExtension();
                 $promoters->profile = $filename;
                 $location = public_path('promoter/profileDoc/' . $filename);
                 Image::make($img)->save($location);
