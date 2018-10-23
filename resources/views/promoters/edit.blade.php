@@ -44,13 +44,15 @@
 @endsection
 @section('content')
     <a href="{{route('constituency.index')}}">Constituency</a>
-    =>
+    <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
-    =>
+    <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
-    =><a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
-    =>Promoter :<a href="{{route('promoter.view',['id'=>$getPromotersDetails->promotersId])}}"> {{$getPromotersDetails->promoterName}}</a>
-    =>Edit
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    <i class="fa fa-angle-double-right"></i>
+    Promoter :<a href="{{route('promoter.view',['id'=>$getPromotersDetails->promotersId])}}"> {{$getPromotersDetails->promoterName}}</a>
+    <i class="fa fa-angle-double-right"></i> Edit
 
 
     <div class="col-md-12">
