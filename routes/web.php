@@ -94,6 +94,7 @@ Route::get('settings/account','AccountController@index')->name('account.index');
 Route::post('settings/account','AccountController@changePassword')->name('account.changePassword');
 
 
+//=====================party=========================================
 
 Route::get('settings/party','PartyController@index')->name('party.index');
 Route::post('settings/party/add','PartyController@insert')->name('party.insert');
@@ -101,3 +102,10 @@ Route::post('settings/party/edit','PartyController@edit')->name('party.edit');
 Route::post('settings/party/update/{id}','PartyController@update')->name('party.update');
 
 Route::view('party/level/','partyLevel')->name('party.level');
+
+//=====================User=========================================
+
+Route::get('user','PartyController@index')->name('party.index');
+Route::post('settings/user/add','UserController@insert')->name('party.insert');
+Route::post('settings/user/edit','UserController@edit')->name('party.edit');
+Route::post('settings/user/update/{id}','UserController@update')->name('party.update');

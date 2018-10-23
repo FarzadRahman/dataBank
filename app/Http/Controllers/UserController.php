@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class UserController extends Controller
+{
+    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function index(){
+        $user=User::get();
+        return view('party.index',compact('party'));
+    }
+
+
+    public function insert(Request $r){
+        $validatedData = $r->validate([
+            'partyName' => 'required|unique:party,partyName|max:45'
+        ]);
+        $party=new Party();
+        $party->partyName=$r->partyName;
+        $party->createdBy=Auth::user()->userId;
+        $party->save();
+        Session::flash('message', 'Party Added Successfully!');
+        return back();
+
+    }
+
+    public function edit(Request $r){
+        $party=Party::findOrFail($r->id);
+
+        return view('party.edit',compact('party'));
+    }
+
+    public function update(Request $r,$id){
+
+        $validatedData = $r->validate([
+            'partyName' => 'required|unique:party,partyName,'.$id.',partyId|max:45'
+        ]);
+        $party=Division::findOrFail($id);
+        $party->partyName=$r->partyName;
+        $party->updatedBy=Auth::user()->userId;
+        $party->save();
+        Session::flash('message', 'Party Updated Successfully!');
+        return back();
+    }
+
+}
