@@ -76,7 +76,7 @@ class PromoterController extends Controller
             $promoters->address=$r->address;
 
 
-        } elseif ($r->associateForm == "2") {
+        } elseif ($r->promoterForm == "2") {
 
 
 
