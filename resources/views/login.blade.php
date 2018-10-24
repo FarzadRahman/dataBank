@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>PMS - Production Management System</title>
+    <title>ELOC</title>
     <meta content="Admin Dashboard" name="description" />
     <meta content="Themesdesign" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,9 +39,9 @@
         <div class="card-body">
 
 
-            <div align="center">
-                <img src="{{url('public/logo/rab-logo.png')}}" height="150" width="150">
-            </div>
+            {{--<div align="center">--}}
+                {{--<img src="{{url('public/logo/rab-logo.png')}}" height="150" width="150">--}}
+            {{--</div>--}}
 
             <div class="p-3">
                 <form method="POST" class="form-horizontal m-t-20" action="{{ route('login') }}">

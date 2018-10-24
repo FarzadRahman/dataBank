@@ -17,6 +17,7 @@
                     <ul class="submenu">
                         <li><a href="{{route('division.index')}}">Division's</a></li>
                         <li><a href="{{route('party.index')}}">Party</a></li>
+                        <li><a href="{{route('user.index')}}">User</a></li>
                     </ul>
                 </li>
 
