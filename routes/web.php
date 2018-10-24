@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-
+//Route::get('/', function () {
+//    return view('login');
+//});
+Route::get('/','Auth\LoginController@loginForm');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,7 +28,7 @@ Route::view('manage/zone','manage.zone')->name('manage.zone');
 Route::view('manage/education','manage.education')->name('manage.education');
 
 //====================Dashboard======================================
-Route::view('dashboard','dashboard')->name('dashboard');
+Route::get('dashboard','HomeController@dashboard')->name('dashboard');
 
 //====================Constituency===================================
 Route::get('constituency','ConstituencyController@index')->name('constituency.index');
@@ -58,9 +58,10 @@ Route::get('Candidates/Edit-View/{id}','CandidateController@editForm')->name('ca
 
 Route::post('Candidates/update','CandidateController@update')->name('candidates.update');
 
-Route::view('Candidates/view','candidates.view')->name('candidates.view');
-Route::post('Candidates/delete','CandidateController@delete')->name('candidates.delete');
 
+Route::post('Candidates/delete','CandidateController@delete')->name('candidates.delete');
+//All Candidates
+Route::get('candidates/all','CandidateController@viewAll')->name('candidates.viewAll');
 //====================Associates===================================
 Route::get('Associate/add/{id}','AssociateController@add')->name('associate.add');
 Route::post('Associate/insert','AssociateController@insert')->name('associate.insert');
@@ -68,6 +69,7 @@ Route::post('Associate/update','AssociateController@update')->name('associate.up
 Route::get('Associate/view/{id}','AssociateController@view')->name('associate.view');
 Route::get('Associate/edit/{id}','AssociateController@edit')->name('associate.edit');
 Route::post('Associate/delete','AssociateController@delete')->name('associate.delete');
+
 
 
 

@@ -13,6 +13,7 @@ use Session;
 use Auth;
 use Image;
 use Yajra\DataTables\DataTables;
+use DB;
 
 class CandidateController extends Controller
 {
@@ -206,6 +207,27 @@ class CandidateController extends Controller
         Session::flash('message', 'Candidate Updated Successfully!');
 
         return redirect()->route('candidates.edit', $r->candidateid);
+    }
+
+    public function viewAll(){
+
+    }
+
+    public function getAllCandidateData(Request $r){
+        $candidates=Candidate::select('candidate.candidateId','candidate.name','candidate.phoneNumber','party.partyName',
+            'constituency.name as constituencyName',
+            DB::raw('COUNT(distinct associates.associateId) as totalAssociates'),
+            DB::raw('COUNT(distinct promoters.promotersId) as totalPromoters'))
+            ->leftJoin('party','party.partyId','candidate.party')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftJoin('associates','associates.candidateId','candidate.candidateId')
+            ->leftJoin('promoters','promoters.candidateId','candidate.candidateId')
+            ->groupBy('candidate.candidateId')
+            ->get();
+
+        $datatables = Datatables::of($candidates);
+        return $datatables->make(true);
+
     }
 
     public function delete(Request $r){
