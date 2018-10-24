@@ -1,6 +1,7 @@
 @extends('main')
 @section('content')
     {{--Site Map--}}
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
     <a href="{{route('constituency.index')}}">Constituency</a>
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$constituency->constituencyId])}}">{{$constituency->name}}</a>
@@ -16,17 +17,19 @@
             </div>
             <div class="card-body">
                 <h4 align="center">{{$constituency->name}}</h4>
-                <table id="manageapplication" class="table table-striped">
-                    <thead>
+                <div class="table-responsive">
+                    <table id="manageapplication" class="table table-striped">
+                        <thead>
 
-                    <th>name</th>
-                    <th>Phone number</th>
-                    <th>Action</th>
+                        <th>name</th>
+                        <th>Phone number</th>
+                        <th>Action</th>
 
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
@@ -72,8 +75,9 @@
                     {
                         "data": function (data) {
                             return ''+
-                                '&nbsp;<button class="btn btn-smbtn-info" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)">Edit</button>'+
+                                '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
                                 '&nbsp;<button type="button" class="btn btn-danger btn-sm " data-panel-id="'+data.candidateId+'" onclick="deleteCandidate(this)"><i class="fa fa-trash"></i></button>' +
+                                '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'"><i class="fa fa-print"></i></button>'
                                 '                                '
                                 ;
                         },

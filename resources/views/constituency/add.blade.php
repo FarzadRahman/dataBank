@@ -1,5 +1,7 @@
 @extends('main')
 @section('content')
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
+    {{--Site Map--}}
     <div class="card">
         <div class="card-header">
             <h4 align="center">Add Constituency</h4>

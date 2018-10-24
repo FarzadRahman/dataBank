@@ -139,8 +139,9 @@
 
         ?>
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <th>SL</th>
                     <th>Center Name</th>
                     <th>Location</th>
@@ -148,9 +149,9 @@
                     <th>Female Voter</th>
                     <th>Total Voter</th>
                     <th>Action</th>
-                </thead>
-                <tbody>
-                @php($sl=0)
+                    </thead>
+                    <tbody>
+                    @php($sl=0)
                     @foreach($centers as $center)
                         <tr>
                             <td>{{str_replace($en,$bn,++$sl)}}</td>
@@ -163,8 +164,11 @@
                         </tr>
 
                     @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+
+            </div>
+
 
         </div>
     </div>
