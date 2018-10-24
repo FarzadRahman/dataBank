@@ -105,7 +105,7 @@ Route::view('party/level/','partyLevel')->name('party.level');
 
 //=====================User=========================================
 
-Route::get('user','PartyController@index')->name('party.index');
-Route::post('settings/user/add','UserController@insert')->name('party.insert');
-Route::post('settings/user/edit','UserController@edit')->name('party.edit');
-Route::post('settings/user/update/{id}','UserController@update')->name('party.update');
+Route::get('user','UserController@index')->name('user.index');
+Route::post('settings/user/add','UserController@insert')->name('user.insert');
+Route::post('settings/user/edit','UserController@edit')->name('user.edit');
+Route::post('settings/user/update/{id}','UserController@update')->name('user.update');
