@@ -63,7 +63,10 @@
         </div>
     </div>
 
-
+<div style=" margin: 0px; padding: 10px;">
+    <br class="mobile-break">
+    <br class="mobile-break">
+    <br class="mobile-break">
     <div class="card">
         <div class="card-header">
             <h3 align="center">Constituency</h3>
@@ -72,8 +75,9 @@
 
         <div class="card-body">
             <a href="{{route('constituency.add')}}" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></a>
-            <table class="table table-striped" id="datatable">
-                <thead>
+            <div class="table-responsive">
+                <table class="table table-striped " id="datatable">
+                    <thead>
                     <th>number</th>
                     <th>name</th>
                     <th>area</th>
@@ -82,16 +86,19 @@
                     <th>center</th>
                     <th>candidates</th>
                     <th>action</th>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+
+
+            </div>
 
         </div>
     </div>
 
-
+</div>
 
 @endsection
 @section('foot-js')

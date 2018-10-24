@@ -1,5 +1,7 @@
 @extends('main')
 @section('content')
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
+    {{--Site Map--}}
     <a href="{{route('constituency.index')}}">Constituency</a>
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
@@ -11,6 +13,7 @@
     Promoter :   {{$getPromotersDetails->promoterName}}
     
     <div class="col-md-12">
+        <br>
         <div class="card">
             <div class="card-header">
                 <h3 class="pull-left">Details Of the Promoter</h3>
@@ -18,6 +21,24 @@
 
             </div>
             <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="form-group">
+                            @if($getPromotersDetails->image != null)
+                                <div>
+                                    <img style="width: 150px;height: 150px" src="{{url('public/promoter/promoterImages/thumb'."/".$getPromotersDetails->image)}}">
+
+                                </div>
+                            @else
+                                <label for="inputEmail4">Image : NA</label>
+                            @endif
+                        </div>
+
+
+                    </div>
+
+                </div>
+
 
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -35,15 +56,7 @@
                             {{$getPromotersDetails->partyName}}
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Image :</label>
-                            @if($getPromotersDetails->image != null)
-                                <div>
-                                    <img style="width: 150px;height: 100px" src="{{url('public/promoter/promoterImages/thumb'."/".$getPromotersDetails->image)}}">
 
-                                </div>
-                            @endif
-                        </div>
 
 
                     </div>
@@ -89,10 +102,11 @@
                     </div>
 
                 @else
-                    <div align="center">
-                        <iframe  style="height: 842px;width: 880px"  name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
+                    <div align="center"  class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
                     </div>
                 @endif
+
 
 
             </div>

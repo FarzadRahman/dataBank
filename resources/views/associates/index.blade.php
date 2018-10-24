@@ -1,5 +1,7 @@
 @extends('main')
 @section('content')
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
+    {{--Site Map--}}
     <a href="{{route('constituency.index')}}">Constituency</a>
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$getAssociatesDetails->constituencyId])}}">{{$getAssociatesDetails->constituencyName}}</a>
@@ -9,13 +11,33 @@
     <a href="{{route('candidates.edit',['id'=>$getAssociatesDetails->constituencyId])}}">{{$getAssociatesDetails->candidateName}}</a>
     <i class="fa fa-angle-double-right"></i>Associate :   {{$getAssociatesDetails->associateName}}
 
-    <div class="col-md-12">
+
+    <div class="col-md-12"> <br>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="pull-left">Details Of the Associate</h3>
                 <a href="{{route('associate.edit',$getAssociatesDetails->associateId)}}"><button class="btn btn-smbtn-info pull-right">Edit</button></a>
             </div>
             <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="form-group">
+                            @if($getAssociatesDetails->image != null)
+                                <div>
+                                    <img style="width: 150px;height: 150px" src="{{url('public/associate/associateImages/thumb'."/".$getAssociatesDetails->image)}}">
+
+                                </div>
+                            @else
+                                <label for="inputEmail4">Image : NA</label>
+                            @endif
+                        </div>
+
+
+                    </div>
+
+                </div>
                 
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -33,18 +55,11 @@
                             {{$getAssociatesDetails->partyName}}
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Image :</label>
-                            @if($getAssociatesDetails->image != null)
-                                <div>
-                                    <img style="width: 150px;height: 100px" src="{{url('public/associate/associateImages/thumb'."/".$getAssociatesDetails->image)}}">
-
-                                </div>
-                            @endif
-                        </div>
 
 
-                    </div>
+
+
+
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Remarks :</label>
@@ -88,10 +103,11 @@
                     </div>
 
                 @else
-                    <div align="center">
-                        <iframe  style="height: 842px;width: 880px"  name="myiframe" id="myiframe" src="{{url('public/associate/profileDoc'."/".$getAssociatesDetails->profile)}}"></iframe>
-                    </div>
+                            <div align="center"  class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/associate/profileDoc'."/".$getAssociatesDetails->profile)}}"></iframe>
+                            </div>
                 @endif
+
 
             </div>
         </div>
