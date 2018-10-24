@@ -45,23 +45,32 @@ class UserController extends Controller
     }
 
     public function edit(Request $r){
-        $user=User::findOrFail($r->id);
+        $user=User::leftjoin('usertype', 'usertype.userTypeId','user.userTypeId')
+        ->where('userId', $r->id)
+        ->first();
+        $usertype = UserType::get();
 
-        return view('user.edit',compact('user'));
+        return view('user.edit',compact('user', 'usertype'));
     }
 
     public function update(Request $r,$id)
     {
-//
-//        $validatedData = $r->validate([
-//            'partyName' => 'required|unique:party,partyName,'.$id.',partyId|max:45'
-//        ]);
-//        $user=Division::findOrFail($id);
-//        $user->partyName=$r->partyName;
-//        $user->updatedBy=Auth::user()->userId;
-//        $user->save();
-//        Session::flash('message', 'User Updated Successfully!');
-//        return back();
+
+        $validatedData = $r->validate([
+            'email' => 'required|unique:user,email,'.$id.',userid|max:45',
+            'name' => 'required|max:45',
+            'password' => 'required|max:255',
+        ]);
+        $user=User::findOrFail($id);
+        $user->name=$r->name;
+        $user->userName=$r->userName;
+        $user->email=$r->email;
+        $user->userTypeId=$r->usertypeid;
+        $user->password=Hash::make($r->password);
+        $user->updatedBy=Auth::user()->userId;
+        $user->save();
+        Session::flash('message', 'User Updated Successfully!');
+        return back();
 //    }
     }
 }

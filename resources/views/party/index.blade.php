@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>Party</label>
-                                <input type="text" name="partyName" placeholder="party name" class="form-control">
+                                <input type="text" name="partyName" placeholder="party name" class="form-control" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <button class="btn btn-success pull-right">Insert</button>
@@ -84,31 +84,11 @@
                         <td>{{$party->partyName}}</td>
                         <td>
                             <button class="btn btn-info btn-sm" data-panel-id="{{$party->partyId}}" onclick="editParty(this)">edit</button>
-                            <a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>
+                            <a href="{{route('party.level',['partyid'=>$party->partyId])}}" class="btn btn-success btn-sm">view</a>
                         </td>
                     </tr>
                     @endforeach
-                    {{--<tr>--}}
-                        {{--<td>BNP</td>--}}
-                        {{--<td>--}}
-                            {{--<button class="btn btn-info btn-sm">edit</button>--}}
-                            {{--<a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>--}}
-                        {{--</td>--}}
-                    {{--</tr>--}}
-                    {{--<tr>--}}
-                        {{--<td>BJP</td>--}}
-                        {{--<td>--}}
-                            {{--<button class="btn btn-info btn-sm">edit</button>--}}
-                            {{--<a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>--}}
-                        {{--</td>--}}
-                    {{--</tr>--}}
-                    {{--<tr>--}}
-                        {{--<td>Jamati Islam</td>--}}
-                        {{--<td>--}}
-                            {{--<button class="btn btn-info btn-sm">edit</button>--}}
-                            {{--<a href="{{route('party.level')}}" class="btn btn-success btn-sm">view</a>--}}
-                        {{--</td>--}}
-                    {{--</tr>--}}
+
                     </tbody>
                 </table>
 

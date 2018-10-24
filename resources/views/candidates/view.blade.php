@@ -2,11 +2,11 @@
 @section('content')
     {{--Site Map--}}
     <a href="{{route('constituency.index')}}">Constituency</a>
-    =>
+    <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->constituencyName}}</a>
-    =>
+    <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
-    =>{{$getCandidatesDetails->CandidateName}}
+    <i class="fa fa-angle-double-right"></i> {{$getCandidatesDetails->CandidateName}}
 
 
 

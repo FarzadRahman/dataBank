@@ -101,7 +101,17 @@ Route::post('settings/party/add','PartyController@insert')->name('party.insert')
 Route::post('settings/party/edit','PartyController@edit')->name('party.edit');
 Route::post('settings/party/update/{id}','PartyController@update')->name('party.update');
 
+//=====================party level=========================================
+
 Route::view('party/level/','partyLevel')->name('party.level');
+
+//Route::view('party/level/','partyLevel')->name('party.level');
+Route::get('party/level/{partyid}','PartyLevelController@index')->name('party.level');
+Route::post('party/level','PartyLevelController@insert')->name('partylevel.insert');
+Route::post('party/level/update','PartyLevelController@update')->name('partylevel.update');
+Route::post('party/level/edit','PartyLevelController@edit')->name('partylevel.edit');
+
+
 
 //=====================User=========================================
 
@@ -109,3 +119,5 @@ Route::get('user','UserController@index')->name('user.index');
 Route::post('settings/user/add','UserController@insert')->name('user.insert');
 Route::post('settings/user/edit','UserController@edit')->name('user.edit');
 Route::post('settings/user/update/{id}','UserController@update')->name('user.update');
+
+

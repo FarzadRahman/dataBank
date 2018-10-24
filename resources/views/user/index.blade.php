@@ -103,13 +103,15 @@
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
-                    <th>user Name</th>
+                    <th> Name</th>
+                    <th>Email</th>
                     <th>Action</th>
                     </thead>
                     <tbody>
                     @foreach($user as $user)
                     <tr>
-                        <td>{{$user->userName}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
                         <td>
                             <button class="btn btn-info btn-sm" data-panel-id="{{$user->userId}}" onclick="edituser(this)">edit</button>
 
