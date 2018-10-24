@@ -12,8 +12,9 @@ use Illuminate\Http\Request;
 use Session;
 use Auth;
 use Image;
-use Yajra\DataTables\DataTables;
+
 use DB;
+use Yajra\DataTables\DataTables;
 
 class CandidateController extends Controller
 {
@@ -210,7 +211,7 @@ class CandidateController extends Controller
     }
 
     public function viewAll(){
-
+        return view('candidates.all');
     }
 
     public function getAllCandidateData(Request $r){
@@ -223,8 +224,11 @@ class CandidateController extends Controller
             ->leftJoin('associates','associates.candidateId','candidate.candidateId')
             ->leftJoin('promoters','promoters.candidateId','candidate.candidateId')
             ->groupBy('candidate.candidateId')
+            ->groupBy('candidate.name')
             ->get();
 
+
+//
         $datatables = Datatables::of($candidates);
         return $datatables->make(true);
 

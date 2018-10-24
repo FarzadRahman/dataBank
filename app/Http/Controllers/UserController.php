@@ -59,14 +59,17 @@ class UserController extends Controller
         $validatedData = $r->validate([
             'email' => 'required|unique:user,email,'.$id.',userid|max:45',
             'name' => 'required|max:45',
-            'password' => 'required|max:255',
+            'password' => 'max:20',
         ]);
         $user=User::findOrFail($id);
         $user->name=$r->name;
         $user->userName=$r->userName;
         $user->email=$r->email;
         $user->userTypeId=$r->usertypeid;
-        $user->password=Hash::make($r->password);
+        if($r->confirm_password && $r->password){
+            $user->password=Hash::make($r->password);
+        }
+
         $user->updatedBy=Auth::user()->userId;
         $user->save();
         Session::flash('message', 'User Updated Successfully!');

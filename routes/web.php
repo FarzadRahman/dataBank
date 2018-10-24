@@ -62,6 +62,7 @@ Route::post('Candidates/update','CandidateController@update')->name('candidates.
 Route::post('Candidates/delete','CandidateController@delete')->name('candidates.delete');
 //All Candidates
 Route::get('candidates/all','CandidateController@viewAll')->name('candidates.viewAll');
+Route::post('candidates/viewAll','CandidateController@getAllCandidateData')->name('candidates.getAllCandidateData');
 //====================Associates===================================
 Route::get('Associate/add/{id}','AssociateController@add')->name('associate.add');
 Route::post('Associate/insert','AssociateController@insert')->name('associate.insert');
