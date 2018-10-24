@@ -121,3 +121,4 @@ Route::post('settings/user/edit','UserController@edit')->name('user.edit');
 Route::post('settings/user/update/{id}','UserController@update')->name('user.update');
 
 
+Route::get('pdf','PdfController@createpfd')->name('pdf.index');
