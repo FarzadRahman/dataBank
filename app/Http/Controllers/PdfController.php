@@ -29,6 +29,7 @@ class PdfController extends Controller
         ->get();
 
 //        return view('pdf.test',compact('candidate','promoters','associates'));
+
         $pdf = PDF::loadView('pdf.test' ,compact('candidate', 'promoters', 'associates'));
         return $pdf->download('candidate.pdf');
       // return view('pdf.pdf');

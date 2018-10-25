@@ -22,6 +22,21 @@
         .label{
             background-color: #eff0f1;
         }
+
+
+
+
+
+        body{
+            font-family: 'bangla', sans-serif;
+            font-size: 14px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+
+
+
         @page { margin-bottom: 0; }
     </style>
 
@@ -181,6 +196,6 @@
 
 
 
-</div>
+</div></div>
 </body>
 </html>
