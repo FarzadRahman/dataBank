@@ -157,18 +157,22 @@
         }
 
         function printCandidate(x){
+            // var id=$(x).data('panel-id');
+            // pdf.index
             var id=$(x).data('panel-id');
+            var url = "{{ route('pdf.index', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
+            {{--$.ajax({--}}
+                {{--type: 'POST',--}}
+                {{--url: "{!! route('candidates.print') !!}",--}}
+                {{--cache: false,--}}
+                {{--data: {_token: "{{csrf_token()}}",'id': id},--}}
+                {{--success: function (data) {--}}
+                    {{--location.reload();--}}
 
-            $.ajax({
-                type: 'POST',
-                url: "{!! route('candidates.print') !!}",
-                cache: false,
-                data: {_token: "{{csrf_token()}}",'id': id},
-                success: function (data) {
-                    location.reload();
-
-                }
-            });
+                {{--}--}}
+            {{--});--}}
 
         }
 

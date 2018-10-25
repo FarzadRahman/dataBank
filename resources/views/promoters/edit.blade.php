@@ -76,12 +76,13 @@
                             <label>Promoter Phone Number</label>
                             <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getPromotersDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
                         </div>
+
                         <div class="form-group col-md-6">
                             <label>Party</label>
                             <select class="form-control" name="party" required>
                                 <option value="">Select Party</option>
                                 @foreach($allParties as $party)
-                                    <option @if($getPromotersDetails->party ==$party->partyId) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
+                                    <option @if($getPromotersDetails->partyName ==$party->partyName) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -45,31 +45,21 @@
 <div class="">
     <div style="background: #fff; " class="">
 
-        <table border="0" style="width:100%; margin-top: 10px; border: none;">
-            <tr>
-                <td style="border: none;"><h2 style="font-size: 24px; border: none; text-align: center"><span style="border-bottom: 1px solid #000">Candidate</span> </h2></td>
-            </tr>
-
-        </table>
+        <h2 align="center"><u>Candidate</u></h2>
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
             <tr>
-                <td style="text-align: left; border: none;">
+                <td style=" border: none;width:80%">
                     <h3 style="">{{$candidate->cname}}</h3>
                     <p style="max-width: 300px">Cell No: {{$candidate->phoneNumber}} <br>
                         address: {{$candidate->address}}
                     </p>
 
                 </td>
-                <td style="width: 13%; border: none; "><img height="150px" width="150px" src="{{url('public/candidate/candidateImages/thumb').'/'.$candidate->image}}" alt=""></td>
+                <td style="width: 20%; border: none; "><img height="150px" width="150px" src="{{url('public/candidate/candidateImages/thumb').'/'.$candidate->image}}" alt=""></td>
             </tr>
 
         </table>
 
-
-        @if($candidate->profile!=null)
-            <img height="900px" width="700px" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
-            <p style="page-break-after: always"></p>
-        @endif
 
 
         <table border="0" style="width:100%; margin-top: 25px; border: none;">
@@ -191,8 +181,14 @@
         </table>
 
 
+        @if($candidate->profile!=null)
+            <img height="900px" width="100%" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
+            <p style="page-break-after: always"></p>
+        @endif
 
-        <p style="page-break-after: always"></p>
+
+
+        {{--<p style="page-break-after: always"></p>--}}
 
 
 

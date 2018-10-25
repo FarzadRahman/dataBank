@@ -17,7 +17,11 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="pull-left">Details Of the Promoter</h3>
-                <a href="{{route('promoter.edit',$getPromotersDetails->promotersId)}}"><button class="btn btn-smbtn-info pull-right">Edit</button></a>
+                <div class="form-group pull-right">
+                    <a href="{{route('promoter.edit',$getPromotersDetails->promotersId)}}"><button class="btn btn-sm btn-info ">Edit</button></a>
+                    <button type="button" class="btn btn-default btn-sm"  onclick="printPromoters({{$getPromotersDetails->promotersId}})"><i class="fa fa-print"></i></button>
+
+                </div>
 
             </div>
             <div class="card-body">
@@ -103,7 +107,7 @@
 
                 @else
                     <div align="center"  class="embed-responsive embed-responsive-4by3">
-                        <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
+                        <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/promoter/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
                     </div>
                 @endif
 
@@ -122,6 +126,15 @@
 @endsection
 
 @section('foot-js')
+    <script>
+        function printPromoters(x){
+            var id=x;
+            var url = "{{ route('pdf.getPromoter', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
+
+        }
+    </script>
 
 
 @endsection
