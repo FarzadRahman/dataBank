@@ -11,19 +11,21 @@ use PDF;
 class PdfController extends Controller
 {
     //
-    public function  createpfd(){
+    public function  createpfd(Request $r){
         //$candidate = Candidate::get();
-        $id = 3;
+        $id = $r->id;
 
-        $candidate = Candidate::select('candidateId', 'candidate.name as cname', 'phoneNumber', 'partyName', 'remark', 'image', 'profile' , 'candidate.constituencyId', 'address' ,
+        $candidate = Candidate::select('candidateId','constituency.name as consname', 'candidate.name as cname', 'phoneNumber', 'partyName', 'remark', 'image', 'profile' , 'candidate.constituencyId', 'address' ,
             'dob', 'gender', 'bloodGroup' , 'nid')
             ->leftjoin('party','party.partyId','candidate.party')
             ->leftjoin('constituency','constituency.constituencyId','candidate.constituencyId')
             -> where('candidateId' , $id)
             ->first();
         $promoters =    Promoter::select('promotersId', 'promoters.name as proname', 'promoters.phoneNumber as pronumber')
+            -> where('candidateId' , $id)
         ->get();
         $associates =  Associate::select('associateId','associates.name as assoname' , 'associates.phoneNumber as assonumber')
+            -> where('candidateId' , $id)
         ->get();
 
         $pdf = PDF::loadView('pdf.pdf' ,compact('candidate', 'promoters', 'associates'));

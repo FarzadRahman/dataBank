@@ -60,6 +60,7 @@ Route::post('Candidates/update','CandidateController@update')->name('candidates.
 
 
 Route::post('Candidates/delete','CandidateController@delete')->name('candidates.delete');
+Route::post('Candidates/Pdf','PdfController@createpfd')->name('candidates.print');
 //All Candidates
 Route::get('candidates/all','CandidateController@viewAll')->name('candidates.viewAll');
 Route::post('candidates/viewAll','CandidateController@getAllCandidateData')->name('candidates.getAllCandidateData');
