@@ -66,6 +66,11 @@
         </table>
 
 
+        @if($candidate->profile!=null)
+            <img height="900px" width="700px" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
+            <p style="page-break-after: always"></p>
+        @endif
+
 
         <table border="0" style="width:100%; margin-top: 25px; border: none;">
             <tr>
