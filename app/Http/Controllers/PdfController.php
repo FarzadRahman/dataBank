@@ -11,9 +11,9 @@ use PDF;
 class PdfController extends Controller
 {
     //
-    public function  createpfd(Request $r){
+    public function  createpfd(){
         //$candidate = Candidate::get();
-        $id = $r->id;
+        $id = 1;
 
         $candidate = Candidate::select('candidateId','constituency.name as consname', 'candidate.name as cname', 'phoneNumber', 'partyName', 'remark', 'image', 'profile' , 'candidate.constituencyId', 'address' ,
             'dob', 'gender', 'bloodGroup' , 'nid')
@@ -28,7 +28,8 @@ class PdfController extends Controller
             -> where('candidateId' , $id)
         ->get();
 
-        $pdf = PDF::loadView('pdf.pdf' ,compact('candidate', 'promoters', 'associates'));
+//        return view('pdf.test',compact('candidate','promoters','associates'));
+        $pdf = PDF::loadView('pdf.test' ,compact('candidate', 'promoters', 'associates'));
         return $pdf->download('candidate.pdf');
       // return view('pdf.pdf');
     }
