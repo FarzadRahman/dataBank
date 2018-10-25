@@ -25,7 +25,7 @@
                     <th>Constituency</th>
                     <th>Associates</th>
                     <th>Promoters</th>
-                    {{--<th>action</th>--}}
+                    <th>action</th>
                     </thead>
                     <tbody>
 
@@ -83,7 +83,18 @@
                         { "data": function(data){
                             return data.totalPromoters.toString().getDigitBanglaFromEnglish() ;
                             },
-                            "orderable": false, "searchable":false, "name":"selected_rows" }
+                            "orderable": false, "searchable":false, "name":"selected_rows" },
+                        {
+                            "data": function (data) {
+                                return ''+
+                                    '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
+                                    '&nbsp;<button type="button" class="btn btn-danger btn-sm " data-panel-id="'+data.candidateId+'" onclick="deleteCandidate(this)"><i class="fa fa-trash"></i></button>' +
+                                    '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'" onclick="printCandidate(this)"><i class="fa fa-print"></i></button>'
+
+                                    ;
+                            },
+                            "orderable": false, "searchable": false
+                        },
                     ]
                 }
 
@@ -108,6 +119,58 @@
             {{--url = url.replace(':id', id);--}}
             {{--document.location.href=url;--}}
         {{--}--}}
+
+        function getCandidateData(x)
+        {
+            var id=$(x).data('panel-id');
+            var url = "{{ route('candidates.edit', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
+
+        }
+
+        function deleteCandidate(x){
+            var id=$(x).data('panel-id');
+            $.confirm({
+                title: 'Delete!',
+                content: 'Are you sure ?',
+                buttons: {
+                    confirm: function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: "{!! route('candidates.delete') !!}",
+                            cache: false,
+                            data: {_token: "{{csrf_token()}}",'id': id},
+                            success: function (data) {
+                                location.reload();
+
+                            }
+                        });
+                    },
+                    cancel: function () {
+//                        $.alert('Canceled!');
+                    }
+
+                }
+            });
+
+        }
+
+        function printCandidate(x){
+            var id=$(x).data('panel-id');
+
+            $.ajax({
+                type: 'POST',
+                url: "{!! route('candidates.print') !!}",
+                cache: false,
+                data: {_token: "{{csrf_token()}}",'id': id},
+                success: function (data) {
+                    location.reload();
+
+                }
+            });
+
+        }
 
 
 
