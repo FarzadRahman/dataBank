@@ -8,7 +8,7 @@
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->candidateId])}}">{{$getPromotersDetails->candidateName}}</a>
     <i class="fa fa-angle-double-right"></i>
     Promoter :   {{$getPromotersDetails->promoterName}}
     

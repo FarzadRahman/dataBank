@@ -41,6 +41,10 @@ class PromoterController extends Controller
     public function insert(Request $r)
     {
         //return $r;
+        $validatedData = $r->validate([
+            'image' => 'mimes:jpeg,jpg,png',
+            'uploadDoc' => 'mimes:jpeg,jpg,png'
+        ]);
 
         $promoters = new Promoter();
 
@@ -129,6 +133,10 @@ class PromoterController extends Controller
     {
 
        // return $r;
+        $validatedData = $r->validate([
+            'image' => 'mimes:jpeg,jpg,png',
+            'uploadDoc' => 'mimes:jpeg,jpg,png'
+        ]);
 
 
 

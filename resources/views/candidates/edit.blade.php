@@ -52,12 +52,24 @@
     <i class="fa fa-angle-double-right"></i> <a href="{{route('candidates.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->CandidateName}}</a>
     <i class="fa fa-angle-double-right"></i> Edit
 
+
+
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h4 align="center">Add Candidate</h4>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="post" enctype="multipart/form-data" action="{{route('candidates.update')}}" accept-charset="utf-8">
                     {{csrf_field()}}
                     <input type="hidden" id="candidateForm" name="candidateForm" value="">

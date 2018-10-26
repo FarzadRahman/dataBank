@@ -51,6 +51,16 @@
             </div>
             <div class="card-body">
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form method="post" enctype="multipart/form-data" action="{{route('promoter.insert')}}" accept-charset="utf-8">
                     <input type="hidden" id="promoterForm" name="promoterForm" value="">
                     <input type="hidden" name="candidateId" value="{{$id}}">
