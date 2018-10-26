@@ -11,7 +11,9 @@
                 <li class="has-submenu">
                     <a href="{{route('constituency.index')}}"><i class="fa fa-table"></i>Constituency</a>
                 </li>
-
+                <li class="has-submenu">
+                    <a href="{{route('party.index')}}"><i class="fa fa-table"></i>Committee</a>
+                </li>
                 <li class="has-submenu">
                     <a href="#"><i class="ti-settings"></i>Settings</a>
                     <ul class="submenu">

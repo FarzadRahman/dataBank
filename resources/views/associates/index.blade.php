@@ -56,10 +56,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-2">
                             <label for="inputEmail4">party :</label>
                             {{$getAssociatesDetails->partyName}}
                         </div>
+                    </div>
 
 
 
@@ -73,8 +74,8 @@
                         </div>
 
                     </div>
+
                 <hr>
-                @if($getAssociatesDetails->profile == null)
 
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -108,17 +109,23 @@
 
                     </div>
 
-                @else
-                            <div align="center"  class="embed-responsive embed-responsive-4by3">
-                                <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/associate/profileDoc'."/".$getAssociatesDetails->profile)}}"></iframe>
-                            </div>
-                @endif
+
 
 
             </div>
         </div>
 
     </div>
+
+        @if($getAssociatesDetails->profile != null)
+
+            <div align="center"  >
+                <div class="embed-responsive embed-responsive-4by3 col-md-6">
+                    <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/associate/profileDoc'."/".$getAssociatesDetails->profile)}}"></iframe>
+                </div>
+            </div>
+
+        @endif
 
 
 

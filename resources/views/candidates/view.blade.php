@@ -203,8 +203,10 @@
     </div>
 <br><br>
     @if($getCandidatesDetails->profile != null)
-        <div align="center"  class="embed-responsive embed-responsive-4by3">
+        <div align="center"  >
+            <div class="embed-responsive embed-responsive-4by3 col-md-6">
             <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getCandidatesDetails->profile)}}"></iframe>
+            </div>
         </div>
     @endif
 

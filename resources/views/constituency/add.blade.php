@@ -37,11 +37,11 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Male</label>
-                        <input class="form-control" name="maleVoter" type="text" required>
+                        <input class="form-control" name="maleVoter" type="number" required>
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Female</label>
-                        <input class="form-control" name="femaleVoter" type="text" required>
+                        <input class="form-control" name="femaleVoter" type="number" required>
                     </div>
                     <div class="form-group col-sm-12">
                     <button class="btn btn-success pull-right">Insert</button>
