@@ -78,7 +78,7 @@
                                 '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
                                 '&nbsp;<button type="button" class="btn btn-danger btn-sm " data-panel-id="'+data.candidateId+'" onclick="deleteCandidate(this)"><i class="fa fa-trash"></i></button>' +
                                 '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'" onclick="printCandidate(this)"><i class="fa fa-print"></i></button>'
-                                
+
                                 ;
                         },
                         "orderable": false, "searchable": false
