@@ -11,9 +11,9 @@ use PDF;
 class PdfController extends Controller
 {
     //
-    public function  createpfd(Request $r){
+    public function  createpfd($id){
         //$candidate = Candidate::get();
-        $id = $r->id;
+//        $id = 1;
 
         $candidate = Candidate::select('candidateId','constituency.name as consname', 'candidate.name as cname', 'phoneNumber', 'partyName', 'remark', 'image', 'profile' , 'candidate.constituencyId', 'address' ,
             'dob', 'gender', 'bloodGroup' , 'nid')
@@ -28,8 +28,34 @@ class PdfController extends Controller
             -> where('candidateId' , $id)
         ->get();
 
-        $pdf = PDF::loadView('pdf.pdf' ,compact('candidate', 'promoters', 'associates'));
+
+
+        $pdf = PDF::loadView('pdf.test' ,compact('candidate', 'promoters', 'associates'));
         return $pdf->download('candidate.pdf');
       // return view('pdf.pdf');
+    }
+
+    public function getAssociate($id){
+//        $id = 1;
+        $associate=Associate::select('associates.*','party.partyName')
+            ->leftjoin('party','party.partyId','associates.party')
+            ->findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.associate' ,compact('associate'));
+        return $pdf->download('associate.pdf');
+
+    }
+
+    public function getPromoter($id){
+//        $id = 1;
+        $associate=Promoter::select('promoters.*','party.partyName')
+            ->leftjoin('party','party.partyId','promoters.party')
+            ->findOrFail($id);
+
+//        return $associate;
+
+        $pdf = PDF::loadView('pdf.promoter' ,compact('associate'));
+        return $pdf->download('associate.pdf');
+
     }
 }

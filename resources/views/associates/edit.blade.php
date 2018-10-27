@@ -57,7 +57,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 align="center">Add Associate</h4>
+                <h4 align="center">Edit Associate</h4>
             </div>
             <div class="card-body">
 
@@ -80,7 +80,7 @@
                             <select class="form-control" name="party" required>
                                 <option value="">Select Party</option>
                                 @foreach($allParties as $party)
-                                    <option @if($getAssociatesDetails->party ==$party->partyId) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
+                                    <option @if($getAssociatesDetails->partyName ==$party->partyName) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
                                 @endforeach
                             </select>
                         </div>

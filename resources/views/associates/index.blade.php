@@ -17,7 +17,13 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="pull-left">Details Of the Associate</h3>
-                <a href="{{route('associate.edit',$getAssociatesDetails->associateId)}}"><button class="btn btn-smbtn-info pull-right">Edit</button></a>
+
+                <div class="form-group pull-right">
+                    <a href="{{route('associate.edit',$getAssociatesDetails->associateId)}}"><button class="btn btn-sm btn-info">Edit</button></a>
+                    <button type="button" class="btn btn-default btn-sm"  onclick="printAssociate({{$getAssociatesDetails->associateId}})"><i class="fa fa-print"></i></button>
+                </div>
+
+
             </div>
             <div class="card-body">
 
@@ -122,6 +128,15 @@
 @endsection
 
 @section('foot-js')
+            <script>
+                function printAssociate(x){
+                    var id=x;
+                    var url = "{{ route('pdf.getAssociate', ':id') }}";
+                    url = url.replace(':id', id);
+                    document.location.href=url;
+
+                }
+            </script>
 
 
 @endsection

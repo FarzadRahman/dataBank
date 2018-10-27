@@ -16,7 +16,14 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="pull-left">Details Of the Candidate</h3>
-                    <a href="{{route('candidates.editView',$getCandidatesDetails->candidateId)}}"><button class="btn btn-smbtn-info pull-right">Edit</button></a>
+
+                    <div class="form-group pull-right">
+                        <a href="{{route('candidates.editView',$getCandidatesDetails->candidateId)}}"><button class="btn btn-sm btn-info ">Edit</button></a>
+                        &nbsp;&nbsp;
+                        <button type="button" class="btn btn-default btn-sm"  onclick="printCandidate({{$getCandidatesDetails->candidateId}})"><i class="fa fa-print"></i></button>
+
+                    </div>
+
 
                 </div>
                 <div class="card-body">
@@ -111,6 +118,7 @@
             </div>
             <br>
         </div>
+
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -138,6 +146,8 @@
                                 </td>
                                 <td><a href="{{route('associate.view',$associate->associateId)}}" class="btn btn-info btn-sm">View</a>
                                     <button type="button" class="btn btn-danger btn-sm " onclick="deleteAssociate({{$associate->associateId}})"><i class="fa fa-trash"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"  onclick="printAssociate({{$associate->associateId}})"><i class="fa fa-print"></i></button>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -176,6 +186,8 @@
                                 </td>
                                 <td><a href="{{route('promoter.view',$promoters->promotersId)}}" class="btn btn-info btn-sm">View</a>
                                     <button type="button" class="btn btn-danger btn-sm " onclick="deletePromoter({{$promoters->promotersId}})"><i class="fa fa-trash"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"  onclick="printPromoters({{$promoters->promotersId}})"><i class="fa fa-print"></i></button>
+
                                 </td>
                             </tr>
                             @endforeach
@@ -267,6 +279,29 @@
 
                 }
             });
+
+        }
+
+        function printCandidate(x){
+            var id=x;
+            var url = "{{ route('pdf.index', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
+
+        }
+
+        function printAssociate(x){
+            var id=x;
+            var url = "{{ route('pdf.getAssociate', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
+
+        }
+        function printPromoters(x){
+            var id=x;
+            var url = "{{ route('pdf.getPromoter', ':id') }}";
+            url = url.replace(':id', id);
+            document.location.href=url;
 
         }
     </script>
