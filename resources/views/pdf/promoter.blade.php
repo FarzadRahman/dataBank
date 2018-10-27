@@ -46,13 +46,13 @@
     <div style="background: #fff; " class="">
 
 
-        <h2 align="center"><u>Promoter</u></h2>
+        <h2 align="center"><u>প্রবর্তক</u></h2>
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
             <tr>
                 <td style=" border: none;width: 80%">
                     <h3 style="">{{$associate->name}}</h3>
-                    <p style="max-width: 200px">Cell No: {{$associate->phoneNumber}} <br>
-                        address: {{$associate->address}}
+                    <p style="max-width: 200px">মোবাইল : {{$associate->phoneNumber}} <br>
+                        ঠিকানা : {{$associate->address}}
                     </p>
 
                 </td>
@@ -65,35 +65,35 @@
 
         <table border="0" style="width:100%; margin-top: 25px; border: none;">
             <tr>
-                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>Personal Info</b> </td>
+                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>ব্যক্তিগত তথ্য</b> </td>
             </tr>
         </table>
         <table border="0" style="width:100%; margin-top: 10px; border: none;">
 
             <tr>
                 <td  style="border: none;width: 50%;">
-                    DOB : {{$associate->dob}}
+                    <h2>জন্ম : {{$associate->dob}}</h2>
                 </td>
 
 
                 <td style="border: none;width: 50%;">
-                    Gender : {{$associate->gender}}
+                    <h2> লিঙ্গ : {{$associate->gender}}</h2>
                 </td>
             </tr>
 
             <tr>
                 <td  style="border: none;width: 50%;">
-                    Blood Group : {{$associate->bloodGroup}}
+                    <h2> রক্ত গ্রুপ : {{$associate->bloodGroup}}</h2>
                 </td>
 
 
                 <td style="border: none;width: 50%;">
-                    NID : {{$associate->nid}}
+                    <h2>জাতীয় পরিচয় : {{$associate->nid}}</h2>
                 </td>
             </tr>
             <tr>
                 <td  style="border: none;width: 50%;">
-                    Party : {{$associate->partyName}}
+                    <h2>  দল : {{$associate->partyName}}</h2>
                 </td>
 
 
@@ -103,7 +103,7 @@
             </tr>
             <tr>
                 <td style="border: none;width: 80%;">
-                    Remake : {{$associate->remark}}
+                    <h2>মন্তব্য : {{$associate->remark}}</h2>
                 </td>
             </tr>
 

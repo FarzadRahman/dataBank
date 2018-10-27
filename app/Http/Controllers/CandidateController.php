@@ -50,6 +50,10 @@ class CandidateController extends Controller
     public function insert(Request $r){
 
         //return $r;
+        $validatedData = $r->validate([
+            'image' => 'mimes:jpeg,jpg,png',
+            'uploadDoc' => 'mimes:jpeg,jpg,png'
+        ]);
 
 
         $candidate=new Candidate();
@@ -153,6 +157,10 @@ class CandidateController extends Controller
     public function update(Request $r){
 
         //return $r;
+        $validatedData = $r->validate([
+            'image' => 'mimes:jpeg,jpg,png',
+            'uploadDoc' => 'mimes:jpeg,jpg,png'
+        ]);
 
         $candidates = Candidate::findOrFail($r->candidateid);
 

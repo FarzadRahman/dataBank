@@ -50,6 +50,15 @@
             <h4 align="center">Add Candidate</h4>
         </div>
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <form method="post" enctype="multipart/form-data" action="{{route('candidates.insert')}}" accept-charset="utf-8">
                 {{csrf_field()}}

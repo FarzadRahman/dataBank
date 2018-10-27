@@ -39,6 +39,7 @@ Route::get('constituency/add','ConstituencyController@add')->name('constituency.
 Route::post('constituency/add','ConstituencyController@insert')->name('constituency.insert');
 Route::get('constituency/edit/{id}','ConstituencyController@edit')->name('constituency.edit');
 Route::post('constituency/update/{id}','ConstituencyController@update')->name('constituency.update');
+Route::post('constituency/delete','ConstituencyController@delete')->name('constituency.delete');
 
 //========================Center===============================
 

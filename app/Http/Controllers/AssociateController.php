@@ -41,6 +41,10 @@ class AssociateController extends Controller
     public function insert(Request $r){
 
         //return $r;
+        $validatedData = $r->validate([
+            'image' => 'mimes:jpeg,jpg,png',
+            'uploadDoc' => 'mimes:jpeg,jpg,png'
+        ]);
 
         $associates=new Associate();
 
@@ -127,6 +131,10 @@ class AssociateController extends Controller
     public function update(Request $r){
 
         //return $r;
+        $validatedData = $r->validate([
+            'image' => 'mimes:jpeg,jpg,png',
+            'uploadDoc' => 'mimes:jpeg,jpg,png'
+        ]);
 
         $associates=Associate::findOrFail($r->associateId);
 
