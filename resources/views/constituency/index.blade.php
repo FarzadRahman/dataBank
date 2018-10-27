@@ -40,7 +40,7 @@
 
     {{--Centers--}}
     <div class="modal" id="centerModal">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog" style="max-width: 60%">
             <div class="modal-content">
 
                 <!-- Modal Header -->
@@ -161,11 +161,13 @@
                             return '<button type="button" class="btn btn-primary btn-sm"  data-panel-id="'+data.constituencyId+'" onclick="editConsitituency(this)">' +
                                'Edit'+
                                 '</button>'+
+                            '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.constituencyId+'" onclick="printConstituency(this)"><i class="fa fa-print"></i></button>'+
                                 '&nbsp;<button class="btn btn-danger btn-sm" data-panel-id="'+data.constituencyId+'" onclick="deleteConsitituency(this)"><i class="fa fa-trash"></i></button>';
                         @else
                         return '<button type="button" class="btn btn-primary btn-sm"  data-panel-id="'+data.constituencyId+'" onclick="editConsitituency(this)">' +
                             'Edit'+
-                            '</button>';
+                            '</button>'+
+                            '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.constituencyId+'" onclick="printConstituency(this)"><i class="fa fa-print"></i></button>';
 
                         @endif
                         },
@@ -256,6 +258,14 @@
             });
 
 
+        }
+
+        function printConstituency(x) {
+            var id=$(x).data('panel-id');
+            var url = "{{ route('pdf.getConstituency', ':id') }}";
+            url = url.replace(':id', id);
+            // document.location.href=url;
+            window.open(url,'_blank');
         }
 
 

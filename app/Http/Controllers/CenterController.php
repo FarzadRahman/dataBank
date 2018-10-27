@@ -45,7 +45,7 @@ class CenterController extends Controller
    }
 
    public function getCenterModal(Request $r){
-       $consitituencyName=Constituency::findOrFail($r->id)->name;
+       $consitituencyName=Constituency::select('name','constituencyId')->findOrFail($r->id);
        $centers=Center::where('constituencyId',$r->id)->get();
 
 

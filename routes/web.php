@@ -129,3 +129,4 @@ Route::post('settings/user/update/{id}','UserController@update')->name('user.upd
 Route::get('pdf/getCandidate/{id}','PdfController@createpfd')->name('pdf.index');
 Route::get('pdf/getAssociate/{id}','PdfController@getAssociate')->name('pdf.getAssociate');
 Route::get('pdf/getPromoter/{id}','PdfController@getPromoter')->name('pdf.getPromoter');
+Route::get('pdf/getConstituency/{id}','PdfController@getConstituency')->name('pdf.getConstituency');
