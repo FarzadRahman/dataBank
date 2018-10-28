@@ -78,14 +78,14 @@
             <div class="table-responsive">
                 <table class="table table-striped " id="datatable">
                     <thead>
-                    <th>number</th>
-                    <th>name</th>
-                    <th>area</th>
-                    <th>division</th>
-                    <th>voter</th>
-                    <th>center</th>
-                    <th>candidates</th>
-                    <th>action</th>
+                    <th width="10%">number</th>
+                    <th width="15%">name</th>
+                    <th width="40%">area</th>
+                    <th width="5%">division</th>
+                    <th width="5%">voter</th>
+                    <th width="5%">center</th>
+                    <th width="5%">candidates</th>
+                    <th width="15%">action</th>
                     </thead>
                     <tbody>
 

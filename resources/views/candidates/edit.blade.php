@@ -44,6 +44,7 @@
 @endsection
 @section('content')
     {{--Site Map--}}
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
     <a href="{{route('constituency.index')}}">Constituency</a>
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->constituencyName}}</a>
@@ -52,6 +53,8 @@
     <i class="fa fa-angle-double-right"></i> <a href="{{route('candidates.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->CandidateName}}</a>
     <i class="fa fa-angle-double-right"></i> Edit
 
+<br>
+<br>
 
 
 
@@ -81,7 +84,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Candidate Phone Number</label>
-                        <input type="text" name="phoneNumber" placeholder="Phone Number" value="{{$getCandidatesDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
+                        <input type="text" name="phoneNumber" placeholder="Phone Number" value="{{$getCandidatesDetails->phoneNumber}}"  class="form-control" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Party</label>

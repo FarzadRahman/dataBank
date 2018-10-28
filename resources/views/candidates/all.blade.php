@@ -11,7 +11,7 @@
     <br class="mobile-break">
     <div class="card">
         <div class="card-header">
-            <h3 align="center">Candidates</h3>
+            <h3 align="center">All Candidates</h3>
             <i class="glyphicon glyphicon-chevron-right"></i>
         </div>
 
@@ -86,12 +86,21 @@
                             "orderable": false, "searchable":false, "name":"selected_rows" },
                         {
                             "data": function (data) {
+                                @if(Auth::user()->userTypeId=='admin')
                                 return ''+
                                     '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
                                     '&nbsp;<button type="button" class="btn btn-danger btn-sm " data-panel-id="'+data.candidateId+'" onclick="deleteCandidate(this)"><i class="fa fa-trash"></i></button>' +
                                     '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'" onclick="printCandidate(this)"><i class="fa fa-print"></i></button>'
 
                                     ;
+                                @else
+                                    return ''+
+                                    '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
+                                    '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'" onclick="printCandidate(this)"><i class="fa fa-print"></i></button>'
+
+                                    ;
+
+                                @endif
                             },
                             "orderable": false, "searchable": false
                         },
