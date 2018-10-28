@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\ListType;
 use App\Party;
 use App\PartyLevel;
 use Illuminate\Http\Request;
 use Session;
+
 class PartyLevelController extends Controller
 {
     public function index($partyid){
+
         $party=Party::findOrFail($partyid);
         $partyLevels=PartyLevel::get();
+        $listType=ListType::get();
 
 
-        return view('partyLevel',compact('partyLevels','party'));
+
+        return view('partyLevel',compact('partyLevels','party','listType'));
     }
 
     public function insert(Request $r){

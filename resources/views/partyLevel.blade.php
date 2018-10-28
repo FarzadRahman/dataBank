@@ -73,25 +73,36 @@
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus" data-toggle="modal" data-target="#myModal"></i></button>
-                <table class="table table-striped">
-                    <thead>
-                        <th>Name</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                    @foreach($partyLevels as $level)
-                        <tr>
-                            <td>{{$level->name}}</td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-panel-id="{{$level->party_levelId}}" onclick="editPartyLevel(this)">Edit</button>
-                                <button class="btn btn-sm btn-success">View</button>
-                            </td>
-                        </tr>
+                <div class="row">
+                    <div class=" form-group  col-md-6">
+                        <label>Party Level</label>
+                        <select id="partyLevel" name="partyLevel" class="form-control">
+                            <option value="">Select a Level</option>
+                            @foreach($partyLevels as $pL)
+                                <option value="{{$pL->party_levelId}}">{{$pL->name}}</option>
+                            @endforeach
 
-                    @endforeach
+                        </select>
+                    </div>
+                    <div style="display: none" id="ListDiv" class="form-group col-md-6">
+                        <label>List Type</label>
+                        <select id="listType" name="listType" class="form-control">
+                            <option value="">Select a Type</option>
+                            @foreach($listType as $lT)
+                                <option value="{{$lT->listtypeId}}">{{$lT->typeName}}</option>
+                            @endforeach
 
-                    </tbody>
-                </table>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+
+                <div style="display: none" class="card" align="center"  id="fileDiv">
+
+                </div>
+
+
+
 
             </div>
         </div>
@@ -115,6 +126,75 @@
             });
 
         }
+        function viewPartyLevel(x) {
+            var id=$(x).data('panel-id');
+
+            $.ajax({
+                type: 'POST',
+                url: "{!! route('partylevel.edit') !!}",
+                cache: false,
+                data: {_token: "{{csrf_token()}}",'partyLevelId': id,'partyId':"{{$party->partyId}}"},
+                success: function (data) {
+
+                    // console.log(data);
+                }
+            });
+
+        }
+
+        $('#partyLevel').on('change', function() {
+
+            var partyId="{{$party->partyId}}";
+
+            if (this.value==2 || this.value==1){
+
+                $("#ListDiv").show();
+
+                {{--$.ajax({--}}
+                    {{--type:'POST',--}}
+                    {{--url:'{{route('getAllListType')}}',--}}
+                    {{--data:{_token:"{{csrf_token()}}",id:this.value},--}}
+                    {{--cache: false,--}}
+                    {{--success:function(data) {--}}
+                        {{--document.getElementById("educationMajorFilter").innerHTML = data;--}}
+                        {{--$('#educationMajorFilter').css("background-color", "#FFF").css('color', 'black');--}}
+
+                    {{--}--}}
+                {{--});--}}
+
+            }else {
+                $("#ListDiv").hide();
+            }
+
+
+
+        });
+        $('#listType').on('change', function() {
+
+            var partyId="{{$party->partyId}}";
+            var partyLevelId=$("#partyLevel").val();
+
+
+
+            $.ajax({
+                type:'POST',
+                url:'{{route('getFileDivWithData')}}',
+                data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},
+                cache: false,
+                success:function(data) {
+                    document.getElementById("fileDiv").innerHTML = data;
+                    $("#fileDiv").show();
+
+
+                }
+            });
+
+
+
+
+
+        });
+
     </script>
 
 @endsection

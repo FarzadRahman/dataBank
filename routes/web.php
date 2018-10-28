@@ -108,12 +108,22 @@ Route::post('settings/party/update/{id}','PartyController@update')->name('party.
 //=====================party level=========================================
 
 Route::view('party/level/','partyLevel')->name('party.level');
-
 //Route::view('party/level/','partyLevel')->name('party.level');
 Route::get('party/level/{partyid}','PartyLevelController@index')->name('party.level');
 Route::post('party/level','PartyLevelController@insert')->name('partylevel.insert');
 Route::post('party/level/update','PartyLevelController@update')->name('partylevel.update');
 Route::post('party/level/edit','PartyLevelController@edit')->name('partylevel.edit');
+
+//=====================list type=========================================
+
+Route::get('party/level/list','ListTypeController@index')->name('list.index');
+
+
+//=====================FIle Div=========================================
+
+Route::post('List-File','ListTypeController@getFileforList')->name('getFileDivWithData');
+Route::post('List-File/add','ListTypeController@insert')->name('files.add');
+
 
 
 
