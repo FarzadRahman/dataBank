@@ -93,6 +93,21 @@ Route::post('settings/division/add','DivisionController@insert')->name('division
 Route::post('settings/division/edit','DivisionController@edit')->name('division.edit');
 Route::post('settings/division/update/{id}','DivisionController@update')->name('division.update');
 
+Route::get('settings/zilla','ZillaController@index')->name('zilla.index');
+Route::post('settings/zilla/add','ZillaController@insert')->name('zilla.insert');
+Route::post('settings/zilla/edit','ZillaController@edit')->name('zilla.edit');
+Route::post('settings/zilla/update/{id}','ZillaController@update')->name('zilla.update');
+
+Route::get('settings/upzilla','UpzillaController@index')->name('upzilla.index');
+Route::post('settings/upzilla/add','UpzillaController@insert')->name('upzilla.insert');
+Route::post('settings/upzilla/edit','UpzillaController@edit')->name('upzilla.edit');
+Route::post('settings/upzilla/update/{id}','UpzillaController@update')->name('upzilla.update');
+
+Route::get('settings/union','UnionController@index')->name('union.index');
+Route::post('settings/union/add','UnionController@insert')->name('union.insert');
+Route::post('settings/union/edit','UnionController@edit')->name('union.edit');
+Route::post('settings/union/update/{id}','UnionController@update')->name('union.update');
+
 //=====================Account=========================================
 //
 Route::get('settings/account','AccountController@index')->name('account.index');
