@@ -6,6 +6,7 @@ use App\JatioFile;
 use App\MohanogorFile;
 use App\Party;
 use App\PartyLevel;
+use App\Zillafile;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,9 @@ class ListTypeController extends Controller
         $partyId=$r->partyId;
         $partyLevels=$r->partyLevelId;
         $listType=$r->listTypeId;
+        if ($r->zillaId){
+
+        }
         if ($partyLevels== 2){
             $file=MohanogorFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
         }
@@ -23,7 +27,9 @@ class ListTypeController extends Controller
             $file=JatioFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
         }
         if ($partyLevels== 3){
-            $file=MohanogorFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
+
+            $zilaId=$r->zillaId;
+            $file=Zillafile::where('zillaId',$zilaId)->where('partyId',$partyId)->where('listtypeId',$listType)->first();
         }
 
 
@@ -83,6 +89,32 @@ class ListTypeController extends Controller
 
             }
             $jatio->save();
+
+        }
+        elseif ($partyLevels== 3){
+
+            $zilaId=$r->zilaId;
+
+            $zila= new Zillafile();
+
+            $zila->listtypeId=$listType;
+            $zila->zillaId=$zilaId;
+            $zila->partyId=$partyId;
+            $zila->createdAt=date('Y-m-d H:m:s');
+            $zila->createdBy=Auth::user()->userId;
+
+            $zila->save();
+
+            if($r->hasFile('uploadDoc')){
+
+                $img = $r->file('uploadDoc');
+                $filename= $zila->zillafileId.'files'.'.'.$img->getClientOriginalExtension();
+                $zila->image=$filename;
+                $location = public_path('zilafiles/');
+                $img->move($location,$filename);
+
+            }
+            $zila->save();
 
         }
         Session::flash('message', 'File Added Successfully!');

@@ -5,6 +5,9 @@
             <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/mohanogorfiles'."/".$file->image)}}"></iframe>
         @elseif($partyLevels==1)
             <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/jatiofiles'."/".$file->image)}}"></iframe>
+
+        @elseif($partyLevels==3)
+            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/zilafiles'."/".$file->image)}}"></iframe>
         @endif
 
 </div>
@@ -14,6 +17,9 @@
         <input type="hidden" name="partyLevelId" value="{{$partyLevels}}">
         <input type="hidden" name="partyId" value="{{$partyId}}">
         <input type="hidden" name="listTypeId" value="{{$listType}}">
+        @if($partyLevels==3)
+            <input type="hidden" name="zilaId" value="{{$file->zillaId}}">
+        @endif
         <div class="form-group col-md-12">
 
             <label class="col-md-2">Upload</label>

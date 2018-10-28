@@ -77,9 +77,19 @@
                     <div class=" form-group  col-md-6">
                         <label>Party Level</label>
                         <select id="partyLevel" name="partyLevel" class="form-control">
-                            <option value="">Select a Level</option>
+                            <option selected value="">Select a Level</option>
                             @foreach($partyLevels as $pL)
                                 <option value="{{$pL->party_levelId}}">{{$pL->name}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div style="display: none" id="zilaDiv" class="form-group col-md-6">
+                        <label>Zila</label>
+                        <select id="zila" name="zila" class="form-control">
+                            <option selected value="">Select a Zila</option>
+                            @foreach($allZila as $aZ)
+                                <option value="{{$aZ->zillaId}}">{{$aZ->zillaName}}</option>
                             @endforeach
 
                         </select>
@@ -87,13 +97,14 @@
                     <div style="display: none" id="ListDiv" class="form-group col-md-6">
                         <label>List Type</label>
                         <select id="listType" name="listType" class="form-control">
-                            <option value="">Select a Type</option>
+                            <option selected value="">Select a Type</option>
                             @foreach($listType as $lT)
                                 <option value="{{$lT->listtypeId}}">{{$lT->typeName}}</option>
                             @endforeach
 
                         </select>
                     </div>
+
                 </div>
                 <hr>
 
@@ -149,21 +160,17 @@
             if (this.value==2 || this.value==1){
 
                 $("#ListDiv").show();
+                $("#zilaDiv").hide();
+                $("#zila").prop("selectedIndex", 0);
+                $("#fileDiv").hide();
 
-                {{--$.ajax({--}}
-                    {{--type:'POST',--}}
-                    {{--url:'{{route('getAllListType')}}',--}}
-                    {{--data:{_token:"{{csrf_token()}}",id:this.value},--}}
-                    {{--cache: false,--}}
-                    {{--success:function(data) {--}}
-                        {{--document.getElementById("educationMajorFilter").innerHTML = data;--}}
-                        {{--$('#educationMajorFilter').css("background-color", "#FFF").css('color', 'black');--}}
 
-                    {{--}--}}
-                {{--});--}}
-
-            }else {
+            }
+            if(this.value==3){
                 $("#ListDiv").hide();
+                $("#listType").prop("selectedIndex", 0);
+                $("#zilaDiv").show();
+                $("#fileDiv").hide();
             }
 
 
@@ -179,7 +186,18 @@
             $.ajax({
                 type:'POST',
                 url:'{{route('getFileDivWithData')}}',
-                data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},
+                data:function (d){
+
+                    d._token="{{csrf_token()}}";
+                    d.partyId=partyId;
+                    d.partyLevelId=partyLevelId;
+                    d.listTypeId=this.value;
+
+                    if ( $("#zila").val() !==""){
+                        d.zillaId=$("#zila").val();
+                    }
+
+                },
                 cache: false,
                 success:function(data) {
                     document.getElementById("fileDiv").innerHTML = data;
@@ -188,10 +206,10 @@
 
                 }
             });
+        });
+        $('#zila').on('change', function() {
 
-
-
-
+            $("#ListDiv").show();
 
         });
 
