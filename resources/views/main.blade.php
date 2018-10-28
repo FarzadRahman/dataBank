@@ -36,7 +36,7 @@
 
                     <!-- User-->
                     <li class="list-inline-item dropdown notification-list">
-                        <b style="color: white">USER ADMIN</b>
+                        <b style="color: white">Hi {{Auth::user()->userName}}</b>
                         <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="false" aria-expanded="false">
                             <img src="{{url('public/assets/images/users/avatar-1.png')}}" alt="user" class="rounded-circle">

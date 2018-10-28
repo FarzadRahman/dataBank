@@ -6,7 +6,7 @@
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('constituency.edit',['id'=>$getAssociatesDetails->constituencyId])}}">{{$getAssociatesDetails->constituencyName}}</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="{{route('candidates.index',['id'=>$getAssociatesDetails->constituencyId])}}">candidates</a>
+    <a href="{{route('candidates.index',['id'=>$getAssociatesDetails->candidateId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.edit',['id'=>$getAssociatesDetails->constituencyId])}}">{{$getAssociatesDetails->candidateName}}</a>
     <i class="fa fa-angle-double-right"></i>Associate :   {{$getAssociatesDetails->associateName}}
@@ -56,10 +56,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-2">
                             <label for="inputEmail4">party :</label>
                             {{$getAssociatesDetails->partyName}}
                         </div>
+                    </div>
 
 
 
@@ -73,8 +74,8 @@
                         </div>
 
                     </div>
+
                 <hr>
-                @if($getAssociatesDetails->profile == null)
 
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -108,17 +109,23 @@
 
                     </div>
 
-                @else
-                            <div align="center"  class="embed-responsive embed-responsive-4by3">
-                                <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/associate/profileDoc'."/".$getAssociatesDetails->profile)}}"></iframe>
-                            </div>
-                @endif
+
 
 
             </div>
         </div>
 
     </div>
+
+        @if($getAssociatesDetails->profile != null)
+
+            <div align="center"  >
+                <div class="embed-responsive embed-responsive-4by3 col-md-6">
+                    <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/associate/profileDoc'."/".$getAssociatesDetails->profile)}}"></iframe>
+                </div>
+            </div>
+
+        @endif
 
 
 
@@ -133,7 +140,8 @@
                     var id=x;
                     var url = "{{ route('pdf.getAssociate', ':id') }}";
                     url = url.replace(':id', id);
-                    document.location.href=url;
+                    // document.location.href=url;
+                    window.open(url,'_blank');
 
                 }
             </script>

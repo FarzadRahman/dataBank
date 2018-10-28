@@ -9,7 +9,12 @@
     <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i> {{$getCandidatesDetails->CandidateName}}
 
+    <?php
+    $bn = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
+    $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
 
+
+    ?>
 
     <div class="row">
         <div class="col-md-12">
@@ -129,15 +134,19 @@
 
                     <table id="" class="table table-striped manageapplication">
                         <thead>
-
+                        <th>SL</th>
                         <th>name</th>
                         <th>Phone number</th>
                         <th>Action</th>
 
                         </thead>
                         <tbody>
+                        <?php
+                            $sl=0;
+                        ?>
                         @foreach($getAllAssociate as $associate)
                             <tr>
+                                <td>{{str_replace($en,$bn,++$sl)}}</td>
                                 <td>
                                     {{$associate->name}}
                                 </td>
@@ -169,15 +178,19 @@
 
                     <table id="" class="table table-striped manageapplication">
                         <thead>
-
+                         <th>SL</th>
                         <th>name</th>
                         <th>Phone number</th>
                         <th>Action</th>
 
                         </thead>
                         <tbody>
+                        <?php
+                        $sl=0;
+                        ?>
                         @foreach($getPromoters as $promoters)
                             <tr>
+                                <td>{{str_replace($en,$bn,++$sl)}}</td>
                                 <td>
                                     {{$promoters->name}}
                                 </td>
@@ -203,8 +216,10 @@
     </div>
 <br><br>
     @if($getCandidatesDetails->profile != null)
-        <div align="center"  class="embed-responsive embed-responsive-4by3">
+        <div align="center"  >
+            <div class="embed-responsive embed-responsive-4by3 col-md-6">
             <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/candidate/profileDoc'."/".$getCandidatesDetails->profile)}}"></iframe>
+            </div>
         </div>
     @endif
 
@@ -286,7 +301,8 @@
             var id=x;
             var url = "{{ route('pdf.index', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
         }
 
@@ -294,14 +310,15 @@
             var id=x;
             var url = "{{ route('pdf.getAssociate', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
-
+            // document.location.href=url;
+            window.open(url,'_blank');
         }
         function printPromoters(x){
             var id=x;
             var url = "{{ route('pdf.getPromoter', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
         }
     </script>

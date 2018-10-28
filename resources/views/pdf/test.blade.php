@@ -29,7 +29,7 @@
 
         body{
             font-family: 'bangla', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             padding: 0px;
             margin: 0px;
         }
@@ -45,13 +45,13 @@
 <div class="">
     <div style="background: #fff; " class="">
 
-        <h2 align="center"><u>Candidate</u></h2>
+        <h2 align="center"><u>প্রার্থী</u></h2>
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
             <tr>
                 <td style=" border: none;width:80%">
                     <h3 style="">{{$candidate->cname}}</h3>
-                    <p style="max-width: 300px">Cell No: {{$candidate->phoneNumber}} <br>
-                        address: {{$candidate->address}}
+                    <p style="max-width: 300px">মোবাইল : {{$candidate->phoneNumber}} <br>
+                        ঠিকানা : {{$candidate->address}}
                     </p>
 
                 </td>
@@ -64,45 +64,45 @@
 
         <table border="0" style="width:100%; margin-top: 25px; border: none;">
             <tr>
-                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>Personal Info</b> </td>
+                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>ব্যক্তিগত তথ্য</b> </td>
             </tr>
         </table>
         <table border="0" style="width:100%; margin-top: 10px; border: none;">
 
             <tr>
                 <td  style="border: none;width: 50%;">
-                    DOB : {{$candidate->dob}}
+                    <h3>জন্ম : {{$candidate->dob}}</h3>
                 </td>
 
 
                 <td style="border: none;width: 50%;">
-                    Gender : {{$candidate->gender}}
+                    <h3>লিঙ্গ : {{$candidate->gender}}</h3>
                 </td>
             </tr>
 
             <tr>
                 <td  style="border: none;width: 50%;">
-                    Blood Group : {{$candidate->bloodGroup}}
+                    <h3> রক্ত গ্রুপ : {{$candidate->bloodGroup}}</h3>
                 </td>
 
 
                 <td style="border: none;width: 50%;">
-                    NID : {{$candidate->nid}}
+                    <h3> জাতীয় পরিচয় : {{$candidate->nid}}</h3>
                 </td>
             </tr>
             <tr>
                 <td  style="border: none;width: 50%;">
-                    Party : {{$candidate->partyName}}
+                    <h3>দল : {{$candidate->partyName}}</h3>
                 </td>
 
 
                 <td style="border: none;width: 50%;">
-                    Constituency : {{$candidate->consname}}
+                    <h3> নির্বাচনক্ষেত্র : {{$candidate->consname}}</h3>
                 </td>
             </tr>
             <tr>
                 <td style="border: none;width: 80%;">
-                    Remake : {{$candidate->remark}}
+                    <h3> মন্তব্য : {{$candidate->remark}}</h3>
                 </td>
             </tr>
 
@@ -113,7 +113,7 @@
 
         <table border="0" style="width:100%; margin-top: 15px; border: none;">
             <tr>
-                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>Promoters</b> </td>
+                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>প্রবর্তক</b> </td>
             </tr>
         </table>
 
@@ -131,10 +131,9 @@
 
                     <td style="border: none;">
 
-                        Name : {{$prm->proname}} <br>
-                        Phone Number: {{$prm->pronumber}} <br>
+                        নাম : {{$prm->proname}} <br>
+                        মোবাইল : {{$prm->pronumber}} <br>
 
-                        .
 
 
 
@@ -148,7 +147,7 @@
 
         <table border="0" style="width:100%; margin-top: 15px; border: none;">
             <tr>
-                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>Associates</b> </td>
+                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>সহযোগী</b> </td>
             </tr>
         </table>
 
@@ -166,10 +165,8 @@
 
                     <td style="border: none;">
 
-                        Name : {{$associate->assoname}} <br>
-                        Phone Number: {{$associate->assonumber}} <br>
-
-                        .
+                        নাম : {{$associate->assoname}} <br>
+                        মোবাইল : {{$associate->assonumber}} <br>
 
 
 

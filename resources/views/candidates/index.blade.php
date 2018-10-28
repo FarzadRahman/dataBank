@@ -138,7 +138,8 @@
             var id=$(x).data('panel-id');
             var url = "{{ route('pdf.index', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
             }
 

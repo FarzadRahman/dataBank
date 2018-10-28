@@ -8,11 +8,11 @@
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->candidateId])}}">{{$getPromotersDetails->candidateName}}</a>
     <i class="fa fa-angle-double-right"></i>
     Promoter :   {{$getPromotersDetails->promoterName}}
     
-    <div class="col-md-12">
+
         <br>
         <div class="card">
             <div class="card-header">
@@ -53,17 +53,12 @@
                             <label for="inputEmail4">Phone Number :</label>
                             {{$getPromotersDetails->phoneNumber}}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-2">
                             <label for="inputEmail4">party :</label>
                             {{$getPromotersDetails->partyName}}
                         </div>
-
-
-
-
                     </div>
+
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Remarks :</label>
@@ -72,7 +67,7 @@
 
                     </div>
                     <hr>
-                @if($getPromotersDetails->profile == null)
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Date of Birth :</label>
@@ -105,20 +100,28 @@
 
                     </div>
 
-                @else
-                    <div align="center"  class="embed-responsive embed-responsive-4by3">
-                        <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/promoter/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
-                    </div>
-                @endif
+
+
+
+
+
 
 
 
             </div>
-        </div>
 
+
+
+
+    @if($getPromotersDetails->profile != null)
+
+    <div align="center"  >
+        <div class="embed-responsive embed-responsive-4by3 col-md-6">
+            <iframe class="embed-responsive-item"   name="myiframe" id="myiframe" src="{{url('public/promoter/profileDoc'."/".$getPromotersDetails->profile)}}"></iframe>
+        </div>
     </div>
 
-
+    @endif
 
 
 
@@ -131,7 +134,8 @@
             var id=x;
             var url = "{{ route('pdf.getPromoter', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
         }
     </script>

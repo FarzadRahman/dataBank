@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Associate;
+use App\Candidate;
 use App\Center;
 use App\Constituency;
 use App\Division;
+use App\Promoter;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
@@ -94,5 +97,22 @@ class ConstituencyController extends Controller
         Session::flash('message', 'Constituency Updated Successfully!');
 
         return back();
+    }
+
+    public function delete(Request $r){
+//        return $r;
+        $cadidate=Candidate::select('candidateId')->where('constituencyId',$r->id)
+            ->get();
+
+        $promoter=Promoter::whereIn('candidateId',$cadidate)->delete();
+        $associate=Associate::whereIn('candidateId',$cadidate)->delete();
+
+        $center=Center::where('constituencyId',$r->id)
+            ->delete();
+        Candidate::where('constituencyId',$r->id)
+            ->delete();
+        Constituency::where('constituencyId',$r->id)->detele();
+
+        return Response()->json('Success');
     }
 }

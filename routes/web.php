@@ -39,6 +39,7 @@ Route::get('constituency/add','ConstituencyController@add')->name('constituency.
 Route::post('constituency/add','ConstituencyController@insert')->name('constituency.insert');
 Route::get('constituency/edit/{id}','ConstituencyController@edit')->name('constituency.edit');
 Route::post('constituency/update/{id}','ConstituencyController@update')->name('constituency.update');
+Route::post('constituency/delete','ConstituencyController@delete')->name('constituency.delete');
 
 //========================Center===============================
 
@@ -138,3 +139,4 @@ Route::post('settings/user/update/{id}','UserController@update')->name('user.upd
 Route::get('pdf/getCandidate/{id}','PdfController@createpfd')->name('pdf.index');
 Route::get('pdf/getAssociate/{id}','PdfController@getAssociate')->name('pdf.getAssociate');
 Route::get('pdf/getPromoter/{id}','PdfController@getPromoter')->name('pdf.getPromoter');
+Route::get('pdf/getConstituency/{id}','PdfController@getConstituency')->name('pdf.getConstituency');
