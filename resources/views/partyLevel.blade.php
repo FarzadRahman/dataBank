@@ -118,8 +118,10 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('foot-js')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         function editPartyLevel(x) {
             var id=$(x).data('panel-id');
@@ -162,7 +164,6 @@
                 $("#ListDiv").show();
                 $("#zilaDiv").hide();
                 $("#zila").prop("selectedIndex", 0);
-                $("#fileDiv").hide();
 
 
             }
@@ -170,7 +171,6 @@
                 $("#ListDiv").hide();
                 $("#listType").prop("selectedIndex", 0);
                 $("#zilaDiv").show();
-                $("#fileDiv").hide();
             }
 
 
@@ -181,23 +181,21 @@
             var partyId="{{$party->partyId}}";
             var partyLevelId=$("#partyLevel").val();
 
-
-
             $.ajax({
                 type:'POST',
                 url:'{{route('getFileDivWithData')}}',
-                data:function (d){
 
-                    d._token="{{csrf_token()}}";
+                data:function (d) {
+
+                    {{--d._token = "{{csrf_token()}}";--}}
                     d.partyId=partyId;
                     d.partyLevelId=partyLevelId;
                     d.listTypeId=this.value;
-
-                    if ( $("#zila").val() !==""){
-                        d.zillaId=$("#zila").val();
-                    }
+                    // d.listTypeId=this.value;
 
                 },
+
+                {{--data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},--}}
                 cache: false,
                 success:function(data) {
                     document.getElementById("fileDiv").innerHTML = data;
@@ -206,6 +204,7 @@
 
                 }
             });
+
         });
         $('#zila').on('change', function() {
 
