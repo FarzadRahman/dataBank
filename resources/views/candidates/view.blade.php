@@ -81,7 +81,7 @@
 
                     <hr>
 
-                    @if($getCandidatesDetails->profile == null)
+                    {{--@if($getCandidatesDetails->profile == null)--}}
 
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -115,7 +115,7 @@
 
                         </div>
 
-                        @endif
+                        {{--@endif--}}
 
 
 

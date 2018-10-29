@@ -49,7 +49,7 @@
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getAssociatesDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="{{route('candidates.edit',['id'=>$getAssociatesDetails->constituencyId])}}">{{$getAssociatesDetails->candidateName}}</a>
+    <a href="{{route('candidates.edit',['id'=>$getAssociatesDetails->candidateId])}}">{{$getAssociatesDetails->candidateName}}</a>
     <i class="fa fa-angle-double-right"></i>
     Associate :<a href="{{route('associate.view',['id'=>$getAssociatesDetails->associateId])}}">  {{$getAssociatesDetails->associateName}}</a>
     <i class="fa fa-angle-double-right"></i> Edit
