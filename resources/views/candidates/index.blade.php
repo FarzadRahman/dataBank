@@ -74,12 +74,21 @@
 
                     {
                         "data": function (data) {
+                            @if(Auth::user()->userTypeId=='admin')
                             return ''+
                                 '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
                                 '&nbsp;<button type="button" class="btn btn-danger btn-sm " data-panel-id="'+data.candidateId+'" onclick="deleteCandidate(this)"><i class="fa fa-trash"></i></button>' +
                                 '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'" onclick="printCandidate(this)"><i class="fa fa-print"></i></button>'
 
                                 ;
+                            @else
+                                return ''+
+                                '&nbsp;<button class="btn btn-smbtn-info btn-sm" data-panel-id="'+data.candidateId+'" onclick="getCandidateData(this)"><i class="fa fa-edit"></i></button>'+
+                                '&nbsp;<button type="button" class="btn btn-default btn-sm " data-panel-id="'+data.candidateId+'" onclick="printCandidate(this)"><i class="fa fa-print"></i></button>'
+
+                                ;
+
+                            @endif
                         },
                         "orderable": false, "searchable": false
                     },
@@ -138,7 +147,8 @@
             var id=$(x).data('panel-id');
             var url = "{{ route('pdf.index', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
             }
 

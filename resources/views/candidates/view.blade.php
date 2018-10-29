@@ -9,7 +9,12 @@
     <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i> {{$getCandidatesDetails->CandidateName}}
 
+    <?php
+    $bn = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
+    $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
 
+
+    ?>
 
     <div class="row">
         <div class="col-md-12">
@@ -129,15 +134,19 @@
 
                     <table id="" class="table table-striped manageapplication">
                         <thead>
-
+                        <th>SL</th>
                         <th>name</th>
                         <th>Phone number</th>
                         <th>Action</th>
 
                         </thead>
                         <tbody>
+                        <?php
+                            $sl=0;
+                        ?>
                         @foreach($getAllAssociate as $associate)
                             <tr>
+                                <td>{{str_replace($en,$bn,++$sl)}}</td>
                                 <td>
                                     {{$associate->name}}
                                 </td>
@@ -145,7 +154,9 @@
                                     {{$associate->phoneNumber}}
                                 </td>
                                 <td><a href="{{route('associate.view',$associate->associateId)}}" class="btn btn-info btn-sm">View</a>
+                                    @if(Auth::user()->userTypeId=='admin')
                                     <button type="button" class="btn btn-danger btn-sm " onclick="deleteAssociate({{$associate->associateId}})"><i class="fa fa-trash"></i></button>
+                                    @endif
                                     <button type="button" class="btn btn-default btn-sm"  onclick="printAssociate({{$associate->associateId}})"><i class="fa fa-print"></i></button>
 
                                 </td>
@@ -169,15 +180,19 @@
 
                     <table id="" class="table table-striped manageapplication">
                         <thead>
-
+                         <th>SL</th>
                         <th>name</th>
                         <th>Phone number</th>
                         <th>Action</th>
 
                         </thead>
                         <tbody>
+                        <?php
+                        $sl=0;
+                        ?>
                         @foreach($getPromoters as $promoters)
                             <tr>
+                                <td>{{str_replace($en,$bn,++$sl)}}</td>
                                 <td>
                                     {{$promoters->name}}
                                 </td>
@@ -185,7 +200,9 @@
                                     {{$promoters->phoneNumber}}
                                 </td>
                                 <td><a href="{{route('promoter.view',$promoters->promotersId)}}" class="btn btn-info btn-sm">View</a>
+                                    @if(Auth::user()->userTypeId=='admin')
                                     <button type="button" class="btn btn-danger btn-sm " onclick="deletePromoter({{$promoters->promotersId}})"><i class="fa fa-trash"></i></button>
+                                    @endif
                                     <button type="button" class="btn btn-default btn-sm"  onclick="printPromoters({{$promoters->promotersId}})"><i class="fa fa-print"></i></button>
 
                                 </td>
@@ -288,7 +305,8 @@
             var id=x;
             var url = "{{ route('pdf.index', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
         }
 
@@ -296,14 +314,15 @@
             var id=x;
             var url = "{{ route('pdf.getAssociate', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
-
+            // document.location.href=url;
+            window.open(url,'_blank');
         }
         function printPromoters(x){
             var id=x;
             var url = "{{ route('pdf.getPromoter', ':id') }}";
             url = url.replace(':id', id);
-            document.location.href=url;
+            // document.location.href=url;
+            window.open(url,'_blank');
 
         }
     </script>

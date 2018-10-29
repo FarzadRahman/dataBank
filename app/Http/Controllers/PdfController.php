@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Associate;
 use App\Candidate;
+use App\Center;
+use App\Constituency;
 use App\Promoter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,7 +33,7 @@ class PdfController extends Controller
 
 
         $pdf = PDF::loadView('pdf.test' ,compact('candidate', 'promoters', 'associates'));
-        return $pdf->download('candidate.pdf');
+        return $pdf->stream('candidate.pdf');
       // return view('pdf.pdf');
     }
 
@@ -42,7 +44,7 @@ class PdfController extends Controller
             ->findOrFail($id);
 
         $pdf = PDF::loadView('pdf.associate' ,compact('associate'));
-        return $pdf->download('associate.pdf');
+        return $pdf->stream('associate.pdf');
 
     }
 
@@ -55,7 +57,23 @@ class PdfController extends Controller
 //        return $associate;
 
         $pdf = PDF::loadView('pdf.promoter' ,compact('associate'));
-        return $pdf->download('associate.pdf');
+        return $pdf->stream('promoter.pdf');
 
+    }
+
+    public function getConstituency($id){
+
+
+
+
+        $center=Center::where('constituencyId',$id)
+            ->get();
+        $candidates=Candidate::where('constituencyId',$id)
+            ->get();
+        $constituency=Constituency::leftJoin('division','division.divisionId','constituency.divisionId')
+            ->findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.constituency' ,compact('constituency','candidates','center'));
+        return $pdf->stream('constituency.pdf');
     }
 }

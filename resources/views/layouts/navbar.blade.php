@@ -19,8 +19,12 @@
                     <ul class="submenu">
                         <li><a href="{{route('candidates.viewAll')}}">All Candidate's</a></li>
                         <li><a href="{{route('division.index')}}">Division's</a></li>
+                        <li><a href="{{route('zilla.index')}}">Zilla</a></li>
+                        <li><a href="{{route('upzilla.index')}}">Upzilla</a></li>
+                        <li><a href="{{route('union.index')}}">Union</a></li>
                         <li><a href="{{route('party.index')}}">Party</a></li>
                         <li><a href="{{route('user.index')}}">User</a></li>
+
                     </ul>
                 </li>
 

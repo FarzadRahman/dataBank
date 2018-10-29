@@ -140,7 +140,8 @@
                     var id=x;
                     var url = "{{ route('pdf.getAssociate', ':id') }}";
                     url = url.replace(':id', id);
-                    document.location.href=url;
+                    // document.location.href=url;
+                    window.open(url,'_blank');
 
                 }
             </script>
