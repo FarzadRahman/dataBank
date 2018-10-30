@@ -41,6 +41,7 @@ class PdfController extends Controller
 //        $id = 1;
         $associate=Associate::select('associates.*','party.partyName')
             ->leftjoin('party','party.partyId','associates.party')
+            ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
             ->findOrFail($id);
 
         $pdf = PDF::loadView('pdf.associate' ,compact('associate'));
@@ -52,9 +53,10 @@ class PdfController extends Controller
 //        $id = 1;
         $associate=Promoter::select('promoters.*','party.partyName')
             ->leftjoin('party','party.partyId','promoters.party')
+            ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
             ->findOrFail($id);
 
-//        return $associate;
+   
 
         $pdf = PDF::loadView('pdf.promoter' ,compact('associate'));
         return $pdf->stream('promoter.pdf');
