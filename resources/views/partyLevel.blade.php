@@ -74,6 +74,7 @@
             <div class="card-body">
                 <button type="button" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus" data-toggle="modal" data-target="#myModal"></i></button>
                 <div class="row">
+
                     <div class=" form-group  col-md-6">
                         <label>Party Level</label>
                         <select id="partyLevel" name="partyLevel" class="form-control">
@@ -84,6 +85,7 @@
 
                         </select>
                     </div>
+
                     <div style="display: none" id="zilaDiv" class="form-group col-md-6">
                         <label>Zila</label>
                         <select id="zila" name="zila" class="form-control">
@@ -94,6 +96,38 @@
 
                         </select>
                     </div>
+
+                    <div style="display: none" id="upZillaDiv" class="form-group col-md-6">
+                        <label>UpZila</label>
+                        <select id="upzilla" name="upzilla" class="form-control">
+                            <option selected value="">Select a Upzila</option>
+                            @foreach($allupZila as $aUZ)
+                                <option value="{{$aUZ->upzillaId}}">{{$aUZ->upzillaName	}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div style="display: none" id="pouroshovaDiv" class="form-group col-md-6">
+                        <label>Pouroshova</label>
+                        <select id="pouroshova" name="pouroshova" class="form-control">
+                            <option selected value="">Select a pouroshova</option>
+                            @foreach($allPouroshova as $aPouroshova)
+                                <option value="{{$aPouroshova->pouroshovaId}}">{{$aPouroshova->pouroshovaName	}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div style="display: none" id="unionDiv" class="form-group col-md-6">
+                        <label>Union</label>
+                        <select id="union" name="union" class="form-control">
+                            <option selected value="">Select a union</option>
+                            @foreach($allUnion as $aunion)
+                                <option value="{{$aunion->unionId}}">{{$aunion->unionName	}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
                     <div style="display: none" id="ListDiv" class="form-group col-md-6">
                         <label>List Type</label>
                         <select id="listType" name="listType" class="form-control">
@@ -172,6 +206,37 @@
                 $("#listType").prop("selectedIndex", 0);
                 $("#zilaDiv").show();
             }
+            if(this.value==4){
+                $("#ListDiv").hide();
+                $("#listType").prop("selectedIndex", 0);
+                $("#zilaDiv").hide();
+                $("#zila").prop("selectedIndex", 0);
+                $("#upZillaDiv").show();
+
+            }
+            if(this.value==5){
+                $("#ListDiv").hide();
+                $("#listType").prop("selectedIndex", 0);
+                $("#zilaDiv").hide();
+                $("#zila").prop("selectedIndex", 0);
+                $("#upZillaDiv").hide();
+                $("#upzilla").prop("selectedIndex", 0);
+                $("#pouroshovaDiv").show();
+
+            }
+            if(this.value==6){
+                $("#ListDiv").hide();
+                $("#listType").prop("selectedIndex", 0);
+                $("#zilaDiv").hide();
+                $("#zila").prop("selectedIndex", 0);
+                $("#upZillaDiv").hide();
+                $("#upzilla").prop("selectedIndex", 0);
+                $("#pouroshovaDiv").hide();
+                $("#pouroshova").prop("selectedIndex", 0);
+                $("#unionDiv").show();
+
+
+            }
 
 
 
@@ -181,25 +246,46 @@
             var partyId="{{$party->partyId}}";
             var partyLevelId=$("#partyLevel").val();
 
+            var data={};
+            data['partyId']=partyId;
+            data['partyLevelId']=partyLevelId;
+            data['listTypeId']=this.value;
+
+            if (partyLevelId==3){
+                data['zilaId']=$("#zila").val();
+            }
+            if (partyLevelId==4){
+                data['upzillaId']=$("#upzilla").val();
+            }
+            if (partyLevelId==5){
+                data['pouroshovaId']=$("#pouroshova").val();
+            }
+            if (partyLevelId==6){
+                data['unionId']=$("#union").val();
+            }
+
+
+
             $.ajax({
                 type:'POST',
                 url:'{{route('getFileDivWithData')}}',
 
-                data:function (d) {
+                {{--data:function (d) {--}}
 
                     {{--d._token = "{{csrf_token()}}";--}}
-                    d.partyId=partyId;
-                    d.partyLevelId=partyLevelId;
-                    d.listTypeId=this.value;
-                    // d.listTypeId=this.value;
+                    {{--d.partyId=partyId;--}}
+                    {{--d.partyLevelId=partyLevelId;--}}
+                    {{--d.listTypeId=this.value;--}}
+                    {{--// d.listTypeId=this.value;--}}
 
-                },
+                {{--},--}}
 
-                {{--data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},--}}
+                data:{_token:"{{csrf_token()}}",Alldata:data},
                 cache: false,
                 success:function(data) {
                     document.getElementById("fileDiv").innerHTML = data;
                     $("#fileDiv").show();
+                  //  console.log(data);
 
 
                 }
@@ -207,6 +293,29 @@
 
         });
         $('#zila').on('change', function() {
+//            var partyLevelId=$("#partyLevel").val();
+//            if (partyLevelId==3){
+                $("#ListDiv").show();
+//            }
+//            if (partyLevelId==4){
+//
+//                $("#upZillaDiv").show();
+//            }
+
+
+
+        });
+        $('#upzilla').on('change', function() {
+
+            $("#ListDiv").show();
+
+        });
+        $('#pouroshova').on('change', function() {
+
+            $("#ListDiv").show();
+
+        });
+        $('#union').on('change', function() {
 
             $("#ListDiv").show();
 

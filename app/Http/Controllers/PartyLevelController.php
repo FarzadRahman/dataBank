@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\ListType;
 use App\Party;
 use App\PartyLevel;
+use App\Pouroshova;
+use App\Union;
+use App\Upzilla;
 use App\Zilla;
 use App\Zillafile;
 use Illuminate\Http\Request;
@@ -18,10 +21,13 @@ class PartyLevelController extends Controller
         $partyLevels=PartyLevel::get();
         $listType=ListType::get();
         $allZila=Zilla::get();
+        $allupZila=Upzilla::get();
+        $allPouroshova=Pouroshova::get();
+        $allUnion=Union::get();
 
 
 
-        return view('partyLevel',compact('partyLevels','party','listType','allZila'));
+        return view('partyLevel',compact('partyLevels','party','listType','allZila','allupZila','allPouroshova','allUnion'));
     }
 
     public function insert(Request $r){
