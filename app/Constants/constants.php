@@ -29,6 +29,12 @@ define('MARITAL_STATUS',array(
     "Divorced"=>'d',
     "Widowed"=>'w',
 ));
+define('LIST_TYPE',array(
+    "main"=>'kendr',
+    "Youth"=>'jubo',
+    "student"=>'chatr',
+    "volunteer"=>'volen',
+));
 
 define('COMPLETING_STATUS',array(
     "OnGoing"=>'1',
