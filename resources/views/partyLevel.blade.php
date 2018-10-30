@@ -2,6 +2,8 @@
 @section('content')
     Committee List <i class="fa fa-angle-double-right"></i> <a href="{{route('party.index')}}">{{$party->partyName}}</a>
     <i class="fa fa-angle-double-right"></i> Party-Level
+
+    <br>
     <div class="modal" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,7 +74,7 @@
                 <h4 align="center">{{$party->partyName}}</h4>
             </div>
             <div class="card-body">
-                <button type="button" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus" data-toggle="modal" data-target="#myModal"></i></button>
+                <button type="button" class="btn btn-sm btn-info pull-right" onclick="addFile()"><i class="fa fa-plus" ></i></button>
                 <div class="row">
                     <div class=" form-group  col-md-6">
                         <label>Party Level</label>
@@ -211,6 +213,22 @@
             $("#ListDiv").show();
 
         });
+
+        function addFile() {
+            var partyId="{{$party->partyId}}";
+            $.ajax({
+                type:'POST',
+                url:'{{route('committeeFile.modal')}}',
+
+                data:{_token:"{{csrf_token()}}",partyId:partyId},
+                cache: false,
+                success:function(data) {
+                   console.log(data);
+
+                }
+            });
+
+        }
 
     </script>
 

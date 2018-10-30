@@ -123,5 +123,9 @@ class ListTypeController extends Controller
 
     }
 
+    public function insertModal(Request $r){
+        return $r;
+    }
+
 
 }
