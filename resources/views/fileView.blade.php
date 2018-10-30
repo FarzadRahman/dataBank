@@ -3,11 +3,20 @@
 
         @if($partyLevels==2)
             <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/mohanogorfiles'."/".$file->image)}}"></iframe>
-        @elseif($partyLevels==1)
+        @elseif($partyLevels ==1)
             <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/jatiofiles'."/".$file->image)}}"></iframe>
 
-        @elseif($partyLevels==3)
+        @elseif($partyLevels == 3)
             <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/zilafiles'."/".$file->image)}}"></iframe>
+
+        @elseif($partyLevels == 4)
+            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/upzilafiles'."/".$file->image)}}"></iframe>
+
+        @elseif($partyLevels == 5)
+            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/pouroshovafies'."/".$file->image)}}"></iframe>
+
+        @elseif($partyLevels == 6)
+            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/unionfies'."/".$file->image)}}"></iframe>
         @endif
 
 </div>
@@ -18,7 +27,16 @@
         <input type="hidden" name="partyId" value="{{$partyId}}">
         <input type="hidden" name="listTypeId" value="{{$listType}}">
         @if($partyLevels==3)
-            <input type="hidden" name="zilaId" value="{{$file->zillaId}}">
+            <input type="hidden" name="zilaId" value="{{$zilaId}}">
+        @endif
+        @if($partyLevels==4)
+            <input type="hidden" name="upZillaId" value="{{$upzillaId}}">
+        @endif
+        @if($partyLevels==5)
+            <input type="hidden" name="pouroshovaFileId" value="{{$pouroshovaId}}">
+        @endif
+        @if($partyLevels==6)
+            <input type="text" name="unionFileId" value="{{$unionId}}">
         @endif
         <div class="form-group col-md-12">
 

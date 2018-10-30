@@ -23,6 +23,8 @@
 
                         <th>name</th>
                         <th>Phone number</th>
+                        <th>Associates</th>
+                        <th>Promoters</th>
                         <th>Action</th>
 
                         </thead>
@@ -70,6 +72,8 @@
                     {data: 'name', name: 'name', "orderable": false, "searchable": true},
 
                     {data: 'phoneNumber', name: 'phoneNumber', "orderable": false, "searchable": true},
+                    {data: 'totalAssociate', name: 'totalAssociate', "orderable": false, "searchable": true},
+                    {data: 'totalPromoters', name: 'totalPromoters', "orderable": false, "searchable": true},
 
 
                     {
