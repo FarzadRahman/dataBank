@@ -14,6 +14,7 @@ use Image;
 class ListTypeController extends Controller
 {
     public function getFileforList(Request $r){
+        return $r;
         $partyId=$r->partyId;
         $partyLevels=$r->partyLevelId;
         $listType=$r->listTypeId;

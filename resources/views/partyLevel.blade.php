@@ -180,24 +180,26 @@
 
             var partyId="{{$party->partyId}}";
             var partyLevelId=$("#partyLevel").val();
+            // console.log(this.value);
 
             $.ajax({
-                type:'POST',
-                url:'{{route('getFileDivWithData')}}',
+                "type":'POST',
+                "url":'{{route('getFileDivWithData')}}',
 
-                data:function (d) {
+                {{--data:function (d) {--}}
 
                     {{--d._token = "{{csrf_token()}}";--}}
-                    d.partyId=partyId;
-                    d.partyLevelId=partyLevelId;
-                    d.listTypeId=this.value;
-                    // d.listTypeId=this.value;
+                    {{--d.partyId=partyId;--}}
+                    {{--d.partyLevelId=partyLevelId;--}}
+                    {{--d.listTypeId=this.value;--}}
+                    {{--// d.listTypeId=this.value;--}}
 
-                },
+                {{--},--}}
 
-                {{--data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},--}}
-                cache: false,
+                data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},
+                {{--cache: false,--}}
                 success:function(data) {
+                    console.log(data);
                     document.getElementById("fileDiv").innerHTML = data;
                     $("#fileDiv").show();
 

@@ -1,5 +1,5 @@
 @extends('main')
-@section('content')
+
 @section('header')
 
     <!-- DataTables -->
@@ -10,6 +10,7 @@
 
 
 @endsection
+@section('content')
     <!-- Button to Open the Modal -->
 
 

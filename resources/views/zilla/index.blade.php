@@ -1,4 +1,16 @@
 @extends('main')
+@section('header')
+
+    <!-- DataTables -->
+    <link href="{{url('assets/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    {{--    <link href="{{url('public/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">--}}
+
+
+@endsection
+
+
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -86,7 +98,7 @@
 
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table id="datatable" class="table table-striped">
                     <thead>
                         <th>Zilla Name</th>
                         <th>Action</th>
@@ -109,7 +121,14 @@
 
 @endsection
 @section('foot-js')
+    <script src="{{url('public/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url('public/assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <!-- Buttons examples -->
+    <script src="{{url('public/assets/plugins/datatables/dataTables.buttons.min.js')}}"></script>
     <script>
+        $(document).ready( function () {
+            dataTable = $('#datatable').DataTable();
+        });
         function editzilla(x) {
             var id=$(x).data('panel-id');
 
