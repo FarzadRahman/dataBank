@@ -86,6 +86,7 @@ class ListTypeController extends Controller
 
 
             $mohanogorFile->listtypeId=$listType;
+            $mohanogorFile->name=$r->uploadDocName;
             $mohanogorFile->partyId=$partyId;
             $mohanogorFile->createdAt=date('Y-m-d H:m:s');
             $mohanogorFile->createdBy=Auth::user()->userId;
@@ -110,6 +111,7 @@ class ListTypeController extends Controller
             $jatio= new JatioFile();
 
             $jatio->listtypeId=$listType;
+            $jatio->name=$r->uploadDocName;
             $jatio->partyId=$partyId;
             $jatio->createdAt=date('Y-m-d H:m:s');
             $jatio->createdBy=Auth::user()->userId;
@@ -135,6 +137,7 @@ class ListTypeController extends Controller
             $zila= new Zillafile();
 
             $zila->listtypeId=$listType;
+            $zila->name=$r->uploadDocName;
             $zila->zillaId=$zilaId;
             $zila->partyId=$partyId;
             $zila->createdAt=date('Y-m-d H:m:s');
@@ -161,6 +164,7 @@ class ListTypeController extends Controller
             $upZzila= new Upzillafile();
 
             $upZzila->listtype_listtypeId=$listType;
+            $upZzila->name=$r->uploadDocName;
             $upZzila->upzilla_upzillaId=$upZilaId;
             $upZzila->party_partyId=$partyId;
             $upZzila->createdAt=date('Y-m-d H:m:s');
@@ -187,6 +191,7 @@ class ListTypeController extends Controller
             $pouroshovaFile= new Pouroshovafile();
 
             $pouroshovaFile->isttypeId=$listType;
+            $pouroshovaFile->name=$r->uploadDocName;
             $pouroshovaFile->pouroshovaId=$pouroshovaFileId;
             $pouroshovaFile->partyId=$partyId;
             $pouroshovaFile->createdAt=date('Y-m-d H:m:s');
@@ -213,6 +218,7 @@ class ListTypeController extends Controller
             $unionFile= new Unionfile();
 
             $unionFile->listtypeId=$listType;
+            $unionFile->name=$r->uploadDocName;
             $unionFile->unionId=$unionIdId;
             $unionFile->partyId=$partyId;
             $unionFile->createdAt=date('Y-m-d H:m:s');

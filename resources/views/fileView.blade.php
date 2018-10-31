@@ -14,7 +14,7 @@
 
          @foreach($file as $f)
              <tr>
-             <td>Name</td>
+             <td>{{$f->name}}</td>
              <td><a href="{{url('public/mohanogorfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
              </tr>
          @endforeach
@@ -23,7 +23,7 @@
 
             @foreach($file as $f)
                 <tr>
-                <td>Name</td>
+                <td>{{$f->name}}</td>
                 <td><a href="{{url('public/jatiofiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
                 <tr>
             @endforeach
@@ -32,7 +32,7 @@
 
             @foreach($file as $f)
                 <tr>
-                <td>Name</td>
+                <td>{{$f->name}}</td>
                 <td><a href="{{url('public/zilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
                 <tr>
                     @endforeach
@@ -41,7 +41,7 @@
 
             @foreach($file as $f)
                 <tr>
-                <td>Name</td>
+                <td>{{$f->name}}</td>
                 <td><a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
                 <tr>
                     @endforeach
@@ -50,7 +50,7 @@
 
             @foreach($file as $f)
                 <tr>
-                <td>Name</td>
+                <td>{{$f->name}}</td>
                 <td><a href="{{url('public/pouroshovafies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
                 <tr>
                     @endforeach
@@ -58,7 +58,7 @@
             {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
             @foreach($file as $f)
                 <tr>
-                <td>Name</td>
+                <td>{{$f->name}}</td>
                 <td><a href="{{url('public/unionfies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
                 <tr>
             @endforeach
@@ -86,18 +86,31 @@
         @if($partyLevels==6)
             <input type="text" name="unionFileId" value="{{$unionId}}">
         @endif
-        <div class="form-group col-md-12">
+        <div class="row">
 
-            <label class="col-md-2">Upload</label>
-            <input type="file" id="uploadDoc" name="uploadDoc" accept="*" placeholder="Document" class="form-control col-md-8" />
+            <div class="col-md-6">
 
+                <label class="col-md-2">Name</label>
+                <input type="text" id="uploadDocName" name="uploadDocName"  class="form-control col-md-8" />
+
+            </div>
+            <div class="col-md-6">
+
+                <label class="col-md-2">Upload</label>
+                <input type="file" id="uploadDoc" name="uploadDoc" accept="*" placeholder="Document" class="form-control col-md-8" />
+
+
+            </div>
+
+            <div class="col-md-12">
+                <button class="btn btn-success">Submit</button>
+            </div>
 
         </div>
 
 
-        <div class="form-group col-sm-12">
-            <button class="btn btn-success">Submit</button>
-        </div>
+
+
 
 
     </form>
