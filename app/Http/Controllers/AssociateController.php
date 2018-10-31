@@ -70,7 +70,7 @@ class AssociateController extends Controller
         }
         $associates->save();
 
-        if ($r->associateForm == "1"){
+//        if ($r->associateForm == "1"){
 
 
             $associates->dob=$r->dob;
@@ -81,7 +81,7 @@ class AssociateController extends Controller
 
 
 
-        }elseif ($r->associateForm == "2"){
+//        }elseif ($r->associateForm == "2"){
 
 
 
@@ -96,7 +96,7 @@ class AssociateController extends Controller
 
 
 
-        }
+//        }
         $associates->save();
 
 
@@ -142,7 +142,7 @@ class AssociateController extends Controller
         $associates->phoneNumber=$r->phoneNumber;
         $associates->party=$r->party;
         $associates->remark=$r->remark;
-        $associates->profile=null;
+//        $associates->profile=null;
 //            $associates->candidateId=$r->candidateId;
         $associates->updatedAt=date('Y-m-d H:m:s');
         $associates->updatedAt=Auth::user()->userId;
@@ -161,7 +161,7 @@ class AssociateController extends Controller
         $associates->save();
 
 
-        if ($r->associateForm == "1"){
+//        if ($r->associateForm == "1"){
 
             $associates->dob=$r->dob;
             $associates->gender=$r->gender;
@@ -170,7 +170,7 @@ class AssociateController extends Controller
             $associates->address=$r->address;
 
 
-        }elseif ($r->associateForm == "2"){
+//        }elseif ($r->associateForm == "2"){
 
 
 
@@ -185,7 +185,7 @@ class AssociateController extends Controller
 
 
 
-        }
+//        }
 
         $associates->save();
 
