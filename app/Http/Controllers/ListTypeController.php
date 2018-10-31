@@ -78,6 +78,12 @@ class ListTypeController extends Controller
         $partyLevels=$r->partyLevelId;
         $listType=$r->listTypeId;
 
+        $sendData=array(
+            'partyId'=>$partyId,
+            'partyLevels'=>$partyLevels,
+            'listType'=>$listType,
+        );
+
 
 
         if ($partyLevels== 2){
@@ -132,6 +138,10 @@ class ListTypeController extends Controller
         }
         elseif ($partyLevels== 3){
 
+            $newArray=array('zilaId'=>$r->zilaId);
+
+            $sendData=array_push($sendData,$newArray);
+
             $zilaId=$r->zilaId;
 
             $zila= new Zillafile();
@@ -158,6 +168,10 @@ class ListTypeController extends Controller
 
         }
         elseif ($partyLevels== 4){
+
+            $newArray=array('upzilaId'=>$r->upZillaId);
+
+            $sendData=array_push($sendData,$newArray);
 
             $upZilaId=$r->upZillaId;
 
@@ -186,6 +200,10 @@ class ListTypeController extends Controller
         }
         elseif ($partyLevels== 5){
 
+            $newArray=array('pouroshovaFileId'=>$r->pouroshovaFileId);
+
+            $sendData=array_push($sendData,$newArray);
+
             $pouroshovaFileId=$r->pouroshovaFileId;
 
             $pouroshovaFile= new Pouroshovafile();
@@ -212,6 +230,10 @@ class ListTypeController extends Controller
 
         }
         elseif ($partyLevels== 6){
+
+            $newArray=array('unionIdId'=>$r->unionFileId);
+
+            $sendData=array_push($sendData,$newArray);
 
             $unionIdId=$r->unionFileId;
 
@@ -240,7 +262,9 @@ class ListTypeController extends Controller
         }
         Session::flash('message', 'File Added Successfully!');
 
-        return back();
+        //return $sendData;
+
+        return back()->with('data',$sendData);
 
     }
 
