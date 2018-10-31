@@ -29,7 +29,7 @@ class ListTypeController extends Controller
         if ($partyLevels == 3){
 
             $zilaId=$r->Alldata['zilaId'];
-            $file=Zillafile::where('zillaId',$zilaId)->where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=Zillafile::where('zillaId',$zilaId)->where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','zilaId'));
 
 
@@ -37,7 +37,7 @@ class ListTypeController extends Controller
         if ($partyLevels == 4){
 
             $upzillaId=$r->Alldata['upzillaId'];
-            $file=Upzillafile::where('upzilla_upzillaId',$upzillaId)->where('party_partyId',$partyId)->where('listtype_listtypeId',$listType)->first();
+            $file=Upzillafile::where('upzilla_upzillaId',$upzillaId)->where('party_partyId',$partyId)->where('listtype_listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','upzillaId'));
 
 
@@ -45,7 +45,7 @@ class ListTypeController extends Controller
         if ($partyLevels == 5){
 
             $pouroshovaId=$r->Alldata['pouroshovaId'];
-            $file=Pouroshovafile::where('pouroshovaId',$pouroshovaId)->where('partyId',$partyId)->where('isttypeId',$listType)->first();
+            $file=Pouroshovafile::where('pouroshovaId',$pouroshovaId)->where('partyId',$partyId)->where('isttypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','pouroshovaId'));
 
 
@@ -53,18 +53,18 @@ class ListTypeController extends Controller
         if ($partyLevels == 6){
 
             $unionId=$r->Alldata['unionId'];
-            $file=Unionfile::where('unionId',$unionId)->where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=Unionfile::where('unionId',$unionId)->where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','unionId'));
 
 
         }
 
         if ($partyLevels== 2){
-            $file=MohanogorFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=MohanogorFile::where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file'));
         }
         if ($partyLevels== 1){
-            $file=JatioFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=JatioFile::where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file'));
         }
 

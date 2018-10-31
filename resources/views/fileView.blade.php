@@ -1,26 +1,74 @@
-@if($file)
-<div align="center" class="embed-responsive embed-responsive-4by3">
 
-        @if($partyLevels==2)
-            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/mohanogorfiles'."/".$file->image)}}"></iframe>
-        @elseif($partyLevels ==1)
-            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/jatiofiles'."/".$file->image)}}"></iframe>
+<div align="center" class="table-responsive">
+    {{--{{$file}}<br>--}}
+    {{--{{$partyLevels}}--}}
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
 
-        @elseif($partyLevels == 3)
-            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/zilafiles'."/".$file->image)}}"></iframe>
+     @if($partyLevels==2)
 
-        @elseif($partyLevels == 4)
-            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/upzilafiles'."/".$file->image)}}"></iframe>
 
-        @elseif($partyLevels == 5)
-            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/pouroshovafies'."/".$file->image)}}"></iframe>
+         @foreach($file as $f)
+             <tr>
+             <td>Name</td>
+             <td><a href="{{url('public/mohanogorfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+             </tr>
+         @endforeach
+    @elseif($partyLevels ==1)
+            {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
 
-        @elseif($partyLevels == 6)
-            <iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src="{{url('public/unionfies'."/".$file->image)}}"></iframe>
-        @endif
+            @foreach($file as $f)
+                <tr>
+                <td>Name</td>
+                <td><a href="{{url('public/jatiofiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                <tr>
+            @endforeach
+     @elseif($partyLevels == 3)
+            {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
+
+            @foreach($file as $f)
+                <tr>
+                <td>Name</td>
+                <td><a href="{{url('public/zilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                <tr>
+                    @endforeach
+     @elseif($partyLevels == 4)
+            {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
+
+            @foreach($file as $f)
+                <tr>
+                <td>Name</td>
+                <td><a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                <tr>
+                    @endforeach
+     @elseif($partyLevels == 5)
+            {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
+
+            @foreach($file as $f)
+                <tr>
+                <td>Name</td>
+                <td><a href="{{url('public/pouroshovafies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                <tr>
+                    @endforeach
+     @elseif($partyLevels == 6)
+            {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
+            @foreach($file as $f)
+                <tr>
+                <td>Name</td>
+                <td><a href="{{url('public/unionfies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                <tr>
+            @endforeach
+     @endif
+        </tbody>
+    </table>
+    <hr>
 
 </div>
-@else
+
     <form method="post" enctype="multipart/form-data" action="{{route('files.add')}}" accept-charset="utf-8">
         {{csrf_field()}}
         <input type="hidden" name="partyLevelId" value="{{$partyLevels}}">
@@ -53,4 +101,3 @@
 
 
     </form>
-@endif
