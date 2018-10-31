@@ -209,6 +209,17 @@
                 var partyLevel= "{{ Session::get('partyLevels') }}";
                 var listType="{{ Session::get('listType') }}";
                 $('#partyLevel').val(partyLevel);
+                // paremeter
+                var data={};
+                var partyId="{{$party->partyId}}";
+                data['partyId']=partyId;
+                data['partyLevelId']=partyLevel;
+                data['listTypeId']=listType;
+
+
+
+
+
 
 
 
@@ -230,6 +241,8 @@
                     $("#zilaDiv").show();
                     $('#zila').val(zillaId);
 
+                    data['zilaId']=zillaId;
+
                 }
                 else if(partyLevel==4){
                     var upzilaId="{{ Session::get('upzilaId') }}";
@@ -238,6 +251,8 @@
 
                     $("#upZillaDiv").show();
                     $('#upzilla').val(upzilaId);
+
+                    data['upzillaId']=upzilaId;
                 }
                 else if(partyLevel==5){
                     var pouroshovaId="{{ Session::get('pouroshovaId') }}";
@@ -246,6 +261,8 @@
 
                     $("#pouroshovaDiv").show();
                     $('#pouroshova').val(pouroshovaId);
+
+                    data['pouroshovaId']=pouroshovaId;
                 }
                 else if(partyLevel==6){
                     var unionId="{{ Session::get('unionId') }}";
@@ -254,7 +271,21 @@
 
                     $("#unionDiv").show();
                     $('#union').val(unionId);
+
+
+                    data['unionId']=unionId;
                 }
+
+            $.ajax({
+                type: 'POST',
+                url: '{{route('getFileDivWithData')}}',
+                data: {_token: "{{csrf_token()}}", Alldata: data},
+                cache: false,
+                success: function (data) {
+                    document.getElementById("fileDiv").innerHTML = data;
+                    $("#fileDiv").show();
+                }
+            });
 
 
             @endif
