@@ -199,6 +199,7 @@ class ListTypeController extends Controller
             }
             $upZzila->save();
 
+
             Session::flash('upzilaId',$upZilaId);
 
         }
@@ -266,6 +267,7 @@ class ListTypeController extends Controller
             Session::flash('unionId',$unionIdId);
 
         }
+        Session::flash('listType',$listType);
         Session::flash('partyLevels',$partyLevels);
         Session::flash('message', 'File Added Successfully!');
 

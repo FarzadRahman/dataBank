@@ -94,8 +94,7 @@
 
                     <div style="display: none" id="zilaDiv" class="form-group col-md-6">
                         <label>Zila</label>
-                        <br>
-                        <select id="zila" name="zila" placeholder="Select a Zila" data-search="true" style="width: 160%" >
+                        <select id="zila" name="zila"  class="form-control" >
                             <option selected value="">Select a Zila</option>
                             @foreach($allZila as $aZ)
                                 <option value="{{$aZ->zillaId}}">{{$aZ->zillaName}}</option>
@@ -106,8 +105,8 @@
 
                     <div style="display: none" id="upZillaDiv" class="form-group col-md-6">
                         <label>UpZila</label>
-                        <br>
-                        <select id="upzilla" name="upzilla" class="form-control" placeholder="Select a Upzila" data-search="true" style="width: 160%">
+
+                        <select id="upzilla" name="upzilla" class="form-control" class="form-control">
                             <option selected value="">Select a Upzila</option>
                             @foreach($allupZila as $aUZ)
                                 <option value="{{$aUZ->upzillaId}}">{{$aUZ->upzillaName	}}</option>
@@ -117,8 +116,8 @@
                     </div>
                     <div style="display: none" id="pouroshovaDiv" class="form-group col-md-6">
                         <label>Pouroshova</label>
-                        <br>
-                        <select id="pouroshova" name="pouroshova" class="form-control" placeholder="Select a pouroshova" data-search="true" style="width: 160%">
+
+                        <select id="pouroshova" name="pouroshova" class="form-control">
                             <option selected value="">Select a pouroshova</option>
                             @foreach($allPouroshova as $aPouroshova)
                                 <option value="{{$aPouroshova->pouroshovaId}}">{{$aPouroshova->pouroshovaName	}}</option>
@@ -128,8 +127,7 @@
                     </div>
                     <div style="display: none" id="unionDiv" class="form-group col-md-6">
                         <label>Union</label>
-                        <br>
-                        <select id="union" name="union" class="form-control"  placeholder="Select a union" data-search="true" style="width: 160%">
+                        <select id="union" name="union" class="form-control" >
                             <option selected value="">Select a union</option>
                             @foreach($allUnion as $aunion)
                                 <option value="{{$aunion->unionId}}">{{$aunion->unionName	}}</option>
@@ -177,33 +175,92 @@
             // $('#zila').select2({
             //     onchange : function(val){}
             // });
-            $('#zila').selectstyle({
-                width  : 400,
-                height : 300,
-                theme  : 'light',
-                onchange : function(val){}
-            });
-            $('#upzilla').selectstyle({
-                width  : 400,
-                height : 300,
-                theme  : 'light',
-                onchange : function(val){}
-            });
-            $('#pouroshova').selectstyle({
-                width  : 400,
-                height : 300,
-                theme  : 'light',
-                onchange : function(val){}
-            });
-            $('#union').selectstyle({
-                width  : 400,
-                height : 300,
-                theme  : 'light',
-                onchange : function(val){}
-            });
+            // $('#zila').selectstyle({
+            //     width  : 400,
+            //     height : 300,
+            //     theme  : 'light',
+            //     onchange : function(val){}
+            // });
+            // $('#upzilla').selectstyle({
+            //     width  : 400,
+            //     height : 300,
+            //     theme  : 'light',
+            //     onchange : function(val){}
+            // });
+            // $('#pouroshova').selectstyle({
+            //     width  : 400,
+            //     height : 300,
+            //     theme  : 'light',
+            //     onchange : function(val){}
+            // });
+            // $('#union').selectstyle({
+            //     width  : 400,
+            //     height : 300,
+            //     theme  : 'light',
+            //     onchange : function(val){}
+            // });
 
 
         });
+
+        jQuery(document).ready(function($) {
+
+            @if(Session::has('partyLevels'))
+                var partyLevel= "{{ Session::get('partyLevels') }}";
+                var listType="{{ Session::get('listType') }}";
+                $('#partyLevel').val(partyLevel);
+
+
+
+                if(partyLevel==1){
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+
+                }
+
+                else if(partyLevel==2){
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+                }
+                else if(partyLevel==3){
+                    var zillaId="{{ Session::get('zillaId') }}";
+
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+                    $("#zilaDiv").show();
+                    $('#zila').val(zillaId);
+
+                }
+                else if(partyLevel==4){
+                    var upzilaId="{{ Session::get('upzilaId') }}";
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+
+                    $("#upZillaDiv").show();
+                    $('#upzilla').val(upzilaId);
+                }
+                else if(partyLevel==5){
+                    var pouroshovaId="{{ Session::get('pouroshovaId') }}";
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+
+                    $("#pouroshovaDiv").show();
+                    $('#pouroshova').val(pouroshovaId);
+                }
+                else if(partyLevel==6){
+                    var unionId="{{ Session::get('unionId') }}";
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+
+                    $("#unionDiv").show();
+                    $('#union').val(unionId);
+                }
+
+
+            @endif
+
+        });
+
         function editPartyLevel(x) {
             var id=$(x).data('panel-id');
 
@@ -348,6 +405,7 @@
 
         });
         $('#zila').on('change', function() {
+
             $("#ListDiv").show();
         });
         $('#upzilla').on('change', function() {
