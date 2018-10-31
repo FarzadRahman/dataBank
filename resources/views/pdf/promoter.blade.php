@@ -112,7 +112,49 @@
         </table>
 
 
-        @if($associate->profile!=null)
+
+
+
+        <table border="0" style="width:100%; margin-top: 25px; border: none;">
+            <tr>
+                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>নির্বাচনক্ষেত্র তথ্য</b> </td>
+            </tr>
+        </table>
+
+        <table border="0" style="width:100%; margin-top: 10px; border: none;">
+
+            <tr>
+                <td  style="border: none;width: 50%;">
+                    <h2>নির্বাচনক্ষেত্র নাম: {{$associate->constituencyName}}</h2>
+                </td>
+
+
+                <td  style="border: none;width: 50%;">
+                    <h2>প্রার্থী নাম: {{$associate->candidateName}}</h2>
+                </td>
+            </tr>
+
+            <tr>
+                <td  style="border: none;width: 50%;">
+                    <h2>নির্বাচনক্ষেত্র নাম: {{$associate->divisionName}}</h2>
+                </td>
+
+
+                <td  style="border: none;width: 50%;">
+
+                </td>
+            </tr>
+
+
+
+
+        </table>
+
+
+
+
+
+    @if($associate->profile!=null)
             <img height="900px" width="100%" src="{{url('public/promoter/profileDoc').'/'.$associate->profile}}" alt="">
             <p style="page-break-after: always"></p>
         @endif
