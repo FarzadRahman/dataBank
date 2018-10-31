@@ -200,6 +200,12 @@
                 $("#ListDiv").show();
                 $("#zilaDiv").hide();
                 $("#zila").prop("selectedIndex", 0);
+                $("#upZillaDiv").hide();
+                $("#upzilla").prop("selectedIndex", 0);
+                $("#pouroshovaDiv").hide();
+                $("#pouroshova").prop("selectedIndex", 0);
+                $("#unionDiv").hide();
+                $("#union").prop("selectedIndex", 0);
 
 
             }
