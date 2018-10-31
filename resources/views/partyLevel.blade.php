@@ -3,9 +3,11 @@
     <link href="{{url('public/src/selectstyle.css')}}" rel="stylesheet" type="text/css">
 @endsection
 @section('content')
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
     Committee List <i class="fa fa-angle-double-right"></i> <a href="{{route('party.index')}}">{{$party->partyName}}</a>
     <i class="fa fa-angle-double-right"></i> Party-Level
 
+    <br>
     <br>
     <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -77,7 +79,6 @@
                 <h4 align="center">{{$party->partyName}}</h4>
             </div>
             <div class="card-body">
-                <button type="button" class="btn btn-sm btn-info pull-right" onclick="addFile()"><i class="fa fa-plus" ></i></button>
                 <div class="row">
 
                     <div class=" form-group  col-md-6">
@@ -94,7 +95,7 @@
                     <div style="display: none" id="zilaDiv" class="form-group col-md-6">
                         <label>Zila</label>
                         <br>
-                        <select id="zila" name="zila" class="form-control col-sm-12" placeholder="Select a Zila" data-search="true" style="width: 160%" >
+                        <select id="zila" name="zila" placeholder="Select a Zila" data-search="true" style="width: 160%" >
                             <option selected value="">Select a Zila</option>
                             @foreach($allZila as $aZ)
                                 <option value="{{$aZ->zillaId}}">{{$aZ->zillaName}}</option>
@@ -272,7 +273,7 @@
 
                 $("#unionDiv").hide();
                 $("#pouroshovaDiv").hide();
-                
+
                 $("#upZillaDiv").show();
 
             }
@@ -336,32 +337,18 @@
                 $.ajax({
                     type: 'POST',
                     url: '{{route('getFileDivWithData')}}',
-
                     data: {_token: "{{csrf_token()}}", Alldata: data},
                     cache: false,
                     success: function (data) {
                         document.getElementById("fileDiv").innerHTML = data;
                         $("#fileDiv").show();
-                        //  console.log(data);
-
-
                     }
                 });
             }
 
         });
         $('#zila').on('change', function() {
-//            var partyLevelId=$("#partyLevel").val();
-//            if (partyLevelId==3){
             $("#ListDiv").show();
-//            }
-//            if (partyLevelId==4){
-//
-//                $("#upZillaDiv").show();
-//            }
-
-
-
         });
         $('#upzilla').on('change', function() {
 

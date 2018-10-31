@@ -166,6 +166,8 @@ class ListTypeController extends Controller
             }
             $zila->save();
 
+            Session::flash('zillaId',$zilaId);
+
         }
         elseif ($partyLevels== 4){
 
@@ -197,6 +199,8 @@ class ListTypeController extends Controller
             }
             $upZzila->save();
 
+            Session::flash('upzilaId',$upZilaId);
+
         }
         elseif ($partyLevels== 5){
 
@@ -227,6 +231,7 @@ class ListTypeController extends Controller
 
             }
             $pouroshovaFile->save();
+            Session::flash('pouroshovaId',$pouroshovaFileId);
 
         }
         elseif ($partyLevels== 6){
@@ -258,8 +263,10 @@ class ListTypeController extends Controller
 
             }
             $unionFile->save();
+            Session::flash('unionId',$unionIdId);
 
         }
+        Session::flash('partyLevels',$partyLevels);
         Session::flash('message', 'File Added Successfully!');
 
         //return $sendData;
