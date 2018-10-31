@@ -84,7 +84,7 @@
             <input type="hidden" name="pouroshovaFileId" value="{{$pouroshovaId}}">
         @endif
         @if($partyLevels==6)
-            <input type="text" name="unionFileId" value="{{$unionId}}">
+            <input type="hidden" name="unionFileId" value="{{$unionId}}">
         @endif
         <div class="row">
 

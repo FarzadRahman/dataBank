@@ -142,6 +142,11 @@
                     </div>
 
                 </div>
+                @if (session('data'))
+                    <div class="alert alert-success">
+                        {{session('data["partyLevels"]')}}
+                    </div>
+                @endif
                 <hr>
 
                 <div style="display: none" class="card" align="center"  id="fileDiv">
@@ -279,16 +284,6 @@
                 type:'POST',
                 url:'{{route('getFileDivWithData')}}',
 
-                {{--data:function (d) {--}}
-
-                    {{--d._token = "{{csrf_token()}}";--}}
-                    {{--d.partyId=partyId;--}}
-                    {{--d.partyLevelId=partyLevelId;--}}
-                    {{--d.listTypeId=this.value;--}}
-                    {{--// d.listTypeId=this.value;--}}
-
-                {{--},--}}
-
                 data:{_token:"{{csrf_token()}}",Alldata:data},
                 cache: false,
                 success:function(data) {
@@ -345,6 +340,16 @@
             });
 
         }
+
+        {{--$(document).ready(function(){--}}
+            {{--if('{{session()->get('data')}}'){--}}
+
+                {{--$("#partyLevel").val("{{session()->get('data["partyLevels"]')}}");--}}
+
+
+            {{--}--}}
+
+        {{--});--}}
 
     </script>
 
