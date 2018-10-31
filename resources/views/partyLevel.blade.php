@@ -194,6 +194,7 @@
         $('#partyLevel').on('change', function() {
 
             var partyId="{{$party->partyId}}";
+            $("#fileDiv").hide();
 
             if (this.value==2 || this.value==1){
 
