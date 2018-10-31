@@ -17,13 +17,6 @@ use Image;
 class ListTypeController extends Controller
 {
     public function getFileforList(Request $r){
-<<<<<<< HEAD
-        return $r;
-        $partyId=$r->partyId;
-        $partyLevels=$r->partyLevelId;
-        $listType=$r->listTypeId;
-        if ($r->zillaId){
-=======
 
         //return $r->Alldata;
 
@@ -55,7 +48,6 @@ class ListTypeController extends Controller
             $file=Pouroshovafile::where('pouroshovaId',$pouroshovaId)->where('partyId',$partyId)->where('isttypeId',$listType)->first();
             return view('fileView',compact('partyId','partyLevels','listType','file','pouroshovaId'));
 
->>>>>>> 60d5b35fc38d1839e94eba2f73119faafb4d65c8
 
         }
         if ($partyLevels == 6){
@@ -247,7 +239,8 @@ class ListTypeController extends Controller
     }
 
     public function insertModal(Request $r){
-        return $r;
+
+        return view('test');
     }
 
 

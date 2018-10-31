@@ -194,6 +194,7 @@
         $('#partyLevel').on('change', function() {
 
             var partyId="{{$party->partyId}}";
+            $("#fileDiv").hide();
 
             if (this.value==2 || this.value==1){
 
@@ -273,28 +274,15 @@
                 "type":'POST',
                 "url":'{{route('getFileDivWithData')}}',
 
-                {{--data:function (d) {--}}
-
-                    {{--d._token = "{{csrf_token()}}";--}}
-                    {{--d.partyId=partyId;--}}
-                    {{--d.partyLevelId=partyLevelId;--}}
-                    {{--d.listTypeId=this.value;--}}
-                    {{--// d.listTypeId=this.value;--}}
-
-                {{--},--}}
-
-<<<<<<< HEAD
                 data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},
-                {{--cache: false,--}}
-=======
+
                 data:{_token:"{{csrf_token()}}",Alldata:data},
                 cache: false,
->>>>>>> 60d5b35fc38d1839e94eba2f73119faafb4d65c8
+
                 success:function(data) {
                     console.log(data);
                     document.getElementById("fileDiv").innerHTML = data;
                     $("#fileDiv").show();
-                  //  console.log(data);
 
 
                 }
@@ -345,6 +333,8 @@
             });
 
         }
+
+
 
     </script>
 

@@ -140,7 +140,7 @@ Route::get('party/level/list','ListTypeController@index')->name('list.index');
 Route::post('List-File','ListTypeController@getFileforList')->name('getFileDivWithData');
 Route::post('List-File/add','ListTypeController@insert')->name('files.add');
 
-Route::post('committeeFile/modal','ListTypeController@insertModal')->name('committeeFile.modal');
+Route::get('committeeFile/modal','ListTypeController@insertModal')->name('committeeFile.modal');
 
 
 //=====================User=========================================

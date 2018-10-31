@@ -21,7 +21,7 @@
 
 </div>
 @else
-    <form method="post" enctype="multipart/form-data" action="{{route('files.add')}}" accept-charset="utf-8">
+    <form method="post"  id="form" enctype="multipart/form-data" action="{{route('files.add')}}" accept-charset="utf-8">
         {{csrf_field()}}
         <input type="hidden" name="partyLevelId" value="{{$partyLevels}}">
         <input type="hidden" name="partyId" value="{{$partyId}}">
@@ -53,4 +53,11 @@
 
 
     </form>
+
+
+    {{--<iframe src="{{route('committeeFile.modal')}}">--}}
+
+    {{--</iframe>--}}
+
 @endif
+
