@@ -1,4 +1,7 @@
 @extends('main')
+@section('header')
+    <link href="{{url('public/src/selectstyle.css')}}" rel="stylesheet" type="text/css">
+@endsection
 @section('content')
     Committee List <i class="fa fa-angle-double-right"></i> <a href="{{route('party.index')}}">{{$party->partyName}}</a>
     <i class="fa fa-angle-double-right"></i> Party-Level
@@ -90,7 +93,8 @@
 
                     <div style="display: none" id="zilaDiv" class="form-group col-md-6">
                         <label>Zila</label>
-                        <select id="zila" name="zila" class="form-control">
+                        <br>
+                        <select id="zila" name="zila" class="form-control col-sm-12" placeholder="Select a Zila" data-search="true" style="width: 160%" >
                             <option selected value="">Select a Zila</option>
                             @foreach($allZila as $aZ)
                                 <option value="{{$aZ->zillaId}}">{{$aZ->zillaName}}</option>
@@ -101,7 +105,8 @@
 
                     <div style="display: none" id="upZillaDiv" class="form-group col-md-6">
                         <label>UpZila</label>
-                        <select id="upzilla" name="upzilla" class="form-control">
+                        <br>
+                        <select id="upzilla" name="upzilla" class="form-control" placeholder="Select a Upzila" data-search="true" style="width: 160%">
                             <option selected value="">Select a Upzila</option>
                             @foreach($allupZila as $aUZ)
                                 <option value="{{$aUZ->upzillaId}}">{{$aUZ->upzillaName	}}</option>
@@ -111,7 +116,8 @@
                     </div>
                     <div style="display: none" id="pouroshovaDiv" class="form-group col-md-6">
                         <label>Pouroshova</label>
-                        <select id="pouroshova" name="pouroshova" class="form-control">
+                        <br>
+                        <select id="pouroshova" name="pouroshova" class="form-control" placeholder="Select a pouroshova" data-search="true" style="width: 160%">
                             <option selected value="">Select a pouroshova</option>
                             @foreach($allPouroshova as $aPouroshova)
                                 <option value="{{$aPouroshova->pouroshovaId}}">{{$aPouroshova->pouroshovaName	}}</option>
@@ -121,7 +127,8 @@
                     </div>
                     <div style="display: none" id="unionDiv" class="form-group col-md-6">
                         <label>Union</label>
-                        <select id="union" name="union" class="form-control">
+                        <br>
+                        <select id="union" name="union" class="form-control"  placeholder="Select a union" data-search="true" style="width: 160%">
                             <option selected value="">Select a union</option>
                             @foreach($allUnion as $aunion)
                                 <option value="{{$aunion->unionId}}">{{$aunion->unionName	}}</option>
@@ -162,8 +169,40 @@
 
 @endsection
 @section('foot-js')
+    <script src="{{url('public/src/selectstyle.js')}}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
+        jQuery(document).ready(function($) {
+            // $('#zila').select2({
+            //     onchange : function(val){}
+            // });
+            $('#zila').selectstyle({
+                width  : 400,
+                height : 300,
+                theme  : 'light',
+                onchange : function(val){}
+            });
+            $('#upzilla').selectstyle({
+                width  : 400,
+                height : 300,
+                theme  : 'light',
+                onchange : function(val){}
+            });
+            $('#pouroshova').selectstyle({
+                width  : 400,
+                height : 300,
+                theme  : 'light',
+                onchange : function(val){}
+            });
+            $('#union').selectstyle({
+                width  : 400,
+                height : 300,
+                theme  : 'light',
+                onchange : function(val){}
+            });
+
+
+        });
         function editPartyLevel(x) {
             var id=$(x).data('panel-id');
 
@@ -218,6 +257,11 @@
             if(this.value==3){
                 $("#ListDiv").hide();
                 $("#listType").prop("selectedIndex", 0);
+
+                $("#unionDiv").hide();
+                $("#pouroshovaDiv").hide();
+                $("#upZillaDiv").hide();
+
                 $("#zilaDiv").show();
             }
             if(this.value==4){
@@ -225,6 +269,10 @@
                 $("#listType").prop("selectedIndex", 0);
                 $("#zilaDiv").hide();
                 $("#zila").prop("selectedIndex", 0);
+
+                $("#unionDiv").hide();
+                $("#pouroshovaDiv").hide();
+                
                 $("#upZillaDiv").show();
 
             }
@@ -235,6 +283,7 @@
                 $("#zila").prop("selectedIndex", 0);
                 $("#upZillaDiv").hide();
                 $("#upzilla").prop("selectedIndex", 0);
+                $("#unionDiv").hide();
                 $("#pouroshovaDiv").show();
 
             }
