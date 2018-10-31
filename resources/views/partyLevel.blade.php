@@ -142,6 +142,11 @@
                     </div>
 
                 </div>
+                @if (session('data'))
+                    <div class="alert alert-success">
+                        {{session('data["partyLevels"]')}}
+                    </div>
+                @endif
                 <hr>
 
                 <div style="display: none" class="card" align="center"  id="fileDiv">
@@ -201,6 +206,12 @@
                 $("#ListDiv").show();
                 $("#zilaDiv").hide();
                 $("#zila").prop("selectedIndex", 0);
+                $("#upZillaDiv").hide();
+                $("#upzilla").prop("selectedIndex", 0);
+                $("#pouroshovaDiv").hide();
+                $("#pouroshova").prop("selectedIndex", 0);
+                $("#unionDiv").hide();
+                $("#union").prop("selectedIndex", 0);
 
 
             }
@@ -248,7 +259,6 @@
 
             var partyId="{{$party->partyId}}";
             var partyLevelId=$("#partyLevel").val();
-            // console.log(this.value);
 
             var data={};
             data['partyId']=partyId;
@@ -270,29 +280,31 @@
 
 
 
-            $.ajax({
-                "type":'POST',
-                "url":'{{route('getFileDivWithData')}}',
+            if($('#listType').val()==""){
+                $("#fileDiv").hide();
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('getFileDivWithData')}}',
 
-                data:{_token:"{{csrf_token()}}",partyId:partyId,partyLevelId:partyLevelId,listTypeId:this.value},
-
-                data:{_token:"{{csrf_token()}}",Alldata:data},
-                cache: false,
-
-                success:function(data) {
-                    console.log(data);
-                    document.getElementById("fileDiv").innerHTML = data;
-                    $("#fileDiv").show();
+                    data: {_token: "{{csrf_token()}}", Alldata: data},
+                    cache: false,
+                    success: function (data) {
+                        document.getElementById("fileDiv").innerHTML = data;
+                        $("#fileDiv").show();
+                        //  console.log(data);
 
 
-                }
-            });
+                    }
+                });
+            }
 
         });
         $('#zila').on('change', function() {
 //            var partyLevelId=$("#partyLevel").val();
 //            if (partyLevelId==3){
-                $("#ListDiv").show();
+            $("#ListDiv").show();
 //            }
 //            if (partyLevelId==4){
 //
@@ -327,14 +339,22 @@
                 data:{_token:"{{csrf_token()}}",partyId:partyId},
                 cache: false,
                 success:function(data) {
-                   console.log(data);
+                    console.log(data);
 
                 }
             });
 
         }
 
+        {{--$(document).ready(function(){--}}
+        {{--if('{{session()->get('data')}}'){--}}
 
+        {{--$("#partyLevel").val("{{session()->get('data["partyLevels"]')}}");--}}
+
+
+        {{--}--}}
+
+        {{--});--}}
 
     </script>
 

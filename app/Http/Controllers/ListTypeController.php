@@ -29,7 +29,7 @@ class ListTypeController extends Controller
         if ($partyLevels == 3){
 
             $zilaId=$r->Alldata['zilaId'];
-            $file=Zillafile::where('zillaId',$zilaId)->where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=Zillafile::where('zillaId',$zilaId)->where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','zilaId'));
 
 
@@ -37,7 +37,7 @@ class ListTypeController extends Controller
         if ($partyLevels == 4){
 
             $upzillaId=$r->Alldata['upzillaId'];
-            $file=Upzillafile::where('upzilla_upzillaId',$upzillaId)->where('party_partyId',$partyId)->where('listtype_listtypeId',$listType)->first();
+            $file=Upzillafile::where('upzilla_upzillaId',$upzillaId)->where('party_partyId',$partyId)->where('listtype_listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','upzillaId'));
 
 
@@ -45,7 +45,7 @@ class ListTypeController extends Controller
         if ($partyLevels == 5){
 
             $pouroshovaId=$r->Alldata['pouroshovaId'];
-            $file=Pouroshovafile::where('pouroshovaId',$pouroshovaId)->where('partyId',$partyId)->where('isttypeId',$listType)->first();
+            $file=Pouroshovafile::where('pouroshovaId',$pouroshovaId)->where('partyId',$partyId)->where('isttypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','pouroshovaId'));
 
 
@@ -53,18 +53,18 @@ class ListTypeController extends Controller
         if ($partyLevels == 6){
 
             $unionId=$r->Alldata['unionId'];
-            $file=Unionfile::where('unionId',$unionId)->where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=Unionfile::where('unionId',$unionId)->where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file','unionId'));
 
 
         }
 
         if ($partyLevels== 2){
-            $file=MohanogorFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=MohanogorFile::where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file'));
         }
         if ($partyLevels== 1){
-            $file=JatioFile::where('partyId',$partyId)->where('listtypeId',$listType)->first();
+            $file=JatioFile::where('partyId',$partyId)->where('listtypeId',$listType)->get();
             return view('fileView',compact('partyId','partyLevels','listType','file'));
         }
 
@@ -78,6 +78,12 @@ class ListTypeController extends Controller
         $partyLevels=$r->partyLevelId;
         $listType=$r->listTypeId;
 
+        $sendData=array(
+            'partyId'=>$partyId,
+            'partyLevels'=>$partyLevels,
+            'listType'=>$listType,
+        );
+
 
 
         if ($partyLevels== 2){
@@ -86,6 +92,7 @@ class ListTypeController extends Controller
 
 
             $mohanogorFile->listtypeId=$listType;
+            $mohanogorFile->name=$r->uploadDocName;
             $mohanogorFile->partyId=$partyId;
             $mohanogorFile->createdAt=date('Y-m-d H:m:s');
             $mohanogorFile->createdBy=Auth::user()->userId;
@@ -110,6 +117,7 @@ class ListTypeController extends Controller
             $jatio= new JatioFile();
 
             $jatio->listtypeId=$listType;
+            $jatio->name=$r->uploadDocName;
             $jatio->partyId=$partyId;
             $jatio->createdAt=date('Y-m-d H:m:s');
             $jatio->createdBy=Auth::user()->userId;
@@ -130,11 +138,16 @@ class ListTypeController extends Controller
         }
         elseif ($partyLevels== 3){
 
+            $newArray=array('zilaId'=>$r->zilaId);
+
+            $sendData=array_push($sendData,$newArray);
+
             $zilaId=$r->zilaId;
 
             $zila= new Zillafile();
 
             $zila->listtypeId=$listType;
+            $zila->name=$r->uploadDocName;
             $zila->zillaId=$zilaId;
             $zila->partyId=$partyId;
             $zila->createdAt=date('Y-m-d H:m:s');
@@ -156,11 +169,16 @@ class ListTypeController extends Controller
         }
         elseif ($partyLevels== 4){
 
+            $newArray=array('upzilaId'=>$r->upZillaId);
+
+            $sendData=array_push($sendData,$newArray);
+
             $upZilaId=$r->upZillaId;
 
             $upZzila= new Upzillafile();
 
             $upZzila->listtype_listtypeId=$listType;
+            $upZzila->name=$r->uploadDocName;
             $upZzila->upzilla_upzillaId=$upZilaId;
             $upZzila->party_partyId=$partyId;
             $upZzila->createdAt=date('Y-m-d H:m:s');
@@ -182,11 +200,16 @@ class ListTypeController extends Controller
         }
         elseif ($partyLevels== 5){
 
+            $newArray=array('pouroshovaFileId'=>$r->pouroshovaFileId);
+
+            $sendData=array_push($sendData,$newArray);
+
             $pouroshovaFileId=$r->pouroshovaFileId;
 
             $pouroshovaFile= new Pouroshovafile();
 
             $pouroshovaFile->isttypeId=$listType;
+            $pouroshovaFile->name=$r->uploadDocName;
             $pouroshovaFile->pouroshovaId=$pouroshovaFileId;
             $pouroshovaFile->partyId=$partyId;
             $pouroshovaFile->createdAt=date('Y-m-d H:m:s');
@@ -208,11 +231,16 @@ class ListTypeController extends Controller
         }
         elseif ($partyLevels== 6){
 
+            $newArray=array('unionIdId'=>$r->unionFileId);
+
+            $sendData=array_push($sendData,$newArray);
+
             $unionIdId=$r->unionFileId;
 
             $unionFile= new Unionfile();
 
             $unionFile->listtypeId=$listType;
+            $unionFile->name=$r->uploadDocName;
             $unionFile->unionId=$unionIdId;
             $unionFile->partyId=$partyId;
             $unionFile->createdAt=date('Y-m-d H:m:s');
@@ -234,7 +262,9 @@ class ListTypeController extends Controller
         }
         Session::flash('message', 'File Added Successfully!');
 
-        return back();
+        //return $sendData;
+
+        return back()->with('data',$sendData);
 
     }
 
