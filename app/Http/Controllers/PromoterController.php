@@ -71,7 +71,7 @@ class PromoterController extends Controller
         $promoters->save();
 
 
-        if ($r->promoterForm == "1") {
+//        if ($r->promoterForm == "1") {
 
             $promoters->dob=$r->dob;
             $promoters->gender=$r->gender;
@@ -80,7 +80,7 @@ class PromoterController extends Controller
             $promoters->address=$r->address;
 
 
-        } elseif ($r->promoterForm == "2") {
+//        } elseif ($r->promoterForm == "2") {
 
 
 
@@ -95,7 +95,7 @@ class PromoterController extends Controller
 
 
 
-        }
+//        }
 
         $promoters->save();
 
@@ -146,7 +146,7 @@ class PromoterController extends Controller
         $promoters->phoneNumber = $r->phoneNumber;
         $promoters->party = $r->party;
         $promoters->remark = $r->remark;
-        $promoters->profile = null;
+//        $promoters->profile = null;
         $promoters->updatedAt = date('Y-m-d H:m:s');
         $promoters->updatedAt = Auth::user()->userId;
 
@@ -164,7 +164,7 @@ class PromoterController extends Controller
         $promoters->save();
 
 
-        if ($r->promoterForm == "1") {
+//        if ($r->promoterForm == "1") {
 
 
 
@@ -175,7 +175,7 @@ class PromoterController extends Controller
             $promoters->address=$r->address;
 
 
-        } elseif ($r->promoterForm == "2") {
+//        } elseif ($r->promoterForm == "2") {
 
 
             if ($r->hasFile('uploadDoc')) {
@@ -189,7 +189,7 @@ class PromoterController extends Controller
 
 
 
-        }
+//        }
 
         $promoters->save();
 

@@ -294,7 +294,7 @@ class ConfigVariables
 			'interpolateImages' => false,
 			// Default dpi to output images if size not defined
 			// See also above "dpi"
-			'img_dpi' => 96,
+			'img_dpi' => 150,
 
 			// TEXT SPACING & JUSTIFICATION
 

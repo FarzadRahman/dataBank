@@ -24,8 +24,6 @@ class CandidateController extends Controller
     }
     public function index($id){
 
-
-
         $constituency=Constituency::select('constituencyId','name')
             ->findOrFail($id);
 
@@ -33,8 +31,16 @@ class CandidateController extends Controller
     }
     public function getCandidate(Request $r){
 
-        $getAllCandidates=Candidate::Select('candidateId','name','phoneNumber')
-            ->where('constituencyId',$r->constituencyId);
+        $getAllCandidates=Candidate::Select('candidate.candidateId','candidate.name','candidate.phoneNumber',
+            DB::raw('COUNT(distinct associates.associateId) as totalAssociate'),
+            DB::raw('COUNT(distinct promoters.promotersId) as totalPromoters')
+            )
+            ->where('constituencyId',$r->constituencyId)
+            ->leftJoin('associates','associates.candidateId','candidate.candidateId')
+            ->leftJoin('promoters','promoters.candidateId','candidate.candidateId')
+            ->groupBy('candidate.candidateId')
+            ->get();
+
         $datatables = DataTables::of($getAllCandidates);
 
         return $datatables->make(true);
@@ -85,7 +91,7 @@ class CandidateController extends Controller
 
 
 
-        if ($r->candidateForm == "1"){
+//        if ($r->candidateForm == "1"){
 
             $candidate->dob=$r->dob;
             $candidate->gender=$r->gender;
@@ -93,7 +99,7 @@ class CandidateController extends Controller
             $candidate->nid=$r->nid;
             $candidate->address=$r->address;
 
-        }elseif ($r->candidateForm == "2"){
+//        }elseif ($r->candidateForm == "2"){
 
 
 
@@ -105,7 +111,7 @@ class CandidateController extends Controller
                 Image::make($img)->save($location);
 
             }
-        }
+//        }
 
         $candidate->save();
 
@@ -169,7 +175,7 @@ class CandidateController extends Controller
         $candidates->party = $r->party;
         $candidates->constituencyId = $r->constituencyId;
         $candidates->remark = $r->remark;
-        $candidates->profile = null;
+//        $candidates->profile = null;
         $candidates->updatedAt = date('Y-m-d H:m:s');
         $candidates->updatedAt = Auth::user()->userId;
 
@@ -186,7 +192,7 @@ class CandidateController extends Controller
         }
         $candidates->save();
 
-        if ($r->candidateForm == "1") {
+//        if ($r->candidateForm == "1") {
 
             $candidates->dob=$r->dob;
             $candidates->gender=$r->gender;
@@ -195,7 +201,7 @@ class CandidateController extends Controller
             $candidates->address=$r->address;
 
 
-        } elseif ($r->candidateForm == "2") {
+//        } elseif ($r->candidateForm == "2") {
 
 
             if ($r->hasFile('uploadDoc')) {
@@ -209,7 +215,7 @@ class CandidateController extends Controller
 
 
 
-        }
+//        }
         $candidates->save();
 
 
