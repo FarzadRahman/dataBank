@@ -54,6 +54,8 @@
     Associate :<a href="{{route('associate.view',['id'=>$getAssociatesDetails->associateId])}}">  {{$getAssociatesDetails->associateName}}</a>
     <i class="fa fa-angle-double-right"></i> Edit
 
+    <br><br>
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -82,7 +84,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Associate Phone Number</label>
-                            <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getAssociatesDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
+                            <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getAssociatesDetails->phoneNumber}}"  class="form-control" >
                         </div>
                         <div class="form-group col-md-6">
                             <label>Party</label>
@@ -103,7 +105,7 @@
 
                         <div class="form-group col-md-12">
                             <label>Associate remark</label>
-                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" required>{{$getAssociatesDetails->remark}}</textarea>
+                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" >{{$getAssociatesDetails->remark}}</textarea>
                         </div>
                     </div>
 
@@ -171,6 +173,15 @@
 
 
                         </div>
+                    @if($getAssociatesDetails->profile)
+                        <div class="col-md-2">
+
+                            <div class="col-md-6 mb-3">
+                         Delete Profile<input  class="form-check-input" type="checkbox"  name="deleteImage">
+                            </div>
+
+                        </div>
+                    @endif
                         
 
                 </div>

@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>Candidate Phone Number</label>
-                    <input type="text" name="phoneNumber" placeholder="Phone Number" onkeypress="return isNumberKey(event)" class="form-control" required>
+                    <input type="text" name="phoneNumber" placeholder="Phone Number" class="form-control" >
                 </div>
                 </div>
                 <div class="row">
@@ -88,7 +88,7 @@
 
                 <div class="form-group col-md-6">
                     <label>Candidate remark</label>
-                    <textarea name="remark" class="form-control" placeholder="remark" rows="5" required></textarea>
+                    <textarea name="remark" class="form-control" placeholder="remark" rows="5" ></textarea>
                 </div>
                 </div>
                 <div class="form-group col-md-8">

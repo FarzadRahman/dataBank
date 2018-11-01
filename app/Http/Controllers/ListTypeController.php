@@ -17,9 +17,6 @@ use Image;
 class ListTypeController extends Controller
 {
     public function getFileforList(Request $r){
-
-        //return $r->Alldata;
-
         $partyId=$r->Alldata['partyId'];
         $partyLevels=$r->Alldata['partyLevelId'];
         $listType=$r->Alldata['listTypeId'];
@@ -280,6 +277,50 @@ class ListTypeController extends Controller
     public function insertModal(Request $r){
 
         return view('test');
+    }
+
+
+    public function deleteJatioFile(Request $r){
+        $jation=JatioFile::findOrFail($r->id);
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',1);
+        Session::flash('message', 'File Added Deleted!');
+        $jation->delete();
+
+    }
+    public function deleteMohanogorFile(Request $r){
+        $mohanogor=MohanogorFile::findOrFail($r->id);
+        Session::flash('listType',$mohanogor->listtypeId);
+        Session::flash('partyLevels',2);
+        Session::flash('message', 'File Added Deleted!');
+        $mohanogor->delete();
+    }
+    public function deleteZillaFile(Request $r){
+        $zilla=Zillafile::findOrFail($r->id);
+        Session::flash('listType',$zilla->listtypeId);
+        Session::flash('partyLevels',3);
+        Session::flash('zillaId',$zilla->zillaId);
+        Session::flash('message', 'File Added Deleted!');
+        $zilla->delete();
+    }
+
+
+    public function deleteUpZillaFile(Request $r){
+        $upzilla=Upzillafile::findOrFail($r->id);
+        Session::flash('listType',$upzilla->listtypeId);
+        Session::flash('partyLevels',4);
+        Session::flash('upzilaId',$upzilla->upzilla_upzillaId);
+        Session::flash('message', 'File Added Deleted!');
+        $upzilla->delete();
+    }
+
+    public function deleteUnionFile(Request $r){
+        $union=Unionfile::findOrFail($r->id);
+        Session::flash('listType',$union->listtypeId);
+        Session::flash('partyLevels',6);
+        Session::flash('unionId',$union->unionfileId);
+        Session::flash('message', 'File Added Deleted!');
+        $union->delete();
     }
 
 

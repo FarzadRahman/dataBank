@@ -89,14 +89,22 @@ $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
 
             <tr>
                 <td  style="border: none;width: 50%;">
-                    <h4>পুরুষ ভোটার :  {{str_replace($en,$bn,$constituency->maleVoter)}}</h4>
+                    <h4>ভোটার :  {{str_replace($en,$bn,$constituency->maleVoter+$constituency->femaleVoter)}}</h4>
                 </td>
 
 
-                <td style="border: none;width: 50%;">
-                    <h4> মহিলা ভোটার :  {{str_replace($en,$bn,$constituency->femaleVoter)}}</h4>
-                </td>
             </tr>
+
+            {{--<tr>--}}
+                {{--<td  style="border: none;width: 50%;">--}}
+                    {{--<h4>পুরুষ ভোটার :  {{str_replace($en,$bn,$constituency->maleVoter)}}</h4>--}}
+                {{--</td>--}}
+
+
+                {{--<td style="border: none;width: 50%;">--}}
+                    {{--<h4> মহিলা ভোটার :  {{str_replace($en,$bn,$constituency->femaleVoter)}}</h4>--}}
+                {{--</td>--}}
+            {{--</tr>--}}
 
 
 

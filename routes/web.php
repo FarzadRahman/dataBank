@@ -47,6 +47,7 @@ Route::post('center/editCenter','CenterController@editCenter')->name('center.edi
 Route::post('center/update/{id}','CenterController@update')->name('center.update');
 Route::post('center/insert','CenterController@insert')->name('center.insert');
 Route::post('center/getCenterModal','CenterController@getCenterModal')->name('center.getCenterModal');
+Route::post('center/delete','CenterController@delete')->name('center.delete');
 
 //====================Candidates===================================
 Route::get('constituency/candidates/{id}','CandidateController@index')->name('candidates.index');
@@ -141,6 +142,14 @@ Route::post('List-File','ListTypeController@getFileforList')->name('getFileDivWi
 Route::post('List-File/add','ListTypeController@insert')->name('files.add');
 
 Route::get('committeeFile/modal','ListTypeController@insertModal')->name('committeeFile.modal');
+
+//Delete File
+
+Route::post('List-File/deleteJatioFile','ListTypeController@deleteJatioFile')->name('deleteJatioFile');
+Route::post('List-File/deleteMohanogorFile','ListTypeController@deleteMohanogorFile')->name('deleteMohanogorFile');
+Route::post('List-File/deleteZillaFile','ListTypeController@deleteZillaFile')->name('deleteZillaFile');
+Route::post('List-File/deleteUpZillaFile','ListTypeController@deleteUpZillaFile')->name('deleteUpZillaFile');
+Route::post('List-File/deleteUnionFile','ListTypeController@deleteUnionFile')->name('deleteUnionFile');
 
 
 //=====================User=========================================

@@ -30,7 +30,7 @@
                         <div class="form-group">
                             @if($getPromotersDetails->image != null)
                                 <div>
-                                    <img style="width: 150px;height: 150px" src="{{url('public/promoter/promoterImages/thumb'."/".$getPromotersDetails->image)}}">
+                                    <img style="width: 250px;height: 250px" src="{{url('public/promoter/promoterImages/thumb'."/".$getPromotersDetails->image)}}">
 
                                 </div>
                             @else

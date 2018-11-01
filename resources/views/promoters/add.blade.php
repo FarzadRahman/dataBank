@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Promoter Phone Number</label>
-                            <input type="text" name="phoneNumber" placeholder="Phone Number" onkeypress="return isNumberKey(event)" class="form-control" required>
+                            <input type="text" name="phoneNumber" placeholder="Phone Number"  class="form-control" >
                         </div>
                         <div class="form-group col-md-6">
                             <label>Party</label>

@@ -46,12 +46,13 @@
 </form>
 <hr>
 <div align="center" class="table-responsive">
-    {{--{{$file}}<br>--}}
-    {{--{{$partyLevels}}--}}
-    <table class="table">
+
+    <table class="table" id="datatable">
         <thead>
+
         <th style="text-align: center">Name</th>
         <th style="text-align: center">Action</th>
+
         </thead>
         <tbody>
 
@@ -60,17 +61,29 @@
 
             @foreach($file as $f)
                 <tr>
+
                     <td style="text-align: center">{{$f->name}}</td>
-                    <td style="text-align: center"><a href="{{url('public/mohanogorfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/mohanogorfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deleteMohanogorFile({{$f->mohanogorId}})">delete</button>
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         @elseif($partyLevels ==1)
             {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
 
             @foreach($file as $f)
+
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
-                    <td style="text-align: center"><a href="{{url('public/jatiofiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/jatiofiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deleteJatioFile({{$f->jatiofileId}})">delete</button>
+                        @endif
+                    </td>
                 <tr>
             @endforeach
         @elseif($partyLevels == 3)
@@ -79,7 +92,13 @@
             @foreach($file as $f)
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
-                    <td style="text-align: center"><a href="{{url('public/zilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/zilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deleteZillaFile({{$f->zillafileId}})">delete</button>
+                        @endif
+
+                    </td>
                 <tr>
             @endforeach
         @elseif($partyLevels == 4)
@@ -88,7 +107,12 @@
             @foreach($file as $f)
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
-                    <td style="text-align: center"><a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deleteUpZillaFile({{$f->upzillaId}})">delete</button>
+                        @endif
+                    </td>
                 <tr>
             @endforeach
         @elseif($partyLevels == 5)
@@ -97,7 +121,12 @@
             @foreach($file as $f)
                 <tr >
                     <td style="text-align: center">{{$f->name}}</td>
-                    <td style="text-align: center"><a href="{{url('public/pouroshovafies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/pouroshovafies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deletePouroshovaFile({{$f->pouroshovafileId}})">delete</button>
+                        @endif
+                    </td>
                 <tr>
             @endforeach
         @elseif($partyLevels == 6)
@@ -105,7 +134,13 @@
             @foreach($file as $f)
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
-                    <td style="text-align: center"><a href="{{url('public/unionfies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a></td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/unionfies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deleteUnionFile({{$f->unionfileId}})">delete</button>
+                        @endif
+
+                    </td>
                 <tr>
             @endforeach
         @endif
@@ -114,3 +149,150 @@
 
 
 </div>
+<script>
+    $(function() {
+        // $('#datatable').DataTable();
+    });
+
+
+    function deleteJatioFile(id) {
+        $.confirm({
+            title: 'Delete!',
+            content: 'Are you sure ?',
+            buttons: {
+                confirm: function () {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{!! route('deleteJatioFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                            location.reload();
+                            // console.log(data);
+                        }
+                    });
+
+                },
+                cancel: function () {
+
+                }
+
+            }
+        });
+
+
+    }
+    function deleteMohanogorFile(id) {
+        // alert(id);
+        $.confirm({
+            title: 'Delete!',
+            content: 'Are you sure ?',
+            buttons: {
+                confirm: function () {
+        $.ajax({
+            type: 'POST',
+            url: "{!! route('deleteMohanogorFile') !!}",
+            cache: false,
+            data: {_token: "{{csrf_token()}}",'id': id},
+            success: function (data) {
+                location.reload();
+                // console.log(data);
+            }
+        }); },
+                cancel: function () {
+
+                }
+
+            }
+        });
+
+    }
+
+    function deleteZillaFile(id) {
+        // alert(id);
+            $.confirm({
+                title: 'Delete!',
+                content: 'Are you sure ?',
+                buttons: {
+                    confirm: function () {
+        $.ajax({
+            type: 'POST',
+            url: "{!! route('deleteZillaFile') !!}",
+            cache: false,
+            data: {_token: "{{csrf_token()}}",'id': id},
+            success: function (data) {
+                location.reload();
+                // console.log(data);
+            }
+        }); },
+                    cancel: function () {
+
+                    }
+
+                }
+            });
+    }
+
+    function deleteUpZillaFile(id) {
+        // alert(id);
+                $.confirm({
+                    title: 'Delete!',
+                    content: 'Are you sure ?',
+                    buttons: {
+                        confirm: function () {
+        $.ajax({
+            type: 'POST',
+            url: "{!! route('deleteUpZillaFile') !!}",
+            cache: false,
+            data: {_token: "{{csrf_token()}}",'id': id},
+            success: function (data) {
+                location.reload();
+            }
+        }); },
+                        cancel: function () {
+
+                        }
+
+                    }
+                });
+    }
+    function deletePouroshovaFile(id) {
+        // alert(id);
+        {{--$.ajax({--}}
+            {{--type: 'POST',--}}
+            {{--url: "{!! route('deleteUpZillaFile') !!}",--}}
+            {{--cache: false,--}}
+            {{--data: {_token: "{{csrf_token()}}",'id': id},--}}
+            {{--success: function (data) {--}}
+                {{--location.reload();--}}
+            {{--}--}}
+        {{--});--}}
+    }
+    function deleteUnionFile(id) {
+        // alert(id);
+        $.confirm({
+            title: 'Delete!',
+            content: 'Are you sure ?',
+            buttons: {
+                confirm: function () {
+        $.ajax({
+            type: 'POST',
+            url: "{!! route('deleteUnionFile') !!}",
+            cache: false,
+            data: {_token: "{{csrf_token()}}",'id': id},
+            success: function (data) {
+                location.reload();
+            }
+        }); },
+                cancel: function () {
+
+                }
+
+            }
+        });
+    }
+</script>
+
+
+

@@ -50,7 +50,7 @@
     <a href="{{route('constituency.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->constituencyName}}</a>
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
-    <i class="fa fa-angle-double-right"></i> <a href="{{route('candidates.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->CandidateName}}</a>
+    <i class="fa fa-angle-double-right"></i> <a href="{{route('candidates.edit',['id'=>$getCandidatesDetails->candidateId])}}">{{$getCandidatesDetails->CandidateName}}</a>
     <i class="fa fa-angle-double-right"></i> Edit
 
 <br>
@@ -61,7 +61,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 align="center">Add Candidate</h4>
+                <h4 align="center">Update Candidate</h4>
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -84,7 +84,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Candidate Phone Number</label>
-                        <input type="text" name="phoneNumber" placeholder="Phone Number" value="{{$getCandidatesDetails->phoneNumber}}"  class="form-control" required>
+                        <input type="text" name="phoneNumber" placeholder="Phone Number" value="{{$getCandidatesDetails->phoneNumber}}"  class="form-control" >
                     </div>
                     <div class="form-group col-md-6">
                         <label>Party</label>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Candidate remark</label>
-                        <textarea name="remark" class="form-control"  placeholder="remark" rows="5" required>{{$getCandidatesDetails->remark}}</textarea>
+                        <textarea name="remark" class="form-control"  placeholder="remark" rows="5" >{{$getCandidatesDetails->remark}}</textarea>
                     </div>
                     <div class="form-group col-md-6">
 
@@ -185,6 +185,15 @@
 
                         </div>
 
+                    @if($getCandidatesDetails->profile)
+                        <div class="col-md-2">
+
+                            <div class="col-md-6 mb-3">
+                                Delete Profile<input  class="form-check-input" type="checkbox"  name="deleteImage">
+                            </div>
+
+                        </div>
+                    @endif
 
 
 
@@ -196,7 +205,7 @@
 
 
                         <div class="form-group col-sm-12">
-                            <button class="btn btn-success">Insert</button>
+                            <button class="btn btn-success">Update</button>
                         </div>
 
                     </div>

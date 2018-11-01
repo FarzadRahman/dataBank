@@ -113,7 +113,7 @@ class PromoterController extends Controller
         $allParties = Party::select('partyId', 'partyName')->get();
         $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
             'promoters.remark', 'promoters.image', 'promoters.profile',
-            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
+            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address','promoters.profile')
             ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
             ->leftJoin('party', 'party.partyId', 'promoters.party')
@@ -149,6 +149,10 @@ class PromoterController extends Controller
 //        $promoters->profile = null;
         $promoters->updatedAt = date('Y-m-d H:m:s');
         $promoters->updatedAt = Auth::user()->userId;
+        if($r->deleteImage){
+            $promoters->profile=null;
+        }
+
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');

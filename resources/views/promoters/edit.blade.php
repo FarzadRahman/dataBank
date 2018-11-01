@@ -49,7 +49,7 @@
     <i class="fa fa-angle-double-right"></i>
     <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->candidateName}}</a>
+    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->candidateId])}}">{{$getPromotersDetails->candidateName}}</a>
     <i class="fa fa-angle-double-right"></i>
     Promoter :<a href="{{route('promoter.view',['id'=>$getPromotersDetails->promotersId])}}"> {{$getPromotersDetails->promoterName}}</a>
     <i class="fa fa-angle-double-right"></i> Edit
@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Promoter Phone Number</label>
-                            <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getPromotersDetails->phoneNumber}}" onkeypress="return isNumberKey(event)" class="form-control" required>
+                            <input type="text" name="phoneNumber" placeholder="Phone Number"value="{{$getPromotersDetails->phoneNumber}}"  class="form-control" >
                         </div>
 
                         <div class="form-group col-md-6">
@@ -177,6 +177,15 @@
 
 
                         </div>
+                        @if($getPromotersDetails->profile)
+                        <div class="col-md-2">
+
+                            <div class="col-md-6 mb-3">
+                                Delete Profile<input  class="form-check-input" type="checkbox"  name="deleteImage">
+                            </div>
+
+                        </div>
+                        @endif
 
 
                 </div>

@@ -9,6 +9,9 @@
     <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">candidates</a>
     <i class="fa fa-angle-double-right"></i> {{$getCandidatesDetails->CandidateName}}
 
+    <br>
+    <br>
+
     <?php
     $bn = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
     $en = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
@@ -38,7 +41,7 @@
 
                                 @if($getCandidatesDetails->image != null)
                                     <div>
-                                        <img style="width: 150px;height: 150px" src="{{url('public/candidate/candidateImages/thumb'."/".$getCandidatesDetails->image)}}">
+                                        <img style="width: 250px;height: 250px" src="{{url('public/candidate/candidateImages/thumb'."/".$getCandidatesDetails->image)}}">
 
                                     </div>
                                     @else

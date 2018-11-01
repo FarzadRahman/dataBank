@@ -117,7 +117,7 @@ class AssociateController extends Controller
 
         $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
             'associates.remark','associates.image','associates.profile',
-            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')
+            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address','associates.profile')
 
             ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
@@ -130,7 +130,7 @@ class AssociateController extends Controller
 
     public function update(Request $r){
 
-        //return $r;
+
         $validatedData = $r->validate([
             'image' => 'mimes:jpeg,jpg,png',
             'uploadDoc' => 'mimes:jpeg,jpg,png'
@@ -146,6 +146,9 @@ class AssociateController extends Controller
 //            $associates->candidateId=$r->candidateId;
         $associates->updatedAt=date('Y-m-d H:m:s');
         $associates->updatedAt=Auth::user()->userId;
+        if($r->deleteImage){
+            $associates->profile=null;
+        }
 
         if($r->hasFile('image')){
             $img = $r->file('image');

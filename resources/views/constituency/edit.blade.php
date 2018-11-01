@@ -160,7 +160,13 @@
                             <td>{{str_replace($en,$bn,$center->maleVoter)}}</td>
                             <td>{{str_replace($en,$bn,$center->femaleVoter)}}</td>
                             <td>{{str_replace($en,$bn,$center->maleVoter+$center->femaleVoter)}}</td>
-                            <td><button class="btn btn-sm btn-info" onclick="editCenter({{$center->centerId}})">Edit</button></td>
+                            <td>
+                                <button class="btn btn-sm btn-info" onclick="editCenter({{$center->centerId}})">Edit</button>
+                                @if(Auth::user()->userTypeId=='admin')
+
+                                    &nbsp;&nbsp;<button class="btn btn-sm btn-danger" onclick="deleteCenter({{$center->centerId}})"><i class="fa fa-trash"></i></button>
+                                @endif
+                            </td>
                         </tr>
 
                     @endforeach
@@ -196,6 +202,33 @@
 
         function addCenter() {
             $("#addCenterModal").modal();
+        }
+
+        function deleteCenter(x) {
+
+            $.confirm({
+                title: 'Delete!',
+                content: 'Are you sure ?',
+                buttons: {
+                    confirm: function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: "{!! route('center.delete') !!}",
+                            cache: false,
+                            data: {_token: "{{csrf_token()}}",'id': x},
+                            success: function (data) {
+                                location.reload();
+
+                            }
+                        });
+                    },
+                    cancel: function () {
+//                        $.alert('Canceled!');
+                    }
+
+                }
+            });
+
         }
     </script>
 

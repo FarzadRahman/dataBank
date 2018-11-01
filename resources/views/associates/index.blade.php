@@ -32,7 +32,7 @@
                         <div class="form-group">
                             @if($getAssociatesDetails->image != null)
                                 <div>
-                                    <img style="width: 150px;height: 150px" src="{{url('public/associate/associateImages/thumb'."/".$getAssociatesDetails->image)}}">
+                                    <img style="width: 250px;height: 250px" src="{{url('public/associate/associateImages/thumb'."/".$getAssociatesDetails->image)}}">
 
                                 </div>
                             @else

@@ -52,4 +52,9 @@ class CenterController extends Controller
        return view('center.getCenterModal',compact('centers','consitituencyName'));
 
    }
+
+   public function delete(Request $r){
+        $center=Center::findOrFail($r->id);
+        $center->delete();
+   }
 }

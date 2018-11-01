@@ -127,7 +127,7 @@ class CandidateController extends Controller
 
         $getCandidatesDetails=Candidate::select('candidate.constituencyId','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
             'candidate.remark','candidate.image','candidate.profile','candidate.dob','candidate.gender',
-            'candidate.bloodGroup','candidate.nid','candidate.address')
+            'candidate.bloodGroup','candidate.nid','candidate.address','candidate.profile')
             ->leftJoin('party','party.partyId','candidate.party')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')->findOrFail($id);
 
@@ -178,6 +178,9 @@ class CandidateController extends Controller
 //        $candidates->profile = null;
         $candidates->updatedAt = date('Y-m-d H:m:s');
         $candidates->updatedAt = Auth::user()->userId;
+        if($r->deleteImage){
+            $candidates->profile=null;
+        }
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');

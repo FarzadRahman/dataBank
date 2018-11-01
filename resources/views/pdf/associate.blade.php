@@ -77,7 +77,13 @@
 
 
                 <td style="border: none;width: 50%;">
-                    <h2>লিঙ্গ : {{$associate->gender}}</h2>
+                    <h2>লিঙ্গ :
+                        @foreach(GENDER as $key=>$value)
+                            @if($associate->gender==$value)
+                                {{$key}}
+                            @endif
+                        @endforeach
+                    </h2>
                 </td>
             </tr>
 
@@ -156,7 +162,7 @@
 
 
         @if($associate->profile!=null)
-            <img height="900px" width="100%" src="{{url('public/associate/profileDoc').'/'.$associate->profile}}" alt="">
+            <img height="1000px" width="100%" src="{{url('public/associate/profileDoc').'/'.$associate->profile}}" alt="">
             <p style="page-break-after: always"></p>
         @endif
 

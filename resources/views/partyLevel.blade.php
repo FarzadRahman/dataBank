@@ -1,6 +1,13 @@
 @extends('main')
 @section('header')
-    <link href="{{url('public/src/selectstyle.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- DataTables -->
+    <link href="{{url('assets/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    {{--    <link href="{{url('public/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">--}}
+
+    <link href="{{url('public/css/select2.min.css')}}" rel="stylesheet" />
 @endsection
 @section('content')
     <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
@@ -94,7 +101,7 @@
 
                     <div style="display: none" id="zilaDiv" class="form-group col-md-6">
                         <label>Zila</label>
-                        <select id="zila" name="zila"  class="form-control" >
+                        <select id="zila" name="zila" style="width: 100%"  class="form-control" >
                             <option selected value="">Select a Zila</option>
                             @foreach($allZila as $aZ)
                                 <option value="{{$aZ->zillaId}}">{{$aZ->zillaName}}</option>
@@ -106,7 +113,7 @@
                     <div style="display: none" id="upZillaDiv" class="form-group col-md-6">
                         <label>UpZila</label>
 
-                        <select id="upzilla" name="upzilla" class="form-control" class="form-control">
+                        <select id="upzilla" style="width: 100%"  name="upzilla" class="form-control" class="form-control">
                             <option selected value="">Select a Upzila</option>
                             @foreach($allupZila as $aUZ)
                                 <option value="{{$aUZ->upzillaId}}">{{$aUZ->upzillaName	}}</option>
@@ -117,7 +124,7 @@
                     <div style="display: none" id="pouroshovaDiv" class="form-group col-md-6">
                         <label>Pouroshova</label>
 
-                        <select id="pouroshova" name="pouroshova" class="form-control">
+                        <select id="pouroshova" style="width: 100%"  name="pouroshova" class="form-control">
                             <option selected value="">Select a pouroshova</option>
                             @foreach($allPouroshova as $aPouroshova)
                                 <option value="{{$aPouroshova->pouroshovaId}}">{{$aPouroshova->pouroshovaName	}}</option>
@@ -127,7 +134,7 @@
                     </div>
                     <div style="display: none" id="unionDiv" class="form-group col-md-6">
                         <label>Union</label>
-                        <select id="union" name="union" class="form-control" >
+                        <select id="union" style="width: 100%"  name="union" class="form-control" >
                             <option selected value="">Select a union</option>
                             @foreach($allUnion as $aunion)
                                 <option value="{{$aunion->unionId}}">{{$aunion->unionName	}}</option>
@@ -168,38 +175,28 @@
 
 @endsection
 @section('foot-js')
-    <script src="{{url('public/src/selectstyle.js')}}"></script>
+    <script src="{{url('public/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url('public/assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <!-- Buttons examples -->
+    <script src="{{url('public/assets/plugins/datatables/dataTables.buttons.min.js')}}"></script>
+    <script src="{{url('public/js/select2.min.js')}}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
-        jQuery(document).ready(function($) {
-            // $('#zila').select2({
-            //     onchange : function(val){}
-            // });
-            // $('#zila').selectstyle({
-            //     width  : 400,
-            //     height : 300,
-            //     theme  : 'light',
-            //     onchange : function(val){}
-            // });
-            // $('#upzilla').selectstyle({
-            //     width  : 400,
-            //     height : 300,
-            //     theme  : 'light',
-            //     onchange : function(val){}
-            // });
-            // $('#pouroshova').selectstyle({
-            //     width  : 400,
-            //     height : 300,
-            //     theme  : 'light',
-            //     onchange : function(val){}
-            // });
-            // $('#union').selectstyle({
-            //     width  : 400,
-            //     height : 300,
-            //     theme  : 'light',
-            //     onchange : function(val){}
-            // });
+        $(function() {
+            $('#zila').select2();
+            $('#upzilla').select2();
+            $('#pouroshova').select2();
+            $('#union').select2();
 
+
+
+
+
+
+        });
+
+        jQuery(document).ready(function($) {
+            $('#filedatatable').DataTable();
 
         });
 
@@ -282,7 +279,7 @@
                 data: {_token: "{{csrf_token()}}", Alldata: data},
                 cache: false,
                 success: function (data) {
-                    document.getElementById("fileDiv").innerHTML = data;
+                    $("#fileDiv").html(data);
                     $("#fileDiv").show();
                 }
             });
@@ -428,8 +425,10 @@
                     data: {_token: "{{csrf_token()}}", Alldata: data},
                     cache: false,
                     success: function (data) {
-                        document.getElementById("fileDiv").innerHTML = data;
+
+                        $("#fileDiv").html(data);
                         $("#fileDiv").show();
+
                     }
                 });
             }
@@ -438,20 +437,28 @@
         $('#zila').on('change', function() {
 
             $("#ListDiv").show();
+            $("#listType").prop("selectedIndex", 0);
+            $("#fileDiv").hide();
         });
         $('#upzilla').on('change', function() {
 
             $("#ListDiv").show();
+            $("#listType").prop("selectedIndex", 0);
+            $("#fileDiv").hide();
 
         });
         $('#pouroshova').on('change', function() {
 
             $("#ListDiv").show();
+            $("#listType").prop("selectedIndex", 0);
+            $("#fileDiv").hide();
 
         });
         $('#union').on('change', function() {
 
             $("#ListDiv").show();
+            $("#listType").prop("selectedIndex", 0);
+            $("#fileDiv").hide();
 
         });
 
@@ -482,5 +489,11 @@
         {{--});--}}
 
     </script>
+    {{--<script>--}}
+        {{--$(document).ready( function () {--}}
+
+            {{--dataTable = $('#filedatatable').DataTable();--}}
+        {{--});--}}
+    {{--</script>--}}
 
 @endsection

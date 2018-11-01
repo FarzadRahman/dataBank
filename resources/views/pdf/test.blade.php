@@ -76,7 +76,13 @@
 
 
                 <td style="border: none;width: 50%;">
-                    <h3>লিঙ্গ : {{$candidate->gender}}</h3>
+                    <h3>লিঙ্গ :
+                        @foreach(GENDER as $key=>$value)
+                            @if($candidate->gender==$value)
+                                {{$key}}
+                            @endif
+                        @endforeach
+                    </h3>
                 </td>
             </tr>
 
@@ -179,7 +185,7 @@
 
 
         @if($candidate->profile!=null)
-            <img height="900px" width="100%" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
+            <img height="1000px" width="100%" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
             <p style="page-break-after: always"></p>
         @endif
 
