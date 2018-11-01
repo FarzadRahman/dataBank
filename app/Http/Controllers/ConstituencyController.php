@@ -111,7 +111,7 @@ class ConstituencyController extends Controller
             ->delete();
         Candidate::where('constituencyId',$r->id)
             ->delete();
-        Constituency::where('constituencyId',$r->id)->detele();
+        Constituency::where('constituencyId',$r->id)->delete();
 
         return Response()->json('Success');
     }
