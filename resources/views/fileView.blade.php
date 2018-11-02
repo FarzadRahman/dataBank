@@ -261,7 +261,7 @@
         // alert(id);
         {{--$.ajax({--}}
             {{--type: 'POST',--}}
-            {{--url: "{!! route('deleteUpZillaFile') !!}",--}}
+            {{--url: "{!! route('deletePouroshovaFile') !!}",--}}
             {{--cache: false,--}}
             {{--data: {_token: "{{csrf_token()}}",'id': id},--}}
             {{--success: function (data) {--}}
