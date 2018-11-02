@@ -109,6 +109,12 @@ Route::post('settings/union/add','UnionController@insert')->name('union.insert')
 Route::post('settings/union/edit','UnionController@edit')->name('union.edit');
 Route::post('settings/union/update/{id}','UnionController@update')->name('union.update');
 
+
+Route::get('settings/pouroshova','PouroshovaController@index')->name('pouroshova.index');
+Route::post('settings/pouroshova/add','PouroshovaController@insert')->name('pouroshova.insert');
+Route::post('settings/pouroshova/edit','PouroshovaController@edit')->name('pouroshova.edit');
+Route::post('settings/pouroshova/update/{id}','PouroshovaController@update')->name('pouroshova.update');
+
 //=====================Account=========================================
 //
 Route::get('settings/account','AccountController@index')->name('account.index');
