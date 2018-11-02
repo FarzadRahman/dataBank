@@ -318,8 +318,6 @@ class ListTypeController extends Controller
         $pourosova=Pouroshovafile::findOrFail($r->id);
         Session::flash('listType',$pourosova->listtypeId);
         Session::flash('partyLevels',5);
-
-
         Session::flash('pouroshovaId',$pourosova->pouroshovaId);
         Session::flash('message', 'File Added Deleted!');
         $pourosova->delete();
