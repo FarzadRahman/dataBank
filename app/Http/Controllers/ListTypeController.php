@@ -314,6 +314,16 @@ class ListTypeController extends Controller
         $upzilla->delete();
     }
 
+    public function deletePouroshovaFile(Request $r){
+        $pourosova=Pouroshovafile::findOrFail($r->id);
+        Session::flash('listType',$pourosova->listtypeId);
+        Session::flash('partyLevels',5);
+        Session::flash('pouroshovaId',$pourosova->pouroshovaId);
+        Session::flash('message', 'File Added Deleted!');
+        $pourosova->delete();
+
+    }
+
     public function deleteUnionFile(Request $r){
         $union=Unionfile::findOrFail($r->id);
         Session::flash('listType',$union->listtypeId);

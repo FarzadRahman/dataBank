@@ -84,7 +84,7 @@
                             <button class="btn btn-danger btn-sm" onclick="deleteJatioFile({{$f->jatiofileId}})">delete</button>
                         @endif
                     </td>
-                <tr>
+                </tr>
             @endforeach
         @elseif($partyLevels == 3)
             {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
@@ -99,7 +99,7 @@
                         @endif
 
                     </td>
-                <tr>
+                </tr>
             @endforeach
         @elseif($partyLevels == 4)
             {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
@@ -113,7 +113,7 @@
                             <button class="btn btn-danger btn-sm" onclick="deleteUpZillaFile({{$f->upzillaId}})">delete</button>
                         @endif
                     </td>
-                <tr>
+                </tr>
             @endforeach
         @elseif($partyLevels == 5)
             {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
@@ -127,7 +127,7 @@
                             <button class="btn btn-danger btn-sm" onclick="deletePouroshovaFile({{$f->pouroshovafileId}})">delete</button>
                         @endif
                     </td>
-                <tr>
+                </tr>
             @endforeach
         @elseif($partyLevels == 6)
             {{--<iframe class="embed-responsive-item"  name="myiframe" id="myiframe" src=""></iframe>--}}
@@ -141,7 +141,7 @@
                         @endif
 
                     </td>
-                <tr>
+                </tr>
             @endforeach
         @endif
         </tbody>
@@ -151,7 +151,10 @@
 </div>
 <script>
     $(function() {
-        // $('#datatable').DataTable();
+        $('#datatable').DataTable(
+
+        );
+
     });
 
 
@@ -261,7 +264,7 @@
         // alert(id);
         {{--$.ajax({--}}
             {{--type: 'POST',--}}
-            {{--url: "{!! route('deleteUpZillaFile') !!}",--}}
+            {{--url: "{!! route('deletePouroshovaFile') !!}",--}}
             {{--cache: false,--}}
             {{--data: {_token: "{{csrf_token()}}",'id': id},--}}
             {{--success: function (data) {--}}
