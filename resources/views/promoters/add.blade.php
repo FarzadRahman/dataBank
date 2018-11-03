@@ -215,9 +215,9 @@
 
 
         $(function () {
-            $('#dob').datepicker({
-                format: 'yyyy-m-d'
-            });
+            // $('#dob').datepicker({
+            //     format: 'yyyy-m-d'
+            // });
         });
 
 

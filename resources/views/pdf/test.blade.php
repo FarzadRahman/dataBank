@@ -43,7 +43,7 @@
 </head>
 <body>
 <div class="">
-    <div style="background: #fff; " class="">
+    <div style="background: #fff; ">
 
         <h2 align="center"><u>প্রার্থী</u></h2>
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
@@ -185,7 +185,7 @@
 
 
         @if($candidate->profile!=null)
-            <img height="1000px" width="100%" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
+            <img height="1000px" width="900px" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
             <p style="page-break-after: always"></p>
         @endif
 
@@ -199,7 +199,7 @@
 
 
 
-
-</div></div>
+    </div>
+</div>
 </body>
 </html>

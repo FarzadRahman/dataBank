@@ -115,7 +115,7 @@ class ConfigVariables
 			'collapseBlockMargins' => true,
 
 			// To interpret "px" pixel values in HTML/CSS (see img_dpi below)
-			'dpi' => 96,
+			'dpi' => 100,
 
 			// Automatically correct for tags where HTML specifies optional end tags e.g. P,LI,DD,TD
 			// If you are confident input html is valid XHTML, turning this off may make it more reliable(?)
@@ -294,7 +294,7 @@ class ConfigVariables
 			'interpolateImages' => false,
 			// Default dpi to output images if size not defined
 			// See also above "dpi"
-			'img_dpi' => 150,
+			'img_dpi' => 300,
 
 			// TEXT SPACING & JUSTIFICATION
 

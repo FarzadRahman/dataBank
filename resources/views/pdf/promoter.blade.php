@@ -161,7 +161,7 @@
 
 
     @if($associate->profile!=null)
-            <img height="1000px" width="100%" src="{{url('public/promoter/profileDoc').'/'.$associate->profile}}" alt="">
+            <img height="1000px" width="900px" src="{{url('public/promoter/profileDoc').'/'.$associate->profile}}" alt="">
             <p style="page-break-after: always"></p>
         @endif
 
@@ -179,6 +179,7 @@
 
 
 
-    </div></div>
+    </div>
+</div>
 </body>
 </html>

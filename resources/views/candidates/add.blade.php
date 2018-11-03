@@ -131,7 +131,7 @@
                 <div class="row">
                 <div class="form-group col-md-6">
                     <label for="">Date of Birth</label>
-                    <input type="text"  name="dob" class="form-control" id="dob" placeholder="">
+                    <input type="text"  name="dob" class="form-control"  placeholder="">
 
                 </div>
 
@@ -221,9 +221,9 @@
         }
 
         $(function () {
-            $('#dob').datepicker({
-                format: 'yyyy-m-d'
-            });
+            // $('#dob').datepicker({
+            //     format: 'yyyy-m-d'
+            // });
 
         });
 
