@@ -39,10 +39,12 @@ class PartyController extends Controller
 
     public function update(Request $r,$id){
 
+//        return $r;
+
         $validatedData = $r->validate([
             'partyName' => 'required|unique:party,partyName,'.$id.',partyId|max:45'
         ]);
-        $party=Division::findOrFail($id);
+        $party=Party::findOrFail($id);
         $party->partyName=$r->partyName;
         $party->updatedBy=Auth::user()->userId;
         $party->save();
