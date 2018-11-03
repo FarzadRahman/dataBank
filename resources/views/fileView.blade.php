@@ -26,6 +26,13 @@
         </div>
         <div class="col-md-6">
 
+            <label class="col-md-2">Remark</label>
+
+            <textarea  name="remark"  class="form-control col-md-8"></textarea>
+
+        </div>
+        <div class="col-md-6">
+
             <label class="col-md-2">Upload</label>
             <input type="file" id="uploadDoc" name="uploadDoc" accept="*" placeholder="Document" class="form-control col-md-8" required/>
 
@@ -51,6 +58,7 @@
         <thead>
 
         <th style="text-align: center">Name</th>
+        <th style="text-align: center">Remark</th>
         <th style="text-align: center">Action</th>
 
         </thead>
@@ -63,6 +71,7 @@
                 <tr>
 
                     <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/mohanogorfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
                         @if(Auth::user()->userTypeId=='admin')
@@ -78,10 +87,25 @@
 
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/jatiofiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteJatioFile({{$f->jatiofileId}})">delete</button>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        @elseif($partyLevels ==7)
+            @foreach($file as $f)
+
+                <tr>
+                    <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
+                    <td style="text-align: center">
+                        <a href="{{url('public/allfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        @if(Auth::user()->userTypeId=='admin')
+                            <button class="btn btn-danger btn-sm" onclick="deleteAllFile({{$f->allfileId}})">delete</button>
                         @endif
                     </td>
                 </tr>
@@ -92,6 +116,7 @@
             @foreach($file as $f)
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/zilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
                         @if(Auth::user()->userTypeId=='admin')
@@ -107,6 +132,7 @@
             @foreach($file as $f)
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
                         @if(Auth::user()->userTypeId=='admin')
@@ -121,6 +147,7 @@
             @foreach($file as $f)
                 <tr >
                     <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/pouroshovafies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
                         @if(Auth::user()->userTypeId=='admin')
@@ -134,6 +161,7 @@
             @foreach($file as $f)
                 <tr>
                     <td style="text-align: center">{{$f->name}}</td>
+                    <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/unionfies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
                         @if(Auth::user()->userTypeId=='admin')
@@ -173,6 +201,34 @@
                         success: function (data) {
                             location.reload();
                             // console.log(data);
+                        }
+                    });
+
+                },
+                cancel: function () {
+
+                }
+
+            }
+        });
+
+
+    }
+
+    function deleteAllFile(id) {
+        $.confirm({
+            title: 'Delete!',
+            content: 'Are you sure ?',
+            buttons: {
+                confirm: function () {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{!! route('deleteAllFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                            location.reload();
                         }
                     });
 

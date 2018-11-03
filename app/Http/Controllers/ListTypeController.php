@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Allfile;
 use App\JatioFile;
 use App\MohanogorFile;
 use App\Party;
@@ -17,6 +18,7 @@ use Image;
 class ListTypeController extends Controller
 {
     public function getFileforList(Request $r){
+//        return $r;
         $partyId=$r->Alldata['partyId'];
         $partyLevels=$r->Alldata['partyLevelId'];
         $listType=$r->Alldata['listTypeId'];
@@ -65,7 +67,12 @@ class ListTypeController extends Controller
             return view('fileView',compact('partyId','partyLevels','listType','file'));
         }
 
-        //return $r->Alldata['zilaId'];
+        if ($partyLevels== 7){
+
+            $file=Allfile::where('partyId',$partyId)->where('listtypeId',$listType)->get();
+            return view('fileView',compact('partyId','partyLevels','listType','file'));
+        }
+
 
 
     }
@@ -90,6 +97,7 @@ class ListTypeController extends Controller
 
             $mohanogorFile->listtypeId=$listType;
             $mohanogorFile->name=$r->uploadDocName;
+            $mohanogorFile->remark=$r->remark;
             $mohanogorFile->partyId=$partyId;
             $mohanogorFile->createdAt=date('Y-m-d H:m:s');
             $mohanogorFile->createdBy=Auth::user()->userId;
@@ -109,12 +117,14 @@ class ListTypeController extends Controller
 
 
 
-        }elseif ($partyLevels== 1){
+        }
+        elseif ($partyLevels== 1){
 
             $jatio= new JatioFile();
 
             $jatio->listtypeId=$listType;
             $jatio->name=$r->uploadDocName;
+            $jatio->remark=$r->remark;
             $jatio->partyId=$partyId;
             $jatio->createdAt=date('Y-m-d H:m:s');
             $jatio->createdBy=Auth::user()->userId;
@@ -133,6 +143,30 @@ class ListTypeController extends Controller
             $jatio->save();
 
         }
+        elseif($partyLevels== 7){
+
+            $allFile= new Allfile();
+            $allFile->remark=$r->remark;
+            $allFile->listtypeId=$listType;
+            $allFile->name=$r->uploadDocName;
+            $allFile->partyId=$partyId;
+            $allFile->createdAt=date('Y-m-d H:m:s');
+            $allFile->createdBy=Auth::user()->userId;
+
+            $allFile->save();
+
+            if($r->hasFile('uploadDoc')){
+
+                $img = $r->file('uploadDoc');
+                $filename= $allFile->jatiofileId.'files'.'.'.$img->getClientOriginalExtension();
+                $allFile->image=$filename;
+                $location = public_path('allfiles/');
+                $img->move($location,$filename);
+
+            }
+            $allFile->save();
+
+        }
         elseif ($partyLevels== 3){
 
             $newArray=array('zilaId'=>$r->zilaId);
@@ -142,7 +176,7 @@ class ListTypeController extends Controller
             $zilaId=$r->zilaId;
 
             $zila= new Zillafile();
-
+            $zila->remark=$r->remark;
             $zila->listtypeId=$listType;
             $zila->name=$r->uploadDocName;
             $zila->zillaId=$zilaId;
@@ -175,7 +209,7 @@ class ListTypeController extends Controller
             $upZilaId=$r->upZillaId;
 
             $upZzila= new Upzillafile();
-
+            $upZzila->remark=$r->remark;
             $upZzila->listtype_listtypeId=$listType;
             $upZzila->name=$r->uploadDocName;
             $upZzila->upzilla_upzillaId=$upZilaId;
@@ -209,7 +243,7 @@ class ListTypeController extends Controller
             $pouroshovaFileId=$r->pouroshovaFileId;
 
             $pouroshovaFile= new Pouroshovafile();
-
+            $pouroshovaFile->remark=$r->remark;
             $pouroshovaFile->isttypeId=$listType;
             $pouroshovaFile->name=$r->uploadDocName;
             $pouroshovaFile->pouroshovaId=$pouroshovaFileId;
@@ -241,7 +275,7 @@ class ListTypeController extends Controller
             $unionIdId=$r->unionFileId;
 
             $unionFile= new Unionfile();
-
+            $unionFile->remark=$r->remark;
             $unionFile->listtypeId=$listType;
             $unionFile->name=$r->uploadDocName;
             $unionFile->unionId=$unionIdId;
@@ -284,7 +318,15 @@ class ListTypeController extends Controller
         $jation=JatioFile::findOrFail($r->id);
         Session::flash('listType',$jation->listtypeId);
         Session::flash('partyLevels',1);
-        Session::flash('message', 'File Added Deleted!');
+        Session::flash('message', 'File Deleted Successfully!');
+        $jation->delete();
+
+    }
+    public function deleteAllFile(Request $r){
+        $jation=Allfile::findOrFail($r->id);
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',7);
+        Session::flash('message', 'File Deleted Successfully!');
         $jation->delete();
 
     }
@@ -292,7 +334,7 @@ class ListTypeController extends Controller
         $mohanogor=MohanogorFile::findOrFail($r->id);
         Session::flash('listType',$mohanogor->listtypeId);
         Session::flash('partyLevels',2);
-        Session::flash('message', 'File Added Deleted!');
+        Session::flash('message', 'File Deleted Successfully!');
         $mohanogor->delete();
     }
     public function deleteZillaFile(Request $r){
@@ -300,7 +342,7 @@ class ListTypeController extends Controller
         Session::flash('listType',$zilla->listtypeId);
         Session::flash('partyLevels',3);
         Session::flash('zillaId',$zilla->zillaId);
-        Session::flash('message', 'File Added Deleted!');
+        Session::flash('message', 'File Deleted Successfully!');
         $zilla->delete();
     }
 
@@ -310,7 +352,7 @@ class ListTypeController extends Controller
         Session::flash('listType',$upzilla->listtypeId);
         Session::flash('partyLevels',4);
         Session::flash('upzilaId',$upzilla->upzilla_upzillaId);
-        Session::flash('message', 'File Added Deleted!');
+        Session::flash('message', 'File Deleted Successfully!');
         $upzilla->delete();
     }
 
@@ -319,7 +361,7 @@ class ListTypeController extends Controller
         Session::flash('listType',$pourosova->listtypeId);
         Session::flash('partyLevels',5);
         Session::flash('pouroshovaId',$pourosova->pouroshovaId);
-        Session::flash('message', 'File Added Deleted!');
+        Session::flash('message', 'File Deleted Successfully!');
         $pourosova->delete();
 
     }
@@ -329,7 +371,7 @@ class ListTypeController extends Controller
         Session::flash('listType',$union->listtypeId);
         Session::flash('partyLevels',6);
         Session::flash('unionId',$union->unionfileId);
-        Session::flash('message', 'File Added Deleted!');
+        Session::flash('message', 'File Deleted Successfully!');
         $union->delete();
     }
 

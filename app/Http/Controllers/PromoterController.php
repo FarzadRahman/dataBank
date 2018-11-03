@@ -18,9 +18,7 @@ class PromoterController extends Controller
     public function view($id)
     {
 
-        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
-            'promoters.remark', 'promoters.image', 'promoters.profile',
-        'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address')
+        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.*')
             ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
             ->leftJoin('party', 'party.partyId', 'promoters.party')
@@ -55,6 +53,20 @@ class PromoterController extends Controller
         $promoters->candidateId = $r->candidateId;
         $promoters->createdAt = date('Y-m-d H:m:s');
         $promoters->createdBy = Auth::user()->userId;
+
+
+        //New Update
+        $promoters->age=$r->age;
+        $promoters->marital=$r->marital;
+        $promoters->spouse=$r->spouse;
+        $promoters->spouseNumber=$r->spouseNumber;
+        $promoters->father=$r->father;
+        $promoters->fatherNumber=$r->fatherNumber;
+        $promoters->mother=$r->mother;
+        $promoters->motherNumber=$r->motherNumber;
+        $promoters->religion=$r->religion;
+        $promoters->occupation=$r->occupation;
+        
         $promoters->save();
 
         if ($r->hasFile('image')) {
@@ -111,9 +123,7 @@ class PromoterController extends Controller
     {
 
         $allParties = Party::select('partyId', 'partyName')->get();
-        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.phoneNumber', 'promoters.promotersId',
-            'promoters.remark', 'promoters.image', 'promoters.profile',
-            'promoters.dob','promoters.gender','promoters.bloodGroup','promoters.nid','promoters.address','promoters.profile')
+        $getPromotersDetails = Promoter::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName', 'promoters.name as promoterName', 'promoters.*')
             ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
             ->leftJoin('party', 'party.partyId', 'promoters.party')
@@ -149,6 +159,18 @@ class PromoterController extends Controller
 //        $promoters->profile = null;
         $promoters->updatedAt = date('Y-m-d H:m:s');
         $promoters->updatedAt = Auth::user()->userId;
+
+        //New Update
+        $promoters->age=$r->age;
+        $promoters->marital=$r->marital;
+        $promoters->spouse=$r->spouse;
+        $promoters->spouseNumber=$r->spouseNumber;
+        $promoters->father=$r->father;
+        $promoters->fatherNumber=$r->fatherNumber;
+        $promoters->mother=$r->mother;
+        $promoters->motherNumber=$r->motherNumber;
+        $promoters->religion=$r->religion;
+        $promoters->occupation=$r->occupation;
         if($r->deleteImage){
             $promoters->profile=null;
         }

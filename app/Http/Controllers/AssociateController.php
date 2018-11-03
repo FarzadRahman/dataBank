@@ -17,9 +17,7 @@ class AssociateController extends Controller
         $this->middleware('auth');
     }
     public function view($id){
-        $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
-            'associates.remark','associates.image','associates.profile',
-            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')
+        $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.*')
 
             ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
@@ -55,6 +53,19 @@ class AssociateController extends Controller
         $associates->candidateId=$r->candidateId;
         $associates->createdAt=date('Y-m-d H:m:s');
         $associates->createdBy=Auth::user()->userId;
+
+        //New Update
+        $associates->age=$r->age;
+        $associates->marital=$r->marital;
+        $associates->spouse=$r->spouse;
+        $associates->spouseNumber=$r->spouseNumber;
+        $associates->father=$r->father;
+        $associates->fatherNumber=$r->fatherNumber;
+        $associates->mother=$r->mother;
+        $associates->motherNumber=$r->motherNumber;
+        $associates->religion=$r->religion;
+        $associates->occupation=$r->occupation;
+        
         $associates->save();
 
         if($r->hasFile('image')){
@@ -111,13 +122,7 @@ class AssociateController extends Controller
 
         $allParties=Party::select('partyId','partyName')->get();
 
-//        $getAssociatesDetails=Associate::select('associates.name as associateName','associates.phoneNumber','associates.associateId',
-//            'associates.remark','associates.image','associates.profile','associates.party',
-//            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address')->findOrFail($id);
-
-        $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.phoneNumber','associates.associateId',
-            'associates.remark','associates.image','associates.profile',
-            'associates.dob','associates.gender','associates.bloodGroup','associates.nid','associates.address','associates.profile')
+        $getAssociatesDetails=Associate::select('candidate.constituencyId','constituency.name as constituencyName','candidate.candidateId','candidate.name as candidateName','party.partyName','associates.name as associateName','associates.*')
 
             ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
@@ -149,6 +154,18 @@ class AssociateController extends Controller
         if($r->deleteImage){
             $associates->profile=null;
         }
+
+        //New Update
+        $associates->age=$r->age;
+        $associates->marital=$r->marital;
+        $associates->spouse=$r->spouse;
+        $associates->spouseNumber=$r->spouseNumber;
+        $associates->father=$r->father;
+        $associates->fatherNumber=$r->fatherNumber;
+        $associates->mother=$r->mother;
+        $associates->motherNumber=$r->motherNumber;
+        $associates->religion=$r->religion;
+        $associates->occupation=$r->occupation;
 
         if($r->hasFile('image')){
             $img = $r->file('image');

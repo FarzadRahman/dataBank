@@ -82,6 +82,13 @@
                             <label for="inputEmail4">Date of Birth :</label>
                             {{$getAssociatesDetails->dob}}
                         </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Age :</label>
+                            {{$getAssociatesDetails->age}}
+                        </div>
+
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Gender :</label>
                             @foreach(GENDER as $key=>$value)
@@ -89,8 +96,7 @@
                             @endforeach
 
                         </div>
-                    </div>
-                    <div class="row">
+                   
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Blood Group :</label>
                             {{$getAssociatesDetails->bloodGroup}}
@@ -100,6 +106,64 @@
                             {{$getAssociatesDetails->nid}}
 
                         </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">NID :</label>
+                            {{$getAssociatesDetails->nid}}
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Marital :</label>
+                            {{$getAssociatesDetails->marital}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Spouse :</label>
+                            {{$getAssociatesDetails->spouse}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Spouse Number :</label>
+                            {{$getAssociatesDetails->spouseNumber}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Father Name:</label>
+                            {{$getAssociatesDetails->father}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Mother Name :</label>
+                            {{$getAssociatesDetails->mother}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Mother Number :</label>
+                            {{$getAssociatesDetails->motherNumber}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Religion :</label>
+                            {{$getAssociatesDetails->religion}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Occupation :</label>
+                            {{$getAssociatesDetails->occupation}}
+
+                        </div>
+
+
+
+
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">

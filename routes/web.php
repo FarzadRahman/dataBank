@@ -157,6 +157,7 @@ Route::post('List-File/deleteZillaFile','ListTypeController@deleteZillaFile')->n
 Route::post('List-File/deleteUpZillaFile','ListTypeController@deleteUpZillaFile')->name('deleteUpZillaFile');
 Route::post('List-File/deleteUnionFile','ListTypeController@deleteUnionFile')->name('deleteUnionFile');
 Route::post('List-File/deletePouroshovaFile','ListTypeController@deletePouroshovaFile')->name('deletePouroshovaFile');
+Route::post('List-File/deleteAllFile','ListTypeController@deleteAllFile')->name('deleteAllFile');
 
 
 //=====================User=========================================

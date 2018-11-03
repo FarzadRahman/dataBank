@@ -66,7 +66,7 @@
                     </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">party :</label>
+                                <label for="inputEmail4">Party :</label>
                                 {{$getCandidatesDetails->partyName}}
                             </div>
                             <div class="form-group col-md-6">
@@ -88,9 +88,14 @@
 
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Date of Birth :</label>
+                                <label for="inputEmail4">Date Of Birth :</label>
                                 {{$getCandidatesDetails->dob}}
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Age :</label>
+                                {{$getCandidatesDetails->age}}
+                            </div>
+
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Gender :</label>
                                 @foreach(GENDER as $key=>$value)
@@ -98,8 +103,7 @@
                                 @endforeach
 
                             </div>
-                        </div>
-                        <div class="row">
+
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Blood Group :</label>
                                 {{$getCandidatesDetails->bloodGroup}}
@@ -109,8 +113,55 @@
                                 {{$getCandidatesDetails->nid}}
 
                             </div>
-                        </div>
-                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Marital :</label>
+                                {{$getCandidatesDetails->marital}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Spouse :</label>
+                                {{$getCandidatesDetails->spouse}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Spouse Number :</label>
+                                {{$getCandidatesDetails->spouseNumber}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Father Name:</label>
+                                {{$getCandidatesDetails->father}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Mother Name :</label>
+                                {{$getCandidatesDetails->mother}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Mother Number :</label>
+                                {{$getCandidatesDetails->motherNumber}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Religion :</label>
+                                {{$getCandidatesDetails->religion}}
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Occupation :</label>
+                                {{$getCandidatesDetails->occupation}}
+
+                            </div>
+
+
                             <div class="form-group col-md-12">
                                 <label for="inputEmail4">Address :</label>
                                 {{$getCandidatesDetails->address}}
@@ -138,8 +189,8 @@
                     <table id="" class="table table-striped manageapplication">
                         <thead>
                         <th>SL</th>
-                        <th>name</th>
-                        <th>Phone number</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
                         <th>Action</th>
 
                         </thead>
@@ -184,8 +235,8 @@
                     <table id="" class="table table-striped manageapplication">
                         <thead>
                          <th>SL</th>
-                        <th>name</th>
-                        <th>Phone number</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
                         <th>Action</th>
 
                         </thead>

@@ -80,7 +80,7 @@
 
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="card">
             <div class="card-header">
                 <h4 align="center">{{$party->partyName}}</h4>
@@ -230,6 +230,10 @@
                     $("#ListDiv").show();
                     $('#listType').val(listType);
                 }
+                else if(partyLevel==7){
+                    $("#ListDiv").show();
+                    $('#listType').val(listType);
+                }
                 else if(partyLevel==3){
                     var zillaId="{{ Session::get('zillaId') }}";
 
@@ -272,6 +276,9 @@
 
                     data['unionId']=unionId;
                 }
+
+
+
 
             $.ajax({
                 type: 'POST',
@@ -326,10 +333,11 @@
             var partyId="{{$party->partyId}}";
             $("#fileDiv").hide();
 
-            if (this.value==2 || this.value==1){
+            if (this.value==2 || this.value==1 || this.value==7){
 
                 $("#ListDiv").show();
                 $("#zilaDiv").hide();
+                $("#listType").prop("selectedIndex", 0);
                 $("#zila").prop("selectedIndex", 0);
                 $("#upZillaDiv").hide();
                 $("#upzilla").prop("selectedIndex", 0);
@@ -386,6 +394,10 @@
 
 
             }
+            //  if(this.value==7){
+            //     alert("All");
+            //     return false;
+            // }
 
 
 
@@ -425,7 +437,7 @@
                     data: {_token: "{{csrf_token()}}", Alldata: data},
                     cache: false,
                     success: function (data) {
-
+                        // console.log(data);
                         $("#fileDiv").html(data);
                         $("#fileDiv").show();
 

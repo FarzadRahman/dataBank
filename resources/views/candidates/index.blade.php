@@ -21,8 +21,8 @@
                     <table id="manageapplication" class="table table-striped">
                         <thead>
 
-                        <th>name</th>
-                        <th>Phone number</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
                         <th>Associates</th>
                         <th>Promoters</th>
                         <th>Action</th>

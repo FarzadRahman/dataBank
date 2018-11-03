@@ -156,11 +156,6 @@
 
 
 
-
-        {{--<p style="page-break-after: always"></p>--}}
-
-
-
         @if($associate->profile!=null)
             <img height="1000px" width="900px" src="{{url('public/associate/profileDoc').'/'.$associate->profile}}" alt="">
             <p style="page-break-after: always"></p>

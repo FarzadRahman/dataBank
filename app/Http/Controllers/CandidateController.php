@@ -72,6 +72,19 @@ class CandidateController extends Controller
         $candidate->createdAt=date('Y-m-d H:m:s');
         $candidate->createdBy=Auth::user()->userId;
 
+
+        //New Update
+        $candidate->age=$r->age;
+        $candidate->marital=$r->marital;
+        $candidate->spouse=$r->spouse;
+        $candidate->spouseNumber=$r->spouseNumber;
+        $candidate->father=$r->father;
+        $candidate->fatherNumber=$r->fatherNumber;
+        $candidate->mother=$r->mother;
+        $candidate->motherNumber=$r->motherNumber;
+        $candidate->religion=$r->religion;
+        $candidate->occupation=$r->occupation;
+
         $candidate->save();
 
         if($r->hasFile('image')){
@@ -125,11 +138,11 @@ class CandidateController extends Controller
 
     public function edit($id){
 
-        $getCandidatesDetails=Candidate::select('candidate.constituencyId','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
-            'candidate.remark','candidate.image','candidate.profile','candidate.dob','candidate.gender',
-            'candidate.bloodGroup','candidate.nid','candidate.address','candidate.profile')
+        $getCandidatesDetails=Candidate::select('candidate.*','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName')
             ->leftJoin('party','party.partyId','candidate.party')
-            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')->findOrFail($id);
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->findOrFail($id);
+
 
 //        $allParties=Party::select('partyId','partyName')->get();
 //        $allConstituencies=Constituency::select('constituencyId','name')->groupBy('name')->get();
@@ -143,9 +156,7 @@ class CandidateController extends Controller
     }
     public function editForm($id){
 
-        $getCandidatesDetails=Candidate::select('candidate.constituencyId','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName','candidate.phoneNumber','candidate.candidateId',
-            'candidate.remark','candidate.image','candidate.profile','candidate.party','candidate.constituencyId',
-            'candidate.dob','candidate.gender','candidate.bloodGroup','candidate.nid','candidate.address')
+        $getCandidatesDetails=Candidate::select('candidate.*','party.partyName','constituency.name as constituencyName','candidate.name as CandidateName')
             ->leftJoin('party','party.partyId','candidate.party')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
             ->findOrFail($id);
@@ -178,6 +189,18 @@ class CandidateController extends Controller
 //        $candidates->profile = null;
         $candidates->updatedAt = date('Y-m-d H:m:s');
         $candidates->updatedAt = Auth::user()->userId;
+
+        //New Update
+        $candidates->age=$r->age;
+        $candidates->marital=$r->marital;
+        $candidates->spouse=$r->spouse;
+        $candidates->spouseNumber=$r->spouseNumber;
+        $candidates->father=$r->father;
+        $candidates->fatherNumber=$r->fatherNumber;
+        $candidates->mother=$r->mother;
+        $candidates->motherNumber=$r->motherNumber;
+        $candidates->religion=$r->religion;
+        $candidates->occupation=$r->occupation;
         if($r->deleteImage){
             $candidates->profile=null;
         }

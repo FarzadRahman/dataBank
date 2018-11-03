@@ -25,16 +25,17 @@ define('BLOOD_GROUP',array(
 ));
 
 define('MARITAL_STATUS',array(
-    "Single"=>'s',
-    "Married"=>'m',
-    "Divorced"=>'d',
-    "Widowed"=>'w',
+    "অবিবাহিত",
+    "বিবাহিত",
+    "তালাকপ্রাপ্ত",
+    "বিধবা",
 ));
 define('LIST_TYPE',array(
     "main"=>'kendr',
     "Youth"=>'jubo',
     "student"=>'chatr',
     "volunteer"=>'volen',
+    "All"=>'all',
 ));
 
 define('COMPLETING_STATUS',array(

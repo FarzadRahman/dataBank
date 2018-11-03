@@ -25,7 +25,7 @@
                     <th>Constituency</th>
                     <th>Associates</th>
                     <th>Promoters</th>
-                    <th>action</th>
+                    <th>Action</th>
                     </thead>
                     <tbody>
 

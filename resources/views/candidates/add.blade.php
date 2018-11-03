@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Candidate remark</label>
+                    <label>Candidate Remark</label>
                     <textarea name="remark" class="form-control" placeholder="remark" rows="5" ></textarea>
                 </div>
                 </div>
@@ -127,12 +127,18 @@
                         <label>NID </label>
                         <input type="text" name="nid" placeholder="NID" onkeypress="return isNumberKey(event)" class="form-control">
                     </div>
-                </div>
-                <div class="row">
+
                 <div class="form-group col-md-6">
-                    <label for="">Date of Birth</label>
+                    <label for="">Date Of Birth</label>
                     <input type="text"  name="dob" class="form-control"  placeholder="">
 
+                </div>
+
+                    {{--Start New Update--}}
+
+                <div class="form-group col-md-6">
+                    <label for="">Age</label>
+                    <input type="text"  name="age" class="form-control"  placeholder="">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -145,7 +151,60 @@
 
                     </select>
                 </div>
+
+
+                <div class="form-group col-md-6">
+                    <label for="">Marital Status</label>
+
+                    <select  name="marital" class="form-control" >
+                        <option selected value="">Select Status</option>
+                        @foreach(MARITAL_STATUS as $value)
+                            <option  value="{{$value}}">{{$value}}</option>
+                        @endforeach
+
+                    </select>
                 </div>
+
+                <div class="form-group col-md-6">
+                    <label for="">Spouse Name</label>
+                    <input type="text"  name="spouse" class="form-control"  placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="">Spouse Number</label>
+                    <input type="text"  name="spouseNumber" class="form-control"  placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="">Father Name</label>
+                    <input type="text"  name="father" class="form-control"  placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Father Number</label>
+                    <input type="text"  name="fatherNumber" class="form-control"  placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="">Mother Name</label>
+                    <input type="text"  name="mother" class="form-control"  placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Mother Number</label>
+                    <input type="text"  name="motherNumber" class="form-control"  placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="">Religion</label>
+                    <input type="text"  name="religion" class="form-control"  placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="">Occupation</label>
+                    <input type="text"  name="occupation" class="form-control"  placeholder="">
+                </div>
+                </div>
+
+{{--End Of New Update--}}
 
                 <div class="row">
                     <div class="form-group col-md-12">
