@@ -45,16 +45,18 @@
 <div class="">
     <div style="background: #fff; ">
 
-        <h2 align="center"><u>প্রার্থী</u></h2>
+        <h2 align="center"><u>Candidate</u></h2>
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
             <tr>
-                <td style=" border: none;width:80%">
-                    <h3 style="">{{$candidate->cname}}</h3>
-                    <p style="max-width: 300px">মোবাইল : {{$candidate->phoneNumber}} <br>
-                        ঠিকানা : {{$candidate->address}}
+                <td style="width:40%">
+                    <h3 style="">নির্বাচনক্ষেত্র সংখ্যা : {{$candidate->consnumber}}</h3>
+                    <p style="">নির্বাচনক্ষেত্র নাম : {{$candidate->consname}} <br>
+                        বিভাগ : {{$candidate->divisionName}} <br>
+                        দল : {{$candidate->partyName}}
                     </p>
 
                 </td>
+                <td style="width: 40%; border: none; "></td>
                 <td style="width: 20%; border: none; "><img height="150px" width="150px" src="{{url('public/candidate/candidateImages/thumb').'/'.$candidate->image}}" alt=""></td>
             </tr>
 
@@ -67,13 +69,23 @@
                 <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>ব্যক্তিগত তথ্য</b> </td>
             </tr>
         </table>
-        <table border="0" style="width:100%; margin-top: 10px; border: none;">
-
+        <table border="0" style="width:100%; margin-top: 10px; border: none;font-size: 18px;">
             <tr>
                 <td  style="border: none;width: 50%;">
-                    <h3>জন্ম : {{$candidate->dob}}</h3>
+                    <h3> নাম : {{$candidate->cname}}</h3>
                 </td>
 
+
+                <td style="border: none;width: 50%;">
+                    <h3>মোবাইল : {{$candidate->phoneNumber}}</h3>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td  style="border: none;width: 50%;">
+                    <h3>  <h3>পেশা : {{$candidate->occupation}}</h3> </h3>
+                </td>
 
                 <td style="border: none;width: 50%;">
                     <h3>লিঙ্গ :
@@ -88,6 +100,17 @@
 
             <tr>
                 <td  style="border: none;width: 50%;">
+                    <h3>জন্ম : {{$candidate->dob}}</h3>
+                </td>
+
+
+                <td style="border: none;width: 50%;">
+                    <h3> বয়স : {{$candidate->age}}</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td  style="border: none;width: 50%;">
                     <h3> রক্ত গ্রুপ : {{$candidate->bloodGroup}}</h3>
                 </td>
 
@@ -96,18 +119,66 @@
                     <h3> জাতীয় পরিচয় : {{$candidate->nid}}</h3>
                 </td>
             </tr>
+
+
             <tr>
                 <td  style="border: none;width: 50%;">
-                    <h3>দল : {{$candidate->partyName}}</h3>
+                    <h3>জন্ম : {{$candidate->dob}}</h3>
                 </td>
 
 
                 <td style="border: none;width: 50%;">
-                    <h3> নির্বাচনক্ষেত্র : {{$candidate->consname}}</h3>
+                    <h3> বৈবাহিক অবস্থা : {{$candidate->marital}}</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td  style="border: none;width: 50%;">
+                    <h3>পত্নী : {{$candidate->spouse}}</h3>
+                </td>
+
+
+                <td style="border: none;width: 50%;">
+                    <h3>পত্নী মোবাইল : {{$candidate->spouseNumber}}</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td  style="border: none;width: 50%;">
+                    <h3>পিতা : {{$candidate->father}}</h3>
+                </td>
+
+                <td style="border: none;width: 50%;">
+                    <h3>পিতা মোবাইল : {{$candidate->fatherNumber}}</h3>
                 </td>
             </tr>
             <tr>
-                <td style="border: none;width: 80%;">
+                <td  style="border: none;width: 50%;">
+                    <h3>মাতা : {{$candidate->mother}}</h3>
+                </td>
+
+                <td style="border: none;width: 50%;">
+                    <h3>মাতা মোবাইল : {{$candidate->motherNumber}}</h3>
+                </td>
+            </tr>
+            <tr>
+                <td  style="border: none;width: 50%;">
+                    <h3>ধর্ম : {{$candidate->religion}}</h3>
+                </td>
+
+                <td style="border: none;width: 50%;">
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="border: none;width: 90%;">
+                    <h3>  ঠিকানা : {{$candidate->address}}</h3>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: none;width: 90%;">
                     <h3> মন্তব্য : {{$candidate->remark}}</h3>
                 </td>
             </tr>
@@ -116,7 +187,7 @@
 
         </table>
 
-
+@if(!$promoters->isEmpty())
         <table border="0" style="width:100%; margin-top: 15px; border: none;">
             <tr>
                 <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>প্রবর্তক</b> </td>
@@ -130,27 +201,33 @@
             @foreach($promoters as $prm)
 
                 <tr>
-                    <td width="2%" style="border: none; vertical-align: top">
-                        <span>{{$count++}}.</span>
-                    </td>
 
-
+                    <td style="border: none;width: 10px;">{{$count++}}</td>
                     <td style="border: none;">
 
-                        নাম : {{$prm->proname}} <br>
-                        মোবাইল : {{$prm->pronumber}} <br>
-
-
-
-
+                        নাম : {{$prm->proname}}
                     </td>
+                    <td style="border: none;"> মোবাইল : {{$prm->pronumber}}</td>
+                </tr>
+                <tr>
+
+                    <td style="border: none;width: 10px;"></td>
+                    <td style="border: none;">দল : {{$prm->partyName}}</td>
+                    <td style="border: none;">লিঙ্গ : @foreach(GENDER as $key=>$value)
+                            @if($prm->gender==$value)
+                                {{$key}}
+                            @endif
+                        @endforeach</td>
+
+
+
                 </tr>
 
             @endforeach
 
         </table>
-
-
+@endif
+@if(!$associates->isEmpty())
         <table border="0" style="width:100%; margin-top: 15px; border: none;">
             <tr>
                 <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>সহযোগী</b> </td>
@@ -162,28 +239,37 @@
 
             @php $count=1;@endphp
             @foreach($associates as $associate)
-
                 <tr>
-                    <td width="2%" style="border: none; vertical-align: top">
-                        <span>{{$count++}}.</span>
-                    </td>
 
-
+                    <td style="border: none;width: 10px;">{{$count++}}</td>
                     <td style="border: none;">
 
-                        নাম : {{$associate->assoname}} <br>
-                        মোবাইল : {{$associate->assonumber}} <br>
-
-
-
+                        নাম : {{$associate->assoname}}
                     </td>
+                    <td style="border: none;"> মোবাইল : {{$associate->assonumber}}</td>
                 </tr>
+                <tr>
+                    <td style="border: none;width: 10px;"></td>
+
+                    <td style="border: none;">দল : {{$associate->partyName}}</td>
+                    <td style="border: none;">লিঙ্গ : @foreach(GENDER as $key=>$value)
+                            @if($associate->gender==$value)
+                                {{$key}}
+                            @endif
+                        @endforeach</td>
+
+
+
+                </tr>
+
+
+
 
             @endforeach
 
         </table>
 
-
+@endif
         @if($candidate->profile!=null)
             <img height="1000px" width="900px" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">
             <p style="page-break-after: always"></p>

@@ -17,17 +17,23 @@ class PdfController extends Controller
         //$candidate = Candidate::get();
 //        $id = 1;
 
-        $candidate = Candidate::select('candidateId','constituency.name as consname', 'candidate.name as cname', 'phoneNumber', 'partyName', 'remark', 'image', 'profile' , 'candidate.constituencyId', 'address' ,
-            'dob', 'gender', 'bloodGroup' , 'nid')
+        $candidate = Candidate::select('candidateId','constituency.name as consname','constituency.number as consnumber','division.divisionName',
+            'candidate.name as cname', 'phoneNumber', 'partyName', 'remark', 'image', 'profile' , 'candidate.constituencyId',
+            'address' , 'dob', 'gender', 'bloodGroup' , 'nid','age','marital','spouse','spouseNumber',
+            'father','fatherNumber','mother','motherNumber','religion','age','occupation')
             ->leftjoin('party','party.partyId','candidate.party')
             ->leftjoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->leftjoin('division','division.divisionId','constituency.divisionId')
             -> where('candidateId' , $id)
             ->first();
-        $promoters =    Promoter::select('promotersId', 'promoters.name as proname', 'promoters.phoneNumber as pronumber')
+        $promoters =    Promoter::select('promotersId', 'promoters.name as proname', 'promoters.phoneNumber as pronumber','partyName','gender')
             -> where('candidateId' , $id)
+            ->leftjoin('party','party.partyId','promoters.party')
             ->get();
-        $associates =  Associate::select('associateId','associates.name as assoname' , 'associates.phoneNumber as assonumber')
+        $associates =  Associate::select('associateId','associates.name as assoname' , 'associates.phoneNumber as assonumber',
+            'partyName','gender')
             -> where('candidateId' , $id)
+            ->leftjoin('party','party.partyId','associates.party')
             ->get();
 
 
