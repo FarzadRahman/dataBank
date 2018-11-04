@@ -210,12 +210,13 @@
                                     {{$associate->phoneNumber}}
                                 </td>
                                 <td><a href="{{route('associate.view',$associate->associateId)}}" class="btn btn-info btn-sm">View</a>
-                                    @if(Auth::user()->userTypeId=='admin')
-                                    <button type="button" class="btn btn-danger btn-sm " onclick="deleteAssociate({{$associate->associateId}})"><i class="fa fa-trash"></i></button>
-                                    @endif
+
                                     <button type="button" class="btn btn-default btn-sm"  onclick="printAssociate({{$associate->associateId}})"><i class="fa fa-print"></i></button>
                                     @if($associate->attachment)
                                     <a href="{{url('public/associate/attachment/'.$associate->attachment)}}"download ><button class="btn btn-default btn-sm"><i class="fa fa-download"></i></button></a>
+                                    @endif
+                                    @if(Auth::user()->userTypeId=='admin')
+                                        <button type="button" class="btn btn-danger btn-sm " onclick="deleteAssociate({{$associate->associateId}})"><i class="fa fa-trash"></i></button>
                                     @endif
                                 </td>
                             </tr>
@@ -258,12 +259,13 @@
                                     {{$promoters->phoneNumber}}
                                 </td>
                                 <td><a href="{{route('promoter.view',$promoters->promotersId)}}" class="btn btn-info btn-sm">View</a>
-                                    @if(Auth::user()->userTypeId=='admin')
-                                    <button type="button" class="btn btn-danger btn-sm " onclick="deletePromoter({{$promoters->promotersId}})"><i class="fa fa-trash"></i></button>
-                                    @endif
+
                                     <button type="button" class="btn btn-default btn-sm"  onclick="printPromoters({{$promoters->promotersId}})"><i class="fa fa-print"></i></button>
                                    @if($promoters->attachment)
                                     <a href="{{url('public/promoter/attachment/'.$promoters->attachment)}}"download ><button class="btn btn-default btn-sm"><i class="fa fa-download"></i></button></a>
+                                    @endif
+                                    @if(Auth::user()->userTypeId=='admin')
+                                        <button type="button" class="btn btn-danger btn-sm " onclick="deletePromoter({{$promoters->promotersId}})"><i class="fa fa-trash"></i></button>
                                     @endif
                                 </td>
                             </tr>
