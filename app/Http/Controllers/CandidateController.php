@@ -293,9 +293,7 @@ class CandidateController extends Controller
             ->groupBy('candidate.candidateId')
             ->groupBy('candidate.name')
             ->get();
-
-
-//
+        
         $datatables = Datatables::of($candidates);
         return $datatables->make(true);
 
