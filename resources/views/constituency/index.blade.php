@@ -138,9 +138,14 @@
                     { data: 'area', name: 'constituency.area' },
                     { data: 'divisionName', name: 'division.divisionName' },
                     { "data": function(data){
-                                return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="'+data.constituencyId+'" onclick="getVoter(this)">' +
-                                    data.totalVoter.toString().getDigitBanglaFromEnglish() +
-                                    '</button>';
+                        if(data.totalVoter==null){
+                            return "";
+                        }
+                        else {
+                            return '<button type="button" class="btn btn-primary btn-sm" data-panel-id="' + data.constituencyId + '" onclick="getVoter(this)">' +
+                                data.totalVoter.toString().getDigitBanglaFromEnglish() +
+                                '</button>';
+                        }
                                 },
                         "orderable": false, "searchable":false, "name":"selected_rows" },
                     { "data": function(data){

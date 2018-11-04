@@ -43,6 +43,18 @@
 
 @endsection
 @section('content')
+    {{--Site Map--}}
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->candidateId])}}">{{$getPromotersDetails->candidateName}}</a>
+    <i class="fa fa-angle-double-right"></i>
+    Promoter  <i class="fa fa-angle-double-right"></i> Add
+    <br><br>
 
     <div class="col-md-12">
         <div class="card">
@@ -76,7 +88,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Party</label>
-                            <select class="form-control" name="party" required>
+                            <select class="form-control" name="party" >
                                 <option value="">Select Party</option>
                                 @foreach($allParties as $party)
                                     <option value="{{$party->partyId}}">{{$party->partyName}}</option>
@@ -93,7 +105,7 @@
 
                         <div class="form-group col-md-12">
                             <label>Promoter Remark</label>
-                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" required></textarea>
+                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" ></textarea>
                         </div>
 
 

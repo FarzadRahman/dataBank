@@ -48,9 +48,13 @@ class CandidateController extends Controller
 
     public function add($constituencyId){
 
+        $getCandidatesDetails=Constituency::select('constituencyId','constituency.name as constituencyName')
+            ->findOrFail($constituencyId);
+
+
         $allParties=Party::select('partyId','partyName')->get();
-//        $allConstituencies=Constituency::select('constituencyId','name')->groupBy('name')->get();
-        return view('candidates.add',compact('allParties','constituencyId'));
+
+        return view('candidates.add',compact('allParties','constituencyId','getCandidatesDetails'));
     }
 
     public function insert(Request $r){

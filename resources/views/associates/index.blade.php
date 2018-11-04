@@ -16,7 +16,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="pull-left">Details Of the Associate</h3>
+                <h3 class="pull-left">Details Of Associate</h3>
 
                 <div class="form-group pull-right">
                     <a href="{{route('associate.edit',$getAssociatesDetails->associateId)}}"><button class="btn btn-sm btn-info">Edit</button></a>

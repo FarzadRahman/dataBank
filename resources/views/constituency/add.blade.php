@@ -16,15 +16,15 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Constituency Name</label>
-                        <input type="text" name="name" placeholder="name" class="form-control" required>
+                        <input type="text" name="name" placeholder="name" class="form-control" >
                     </div>
                     <div class="form-group col-md-6">
                         <label>Constituency Area</label>
-                        <textarea name="area" class="form-control" placeholder="area" rows="5" required></textarea>
+                        <textarea name="area" class="form-control" placeholder="area" rows="5" ></textarea>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Division</label>
-                        <select class="form-control" name="divisionId" required>
+                        <select class="form-control" name="divisionId" >
                             <option value="">Select Division</option>
                             @foreach($divisions as $division)
                                 <option value="{{$division->divisionId}}">{{$division->divisionName}}</option>
@@ -37,11 +37,11 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Male</label>
-                        <input class="form-control" name="maleVoter" type="number" required>
+                        <input class="form-control" name="maleVoter" type="number" >
                     </div>
                     <div class="form-group col-sm-4">
                         <label>Female</label>
-                        <input class="form-control" name="femaleVoter" type="number" required>
+                        <input class="form-control" name="femaleVoter" type="number" >
                     </div>
                     <div class="form-group col-sm-12">
                     <button class="btn btn-success pull-right">Insert</button>

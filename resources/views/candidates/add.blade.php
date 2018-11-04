@@ -43,6 +43,17 @@
 
     @endsection
 @section('content')
+    {{--Site Map--}}
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('constituency.edit',['id'=>$getCandidatesDetails->constituencyId])}}">{{$getCandidatesDetails->constituencyName}}</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('candidates.index',['id'=>$getCandidatesDetails->constituencyId])}}">Candidates</a>
+    <i class="fa fa-angle-double-right"> </i>Add
+
+    <br>
+    <br>
 
     <div class="col-md-12">
     <div class="card">
@@ -78,7 +89,7 @@
                 <div class="row">
                 <div class="form-group col-md-6">
                     <label>Party</label>
-                    <select class="form-control" name="party" required>
+                    <select class="form-control" name="party" >
                         <option value="">Select Party</option>
                         @foreach($allParties as $party)
                             <option value="{{$party->partyId}}">{{$party->partyName}}</option>

@@ -12,11 +12,11 @@
     <i class="fa fa-angle-double-right"></i>
     Promoter :   {{$getPromotersDetails->promoterName}}
     
+    <br><br>
 
-        <br>
         <div class="card">
             <div class="card-header">
-                <h3 class="pull-left">Details Of the Promoter</h3>
+                <h3 class="pull-left">Details Of Promoter</h3>
                 <div class="form-group pull-right">
                     <a href="{{route('promoter.edit',$getPromotersDetails->promotersId)}}"><button class="btn btn-sm btn-info ">Edit</button></a>
                     <button type="button" class="btn btn-default btn-sm"  onclick="printPromoters({{$getPromotersDetails->promotersId}})"><i class="fa fa-print"></i></button>
