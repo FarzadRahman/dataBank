@@ -132,7 +132,7 @@ class CandidateController extends Controller
         if($r->hasFile('uploadAttachment')){
 
             $attachment = $r->file('uploadAttachment');
-            $filename= $candidate->candidateId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $filename= $candidate->candidateId. $r->name.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
             $candidate->attachment=$filename;
             $location = public_path('candidate/attachment/');
             $attachment->move($location,$filename);
@@ -262,7 +262,7 @@ class CandidateController extends Controller
              if($r->hasFile('uploadAttachment')){
 
             $attachment = $r->file('uploadAttachment');
-            $filename= $r->candidateid.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $filename= $r->candidateid.$r->name.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
             $candidates->attachment=$filename;
             $location = public_path('candidate/attachment/');
             $attachment->move($location,$filename);

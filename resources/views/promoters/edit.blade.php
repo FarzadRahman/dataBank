@@ -237,7 +237,7 @@
 
                         <div class="form-group col-md-12">
 
-                            <label class="col-md-2">Upload</label>
+                            <label class="col-md-2">Upload(Image file)</label>
                             <input type="file" id="uploadDoc" name="uploadDoc" accept="*" placeholder="Promoter Document" class="form-control col-md-8" />
 
 

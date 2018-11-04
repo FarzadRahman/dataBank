@@ -113,7 +113,7 @@ class PromoterController extends Controller
         if($r->hasFile('uploadAttachment')){
 
             $attachment = $r->file('uploadAttachment');
-            $filename= $promoters->promotersId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $filename= $promoters->promotersId.$r->name.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
             $promoters->attachment=$filename;
             $location = public_path('promoter/attachment/');
             $attachment->move($location,$filename);
@@ -235,7 +235,7 @@ class PromoterController extends Controller
         if($r->hasFile('uploadAttachment')){
 
             $attachment = $r->file('uploadAttachment');
-            $filename= $r->promoterId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $filename= $r->promoterId.$r->name.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
             $promoters->attachment=$filename;
             $location = public_path('promoter/attachment/');
             $attachment->move($location,$filename);

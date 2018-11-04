@@ -116,7 +116,7 @@ class AssociateController extends Controller
         if($r->hasFile('uploadAttachment')){
 
             $attachment = $r->file('uploadAttachment');
-            $filename= $associates->associateId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $filename= $associates->associateId.$r->name.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
             $associates->attachment=$filename;
             $location = public_path('associate/attachment/');
             $attachment->move($location,$filename);
@@ -227,7 +227,7 @@ class AssociateController extends Controller
         if($r->hasFile('uploadAttachment')){
 
             $attachment = $r->file('uploadAttachment');
-            $filename= $r->associateId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $filename= $r->associateId.$r->name.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
             $associates->attachment=$filename;
             $location = public_path('associate/attachment/');
             $attachment->move($location,$filename);

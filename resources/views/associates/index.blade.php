@@ -110,12 +110,7 @@
 
                         </div>
 
-
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">NID :</label>
-                            {{$getAssociatesDetails->nid}}
-
-                        </div>
+                        
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Marital :</label>
                             {{$getAssociatesDetails->marital}}

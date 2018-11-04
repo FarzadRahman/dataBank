@@ -158,7 +158,7 @@ class ListTypeController extends Controller
             if($r->hasFile('uploadDoc')){
 
                 $img = $r->file('uploadDoc');
-                $filename= $allFile->jatiofileId.'files'.'.'.$img->getClientOriginalExtension();
+                $filename= $allFile->allfileId.'files'.'.'.$img->getClientOriginalExtension();
                 $allFile->image=$filename;
                 $location = public_path('allfiles/');
                 $img->move($location,$filename);
