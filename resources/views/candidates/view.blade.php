@@ -30,7 +30,7 @@
                         &nbsp;&nbsp;
                         <button type="button" class="btn btn-default btn-sm"  onclick="printCandidate({{$getCandidatesDetails->candidateId}})"><i class="fa fa-print"></i></button>
                       @if($getCandidatesDetails->attachment)
-                        <a href="{{url('public/candidate/attachment/'.$getCandidatesDetails->attachment)}}"download ><button class="btn btn-default btn-sm"><i class="fa fa-download"></i></button></a>
+                        <a href="{{url('public/candidate/attachment/'.$getCandidatesDetails->attachment)}}" type="button" class="btn btn-default btn-sm" download ><i class="fa fa-download"></i></a>
                       @endif
                     </div>
 

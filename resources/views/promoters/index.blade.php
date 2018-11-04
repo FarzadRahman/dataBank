@@ -20,7 +20,9 @@
                 <div class="form-group pull-right">
                     <a href="{{route('promoter.edit',$getPromotersDetails->promotersId)}}"><button class="btn btn-sm btn-info ">Edit</button></a>
                     <button type="button" class="btn btn-default btn-sm"  onclick="printPromoters({{$getPromotersDetails->promotersId}})"><i class="fa fa-print"></i></button>
-
+                    @if($getPromotersDetails->attachment)
+                        <a href="{{url('public/promoter/attachment/'.$getPromotersDetails->attachment)}}" type="button" class="btn btn-default btn-sm" download ><i class="fa fa-download"></i></a>
+                    @endif
                 </div>
 
             </div>
