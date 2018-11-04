@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Candidate;
 use App\Party;
 use App\Promoter;
 use Illuminate\Http\Request;
@@ -30,10 +31,14 @@ class PromoterController extends Controller
 
     public function add($id)
     {
+        $getPromotersDetails=Candidate::select('candidateId','candidate.name as candidateName',
+            'constituency.name as constituencyName','candidate.constituencyId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->findOrFail($id);
 
         $allParties = Party::select('partyId', 'partyName')->get();
 
-        return view('promoters.add', compact('allParties', 'id'));
+        return view('promoters.add', compact('allParties', 'id','getPromotersDetails'));
     }
 
     public function insert(Request $r)

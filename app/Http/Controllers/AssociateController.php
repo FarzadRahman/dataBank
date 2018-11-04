@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Associate;
+use App\Candidate;
 use App\Party;
 use Illuminate\Http\Request;
 use Session;
@@ -33,7 +34,14 @@ class AssociateController extends Controller
 
         $allParties=Party::select('partyId','partyName')->get();
 
-        return view('associates.add',compact('allParties','id'));
+        $getAssociatesDetails=Candidate::select('candidateId','candidate.name as candidateName',
+            'constituency.name as constituencyName','candidate.constituencyId')
+            ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
+            ->findOrFail($id);
+
+
+
+        return view('associates.add',compact('allParties','id','getAssociatesDetails'));
     }
 
     public function insert(Request $r){

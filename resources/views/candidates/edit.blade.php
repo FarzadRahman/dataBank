@@ -219,7 +219,7 @@
                     </div>
 
                     {{--End Of New Update--}}
-                    </div>
+
 
                     <div class="row">
                         <div class="form-group col-md-12">

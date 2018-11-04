@@ -43,6 +43,18 @@
 
 @endsection
 @section('content')
+    {{--Site Map--}}
+    <br class="mobile-break"><br class="mobile-break"><br class="mobile-break">
+    <a href="{{route('constituency.index')}}">Constituency</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('constituency.edit',['id'=>$getPromotersDetails->constituencyId])}}">{{$getPromotersDetails->constituencyName}}</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('candidates.index',['id'=>$getPromotersDetails->constituencyId])}}">candidates</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="{{route('candidates.edit',['id'=>$getPromotersDetails->candidateId])}}">{{$getPromotersDetails->candidateName}}</a>
+    <i class="fa fa-angle-double-right"></i>
+    Promoter  <i class="fa fa-angle-double-right"></i> Add
+    <br><br>
 
     <div class="col-md-12">
         <div class="card">
