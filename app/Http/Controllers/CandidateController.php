@@ -263,7 +263,7 @@ class CandidateController extends Controller
 
             $attachment = $r->file('uploadAttachment');
             $filename= $r->candidateid.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
-            $r->attachment=$filename;
+            $candidates->attachment=$filename;
             $location = public_path('candidate/attachment/');
             $attachment->move($location,$filename);
 
