@@ -21,6 +21,9 @@
                 <div class="form-group pull-right">
                     <a href="{{route('associate.edit',$getAssociatesDetails->associateId)}}"><button class="btn btn-sm btn-info">Edit</button></a>
                     <button type="button" class="btn btn-default btn-sm"  onclick="printAssociate({{$getAssociatesDetails->associateId}})"><i class="fa fa-print"></i></button>
+                    @if($getAssociatesDetails->attachment)
+                        <a href="{{url('public/associate/attachment/'.$getAssociatesDetails->attachment)}}"download ><button class="btn btn-default btn-sm"><i class="fa fa-download"></i></button></a>
+                    @endif
                 </div>
 
 

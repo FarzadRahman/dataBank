@@ -113,7 +113,15 @@ class AssociateController extends Controller
 
             }
 
+        if($r->hasFile('uploadAttachment')){
 
+            $attachment = $r->file('uploadAttachment');
+            $filename= $associates->associateId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $associates->attachment=$filename;
+            $location = public_path('associate/attachment/');
+            $attachment->move($location,$filename);
+
+        }
 
 //        }
         $associates->save();
@@ -161,6 +169,10 @@ class AssociateController extends Controller
         $associates->updatedAt=Auth::user()->userId;
         if($r->deleteImage){
             $associates->profile=null;
+        }
+        if($r->deleteAttachemnt){
+            $associates->attachment=null;
+            unlink('public/associate/attachment/' . $r->deleteAttachemnt);
         }
 
         //New Update
@@ -212,6 +224,15 @@ class AssociateController extends Controller
             }
 
 
+        if($r->hasFile('uploadAttachment')){
+
+            $attachment = $r->file('uploadAttachment');
+            $filename= $r->associateId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $associates->attachment=$filename;
+            $location = public_path('associate/attachment/');
+            $attachment->move($location,$filename);
+
+        }
 
 //        }
 

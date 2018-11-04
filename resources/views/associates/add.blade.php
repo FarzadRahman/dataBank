@@ -234,6 +234,13 @@
 
 
                 </div>
+                <div class="form-group col-md-12">
+
+                    <label class="col-md-2">Upload Attachment(Doc file)</label>
+                    <input type="file" id="uploadDoc" name="uploadAttachment" accept="*" placeholder="Associate Attachment" class="form-control col-md-8" />
+
+
+                </div>
 
 
             </div>

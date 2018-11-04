@@ -215,7 +215,7 @@
                                     @endif
                                     <button type="button" class="btn btn-default btn-sm"  onclick="printAssociate({{$associate->associateId}})"><i class="fa fa-print"></i></button>
                                     @if($associate->attachment)
-                                    <a href="{{url('public/associate/attachment/'.$getCandidatesDetails->attachment)}}"download ><button class="btn btn-default btn-sm"><i class="fa fa-download"></i></button></a>
+                                    <a href="{{url('public/associate/attachment/'.$associate->attachment)}}"download ><button class="btn btn-default btn-sm"><i class="fa fa-download"></i></button></a>
                                     @endif
                                 </td>
                             </tr>
