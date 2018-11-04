@@ -161,8 +161,8 @@ class CandidateController extends Controller
 //        $allParties=Party::select('partyId','partyName')->get();
 //        $allConstituencies=Constituency::select('constituencyId','name')->groupBy('name')->get();
 
-        $getAllAssociate=Associate::Select('associateId','name','phoneNumber')->where('candidateId',$id)->get();
-        $getPromoters=Promoter::Select('promotersId','name','phoneNumber')->where('candidateId',$id)->get();
+        $getAllAssociate=Associate::Select('associateId','name','phoneNumber', 'attachment')->where('candidateId',$id)->get();
+        $getPromoters=Promoter::Select('promotersId','name','phoneNumber', 'attachment')->where('candidateId',$id)->get();
 
         return view('candidates.view',compact('getAllAssociate','getPromoters','getCandidatesDetails'));
 
