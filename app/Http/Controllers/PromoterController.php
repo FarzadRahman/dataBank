@@ -110,6 +110,16 @@ class PromoterController extends Controller
 
             }
 
+        if($r->hasFile('uploadAttachment')){
+
+            $attachment = $r->file('uploadAttachment');
+            $filename= $promoters->promotersId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $promoters->attachment=$filename;
+            $location = public_path('promoter/attachment/');
+            $attachment->move($location,$filename);
+
+        }
+
 
 
 //        }
@@ -179,6 +189,10 @@ class PromoterController extends Controller
         if($r->deleteImage){
             $promoters->profile=null;
         }
+        if($r->deleteAttachemnt){
+            $promoters->attachment=null;
+            unlink('public/promoter/attachment/' . $r->deleteAttachemnt);
+        }
 
 
         if ($r->hasFile('image')) {
@@ -217,6 +231,16 @@ class PromoterController extends Controller
                 Image::make($img)->save($location);
 
             }
+
+        if($r->hasFile('uploadAttachment')){
+
+            $attachment = $r->file('uploadAttachment');
+            $filename= $r->promoterId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $promoters->attachment=$filename;
+            $location = public_path('promoter/attachment/');
+            $attachment->move($location,$filename);
+
+        }
 
 
 
