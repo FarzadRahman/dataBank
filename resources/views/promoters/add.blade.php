@@ -76,7 +76,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Party</label>
-                            <select class="form-control" name="party" required>
+                            <select class="form-control" name="party" >
                                 <option value="">Select Party</option>
                                 @foreach($allParties as $party)
                                     <option value="{{$party->partyId}}">{{$party->partyName}}</option>
@@ -93,7 +93,7 @@
 
                         <div class="form-group col-md-12">
                             <label>Promoter Remark</label>
-                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" required></textarea>
+                            <textarea name="remark" class="form-control" placeholder="remark" rows="5" ></textarea>
                         </div>
 
 

@@ -33,7 +33,8 @@ class ConstituencyController extends Controller
             ->leftJoin('center','center.constituencyId','constituency.constituencyId')
             ->leftJoin('candidate','candidate.constituencyId','constituency.constituencyId')
             ->groupBy('constituency.number')
-            ->groupBy('constituency.constituencyId');
+            ->groupBy('constituency.constituencyId')
+            ->orderBy('constituency.number','asc');
 //            ->groupBy('center.constituencyId')
 //            ->groupBy('candidate.constituencyId');
 //            ->get();

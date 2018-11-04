@@ -46,7 +46,7 @@ class PdfController extends Controller
     public function getAssociate($id){
 //        $id = 1;
         $associate=Associate::select('associates.*','party.partyName','candidate.name as candidateName',
-            'constituency.name as constituencyName','division.divisionName')
+            'constituency.name as constituencyName','constituency.number as consnumber','division.divisionName')
             ->leftjoin('party','party.partyId','associates.party')
             ->leftJoin('candidate','candidate.candidateId','associates.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')
@@ -63,7 +63,7 @@ class PdfController extends Controller
     public function getPromoter($id){
 //        $id = 1;
         $associate=Promoter::select('promoters.*','party.partyName','candidate.name as candidateName',
-            'constituency.name as constituencyName','division.divisionName')
+            'constituency.name as constituencyName','constituency.number as consnumber','division.divisionName')
             ->leftjoin('party','party.partyId','promoters.party')
             ->leftJoin('candidate','candidate.candidateId','promoters.candidateId')
             ->leftJoin('constituency','constituency.constituencyId','candidate.constituencyId')

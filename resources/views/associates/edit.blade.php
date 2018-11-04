@@ -88,7 +88,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Party</label>
-                            <select class="form-control" name="party" required>
+                            <select class="form-control" name="party" >
                                 <option value="">Select Party</option>
                                 @foreach($allParties as $party)
                                     <option @if($getAssociatesDetails->partyName ==$party->partyName) selected @endif value="{{$party->partyId}}">{{$party->partyName}}</option>
