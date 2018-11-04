@@ -124,6 +124,16 @@ class CandidateController extends Controller
                 Image::make($img)->save($location);
 
             }
+
+        if($r->hasFile('uploadAttachment')){
+
+            $attachment = $r->file('uploadAttachment');
+            $filename= $candidate->candidateId.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $candidate->attachment=$filename;
+            $location = public_path('candidate/attachment/');
+            $attachment->move($location,$filename);
+
+        }
 //        }
 
         $candidate->save();
@@ -173,6 +183,7 @@ class CandidateController extends Controller
 
     public function update(Request $r){
 
+
         //return $r;
         $validatedData = $r->validate([
             'image' => 'mimes:jpeg,jpg,png',
@@ -203,6 +214,10 @@ class CandidateController extends Controller
         $candidates->occupation=$r->occupation;
         if($r->deleteImage){
             $candidates->profile=null;
+        }
+        if($r->deleteAttachemnt){
+            $candidates->attachment=null;
+            unlink('public/candidate/attachment/' . $r->deleteAttachemnt);
         }
 
         if ($r->hasFile('image')) {
@@ -237,11 +252,19 @@ class CandidateController extends Controller
                 $location = public_path('candidate/profileDoc/' . $filename);
                 Image::make($img)->save($location);
 
+
             }
 
+             if($r->hasFile('uploadAttachment')){
 
+            $attachment = $r->file('uploadAttachment');
+            $filename= $r->candidateid.'uploadAttachment'.'.'.$attachment->getClientOriginalExtension();
+            $r->attachment=$filename;
+            $location = public_path('candidate/attachment/');
+            $attachment->move($location,$filename);
 
-//        }
+            }
+
         $candidates->save();
 
 

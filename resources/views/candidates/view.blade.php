@@ -29,7 +29,9 @@
                         <a href="{{route('candidates.editView',$getCandidatesDetails->candidateId)}}"><button class="btn btn-sm btn-info ">Edit</button></a>
                         &nbsp;&nbsp;
                         <button type="button" class="btn btn-default btn-sm"  onclick="printCandidate({{$getCandidatesDetails->candidateId}})"><i class="fa fa-print"></i></button>
-
+                      @if($getCandidatesDetails->attachment)
+                        <a href="{{'public/candidate/attachment/'.$getCandidatesDetails->attachment}}" type="button" class="btn btn-default btn-sm" download ><i class="fa fa-download"></i></a>
+                      @endif
                     </div>
 
 

@@ -245,7 +245,10 @@
 
                         </div>
 
-                    @if($getCandidatesDetails->profile)
+
+
+
+                @if($getCandidatesDetails->profile)
                         <div class="col-md-2">
 
                             <div class="col-md-6 mb-3">
@@ -256,6 +259,23 @@
                     @endif
 
 
+                    <div class="form-group col-md-12">
+
+                        <label class="col-md-2">Upload Attachment(Doc file)</label>
+                        <input type="file" id="uploadDoc" name="uploadAttachment" accept="*" placeholder="Candidate Document" class="form-control col-md-8" />
+
+
+                    </div>
+
+                    @if($getCandidatesDetails->attachment)
+                        <div class="col-md-2">
+
+                            <div class="col-md-12 mb-3">
+                                Delete Attachment<input  class="form-check-input" type="checkbox"  name="deleteAttachemnt" value="{{$getCandidatesDetails->attachment}}">
+                            </div>
+
+                        </div>
+                    @endif
 
                 </div>
                     <br>
