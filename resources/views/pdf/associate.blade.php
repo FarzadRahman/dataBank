@@ -46,13 +46,13 @@
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
             <tr>
 
-                <td style="width:40%">
-                    <h3 style="">নির্বাচনক্ষেত্র সংখ্যা : {{$associate->consnumber}}</h3>
-                    <p style="">নির্বাচনক্ষেত্র নাম : {{$associate->constituencyName}} <br>
-                        বিভাগ : {{$associate->divisionName}} <br>
-                        দল : {{$associate->partyName}} <br>
-                        প্রার্থী নাম : {{$associate->partyName}}
-
+            
+                 <td style="width:40%">
+                    <h3 style="">বিভাগের নাম  : {{$associate->divisionName}}</h3>
+                    <p style="">আসন নং : {{$associate->consnumber}} <br>
+                        নির্বাচনী এলাকা : {{$associate->constituencyName}} <br>
+                        রাজনৈতিক দল : {{$associate->partyName}} <br>
+                        প্রার্থীর নাম : {{$associate->candidateName}}
                     </p>
 
                 </td>

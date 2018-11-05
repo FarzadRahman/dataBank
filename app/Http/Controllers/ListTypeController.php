@@ -313,6 +313,21 @@ class ListTypeController extends Controller
         return view('test');
     }
 
+    public function editJatioFile(Request $r){
+         $jation=JatioFile::findOrFail($r->id);
+          return view('editJatioFile',compact('jation'));
+    }
+
+    public function updateJationFile(Request $r){
+        $jation=JatioFile::findOrFail($r->id);
+        $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',1);
+        Session::flash('message', 'File Edited Successfully!');
+        return back();
+    }
 
     public function deleteJatioFile(Request $r){
         $jation=JatioFile::findOrFail($r->id);
@@ -322,14 +337,57 @@ class ListTypeController extends Controller
         $jation->delete();
 
     }
+
+    public function editAllFile(Request $r){
+        $jation=Allfile::findOrFail($r->id);
+        return view('editAllFile',compact('jation'));
+    }
+
+    public function updateAllFile(Request $r){
+        $jation=Allfile::findOrFail($r->id);
+        $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',7);
+        Session::flash('message', 'File Edited Successfully!');
+
+        return back();
+        
+    }
+
     public function deleteAllFile(Request $r){
         $jation=Allfile::findOrFail($r->id);
+
         Session::flash('listType',$jation->listtypeId);
         Session::flash('partyLevels',7);
         Session::flash('message', 'File Deleted Successfully!');
         $jation->delete();
 
     }
+
+
+    public function editMohanogorFile(Request $r){
+         $jation=MohanogorFile::findOrFail($r->id);
+    
+        return view('editMohanogorFile',compact('jation'));
+    }
+
+
+    public function updateMohanogor(Request $r){
+
+    
+         $jation=MohanogorFile::findOrFail($r->id);
+        $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',2);
+        Session::flash('message', 'File Edited Successfully!');
+        return back();
+    }
+
+
     public function deleteMohanogorFile(Request $r){
         $mohanogor=MohanogorFile::findOrFail($r->id);
         Session::flash('listType',$mohanogor->listtypeId);
@@ -337,6 +395,25 @@ class ListTypeController extends Controller
         Session::flash('message', 'File Deleted Successfully!');
         $mohanogor->delete();
     }
+
+
+    public function editZillaFile(Request $r){
+         $jation=Zillafile::findOrFail($r->id);
+         return view('editZillaFile',compact('jation'));
+    }
+
+    public function updateZillaFile(Request $r){
+           $jation=Zillafile::findOrFail($r->id);
+        $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',3);
+        Session::flash('zillaId',$jation->zillaId);
+        Session::flash('message', 'File Edited Successfully!');
+          return back();
+    }
+
     public function deleteZillaFile(Request $r){
         $zilla=Zillafile::findOrFail($r->id);
         Session::flash('listType',$zilla->listtypeId);
@@ -347,18 +424,53 @@ class ListTypeController extends Controller
     }
 
 
+    public function editUpZillaFile(Request $r){
+           $jation=Upzillafile::findOrFail($r->id);
+            return view('editUpZillaFile',compact('jation'));
+    }
+
+    public function updateUpZillaFile(Request $r){
+        $jation=Upzillafile::findOrFail($r->id);
+        $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+        Session::flash('listType',$jation->listtype_listtypeId);
+        Session::flash('partyLevels',4);
+        Session::flash('upzilaId',$jation->upzilla_upzillaId);
+        Session::flash('message', 'File Edited Successfully!');
+        return back();
+    }
+
     public function deleteUpZillaFile(Request $r){
         $upzilla=Upzillafile::findOrFail($r->id);
-        Session::flash('listType',$upzilla->listtypeId);
+        Session::flash('listType',$upzilla->listtype_listtypeId);
         Session::flash('partyLevels',4);
         Session::flash('upzilaId',$upzilla->upzilla_upzillaId);
         Session::flash('message', 'File Deleted Successfully!');
         $upzilla->delete();
     }
 
+
+    public function editPouroshovaFile(Request $r){
+        $jation=Pouroshovafile::findOrFail($r->id);
+         return view('editPouroshovaFile',compact('jation'));
+    }
+
+    public function updatePouroshovaFile(Request $r){
+         $jation=Pouroshovafile::findOrFail($r->id);
+          $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+         Session::flash('listType',$jation->isttypeId);
+        Session::flash('partyLevels',5);
+        Session::flash('pouroshovaId',$jation->pouroshovaId);
+        Session::flash('message', 'File Edited Successfully!');
+        return back();
+    }
+
     public function deletePouroshovaFile(Request $r){
         $pourosova=Pouroshovafile::findOrFail($r->id);
-        Session::flash('listType',$pourosova->listtypeId);
+        Session::flash('listType',$pourosova->isttypeId);
         Session::flash('partyLevels',5);
         Session::flash('pouroshovaId',$pourosova->pouroshovaId);
         Session::flash('message', 'File Deleted Successfully!');
@@ -366,6 +478,22 @@ class ListTypeController extends Controller
 
     }
 
+    public function editUnionFile(Request $r){
+        $jation=Unionfile::findOrFail($r->id);
+
+         return view('editUnionFile',compact('jation'));
+    }
+    public function updateUnionFile( Request $r){
+            $jation=Unionfile::findOrFail($r->id);
+             $jation->name=$r->name;
+        $jation->remark=$r->remark;
+        $jation->save();
+        Session::flash('listType',$jation->listtypeId);
+        Session::flash('partyLevels',6);
+        Session::flash('unionId',$jation->unionfileId);
+        Session::flash('message', 'File Edited Successfully!');
+          return back();
+    }
     public function deleteUnionFile(Request $r){
         $union=Unionfile::findOrFail($r->id);
         Session::flash('listType',$union->listtypeId);

@@ -48,14 +48,18 @@
         <h2 align="center"><u>Candidate</u></h2>
         <table border="0" style="width:100%; margin-top: 30px; border: none;">
             <tr>
+              
                 <td style="width:40%">
-                    <h3 style="">নির্বাচনক্ষেত্র সংখ্যা : {{$candidate->consnumber}}</h3>
-                    <p style="">নির্বাচনক্ষেত্র নাম : {{$candidate->consname}} <br>
-                        বিভাগ : {{$candidate->divisionName}} <br>
-                        দল : {{$candidate->partyName}}
+                    <h3 style="">বিভাগের নাম  : {{$candidate->divisionName}}</h3>
+                    <p style="">আসন নং : {{$candidate->consnumber}} <br>
+                        নির্বাচনী এলাকা : {{$candidate->consname}} <br>
+                        রাজনৈতিক দল : {{$candidate->partyName}}
                     </p>
 
                 </td>
+
+
+
                 <td style="width: 40%; border: none; "></td>
                 <td style="width: 20%; border: none; "><img height="150px" width="150px" src="{{url('public/candidate/candidateImages/thumb').'/'.$candidate->image}}" alt=""></td>
             </tr>
@@ -187,46 +191,7 @@
 
         </table>
 
-@if(!$promoters->isEmpty())
-        <table border="0" style="width:100%; margin-top: 15px; border: none;">
-            <tr>
-                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>প্রবর্তক</b> </td>
-            </tr>
-        </table>
 
-
-        <table border="0" style="width:100%; margin-top: 10px; border: none;">
-
-            @php $count=1;@endphp
-            @foreach($promoters as $prm)
-
-                <tr>
-
-                    <td style="border: none;width: 10px;">{{$count++}}</td>
-                    <td style="border: none;">
-
-                        নাম : {{$prm->proname}}
-                    </td>
-                    <td style="border: none;"> মোবাইল : {{$prm->pronumber}}</td>
-                </tr>
-                <tr>
-
-                    <td style="border: none;width: 10px;"></td>
-                    <td style="border: none;">দল : {{$prm->partyName}}</td>
-                    <td style="border: none;">লিঙ্গ : @foreach(GENDER as $key=>$value)
-                            @if($prm->gender==$value)
-                                {{$key}}
-                            @endif
-                        @endforeach</td>
-
-
-
-                </tr>
-
-            @endforeach
-
-        </table>
-@endif
 @if(!$associates->isEmpty())
         <table border="0" style="width:100%; margin-top: 15px; border: none;">
             <tr>
@@ -269,6 +234,47 @@
 
         </table>
 
+@endif
+
+@if(!$promoters->isEmpty())
+        <table border="0" style="width:100%; margin-top: 15px; border: none;">
+            <tr>
+                <td class="label" style="text-align: left; border: none; border-bottom: 1px solid #000"><b>প্রবর্তক</b> </td>
+            </tr>
+        </table>
+
+
+        <table border="0" style="width:100%; margin-top: 10px; border: none;">
+
+            @php $count=1;@endphp
+            @foreach($promoters as $prm)
+
+                <tr>
+
+                    <td style="border: none;width: 10px;">{{$count++}}</td>
+                    <td style="border: none;">
+
+                        নাম : {{$prm->proname}}
+                    </td>
+                    <td style="border: none;"> মোবাইল : {{$prm->pronumber}}</td>
+                </tr>
+                <tr>
+
+                    <td style="border: none;width: 10px;"></td>
+                    <td style="border: none;">দল : {{$prm->partyName}}</td>
+                    <td style="border: none;">লিঙ্গ : @foreach(GENDER as $key=>$value)
+                            @if($prm->gender==$value)
+                                {{$key}}
+                            @endif
+                        @endforeach</td>
+
+
+
+                </tr>
+
+            @endforeach
+
+        </table>
 @endif
         @if($candidate->profile!=null)
             <img height="1000px" width="900px" src="{{url('public/candidate/profileDoc').'/'.$candidate->profile}}" alt="">

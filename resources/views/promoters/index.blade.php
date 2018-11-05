@@ -112,7 +112,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Spouse Number :</label>
+                            <label for="inputEmail4">Spouse Mobile Number :</label>
                             {{$getPromotersDetails->spouseNumber}}
 
                         </div>
@@ -124,13 +124,19 @@
                         </div>
 
                         <div class="form-group col-md-6">
+                            <label for="inputEmail4">Father's Mobile Number:</label>
+                            {{$getPromotersDetails->fatherNumber}}
+
+                        </div>
+
+                        <div class="form-group col-md-6">
                             <label for="inputEmail4">Mother Name :</label>
                             {{$getPromotersDetails->mother}}
 
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Mother Number :</label>
+                            <label for="inputEmail4">Mother's Mobile Number :</label>
                             {{$getPromotersDetails->motherNumber}}
 
                         </div>

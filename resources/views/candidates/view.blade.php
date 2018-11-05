@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="pull-left">Details Of the Candidate</h3>
+                    <h3 class="pull-left">Details Of Candidate</h3>
 
                     <div class="form-group pull-right">
                         <a href="{{route('candidates.editView',$getCandidatesDetails->candidateId)}}"><button class="btn btn-sm btn-info ">Edit</button></a>
@@ -128,7 +128,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Spouse Number :</label>
+                                <label for="inputEmail4">Spouse Mobile Number :</label>
                                 {{$getCandidatesDetails->spouseNumber}}
 
                             </div>
@@ -136,6 +136,11 @@
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Father Name:</label>
                                 {{$getCandidatesDetails->father}}
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Father's Mobile Name:</label>
+                                {{$getCandidatesDetails->fatherNumber}}
 
                             </div>
 
@@ -146,7 +151,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Mother Number :</label>
+                                <label for="inputEmail4">Mother's Mobile Number :</label>
                                 {{$getCandidatesDetails->motherNumber}}
 
                             </div>

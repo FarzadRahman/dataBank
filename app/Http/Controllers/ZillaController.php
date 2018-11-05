@@ -34,7 +34,7 @@ class ZillaController extends Controller
     public function edit(Request $r){
         $zilla=Zilla::findOrFail($r->id);
 
-        return view('Zilla.edit',compact('zilla'));
+        return view('zilla.edit',compact('zilla'));
     }
 
     public function update(Request $r,$id){

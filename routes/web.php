@@ -159,6 +159,29 @@ Route::post('List-File/deleteUnionFile','ListTypeController@deleteUnionFile')->n
 Route::post('List-File/deletePouroshovaFile','ListTypeController@deletePouroshovaFile')->name('deletePouroshovaFile');
 Route::post('List-File/deleteAllFile','ListTypeController@deleteAllFile')->name('deleteAllFile');
 
+//Edit File
+Route::post('List-File/editAllFile','ListTypeController@editAllFile')->name('editAllFile');
+Route::post('List-File/updateAllFile','ListTypeController@updateAllFile')->name('updateAllFile');
+
+Route::post('List-File/editMohanogorFile','ListTypeController@editMohanogorFile')->name('editMohanogorFile');
+Route::post('List-File/updateMohanogor','ListTypeController@updateMohanogor')->name('updateMohanogor');
+
+Route::post('List-File/editJatioFile','ListTypeController@editJatioFile')->name('editJatioFile');
+Route::post('List-File/updateJationFile','ListTypeController@updateJationFile')->name('updateJationFile');
+
+Route::post('List-File/editZillaFile','ListTypeController@editZillaFile')->name('editZillaFile');
+Route::post('List-File/updateZillaFile','ListTypeController@updateZillaFile')->name('updateZillaFile');
+//=============
+Route::post('List-File/editUpZillaFile','ListTypeController@editUpZillaFile')->name('editUpZillaFile');
+Route::post('List-File/updateUpZillaFile','ListTypeController@updateUpZillaFile')->name('updateUpZillaFile');
+
+
+Route::post('List-File/editPouroshovaFile','ListTypeController@editPouroshovaFile')->name('editPouroshovaFile');
+Route::post('List-File/updatePouroshovaFile','ListTypeController@updatePouroshovaFile')->name('updatePouroshovaFile');
+
+Route::post('List-File/editUnionFile','ListTypeController@editUnionFile')->name('editUnionFile');
+Route::post('List-File/updateUnionFile','ListTypeController@updateUnionFile')->name('updateUnionFile');
+
 
 //=====================User=========================================
 

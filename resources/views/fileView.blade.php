@@ -74,6 +74,8 @@
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/mohanogorfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+
+                        <button class="btn btn-info btn-sm" onclick="editMohanogorFile({{$f->mohanogorId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteMohanogorFile({{$f->mohanogorId}})">delete</button>
                         @endif
@@ -90,6 +92,7 @@
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/jatiofiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        <button class="btn btn-info btn-sm" onclick="editJatioFile({{$f->jatiofileId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteJatioFile({{$f->jatiofileId}})">delete</button>
                         @endif
@@ -104,6 +107,7 @@
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/allfiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        <button class="btn btn-info btn-sm" onclick="editAllFile({{$f->allfileId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteAllFile({{$f->allfileId}})">delete</button>
                         @endif
@@ -119,6 +123,8 @@
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/zilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+
+                        <button class="btn btn-info btn-sm" onclick="editZillaFile({{$f->zillafileId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteZillaFile({{$f->zillafileId}})">delete</button>
                         @endif
@@ -134,7 +140,9 @@
                     <td style="text-align: center">{{$f->name}}</td>
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
-                        <a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        <a href="{{url('public/upzilafiles'."/".$f->image)}}" class="btn btn-sm btn-sm" download>
+                        Download</a>
+                        <button class="btn btn-info btn-sm" onclick="editUpZillaFile({{$f->upzillaId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteUpZillaFile({{$f->upzillaId}})">delete</button>
                         @endif
@@ -150,6 +158,7 @@
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/pouroshovafies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                        <button class="btn btn-info btn-sm" onclick="editPouroshovaFile({{$f->pouroshovafileId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deletePouroshovaFile({{$f->pouroshovafileId}})">delete</button>
                         @endif
@@ -164,6 +173,7 @@
                     <td style="text-align: center">{{$f->remark}}</td>
                     <td style="text-align: center">
                         <a href="{{url('public/unionfies'."/".$f->image)}}" class="btn btn-sm btn-sm" download>Download</a>
+                          <button class="btn btn-info btn-sm" onclick="editUnionFile({{$f->unionfileId}})">Edit</button>
                         @if(Auth::user()->userTypeId=='admin')
                             <button class="btn btn-danger btn-sm" onclick="deleteUnionFile({{$f->unionfileId}})">delete</button>
                         @endif
@@ -185,6 +195,109 @@
 
     });
 
+    function editMohanogorFile(id) {
+
+
+      
+           $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editMohanogorFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+    }
+    function editJatioFile(id) {
+        
+           $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editJatioFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+
+    }
+   function editAllFile(id) {
+     
+        
+           $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editAllFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+   }
+   function editZillaFile(id) {
+    
+
+           $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editZillaFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+   }
+
+   function editUpZillaFile(id){
+         $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editUpZillaFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+   }
+
+   function editPouroshovaFile(id){
+        $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editPouroshovaFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+   }
+
+   function editUnionFile(id){
+        $.ajax({
+                        type: 'POST',
+                        url: "{!! route('editUnionFile') !!}",
+                        cache: false,
+                        data: {_token: "{{csrf_token()}}",'id': id},
+                        success: function (data) {
+                             console.log(data);
+                             $('#editValue').html(data);
+                              $('#myModal').modal();
+                        }
+                    });
+   }
 
     function deleteJatioFile(id) {
         $.confirm({

@@ -183,7 +183,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="">Spouse Number</label>
+                            <label for="">Spouse Mobile Number</label>
                             <input type="text"  name="spouseNumber" class="form-control" value="{{$getPromotersDetails->spouseNumber}}"  placeholder="">
                         </div>
 
@@ -192,7 +192,7 @@
                             <input type="text"  name="father" class="form-control" value="{{$getPromotersDetails->father}}"  placeholder="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Father Number</label>
+                            <label for="">Father's Mobile Number</label>
                             <input type="text"  name="fatherNumber" class="form-control" value="{{$getPromotersDetails->fatherNumber}}"  placeholder="">
                         </div>
 
@@ -201,7 +201,7 @@
                             <input type="text"  name="mother" class="form-control" value="{{$getPromotersDetails->mother}}" placeholder="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Mother Number</label>
+                            <label for="">Mother's Mobile Number</label>
                             <input type="text"  name="motherNumber" class="form-control" value="{{$getPromotersDetails->motherNumber}}"  placeholder="">
                         </div>
 
